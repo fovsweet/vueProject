@@ -1,0 +1,917 @@
+
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+    margin: 0;
+}
+
+article,
+aside,
+details, /* 1 */
+figcaption,
+figure,
+footer,
+header,
+main, /* 2 */
+menu,
+nav,
+section,
+summary {
+    /* 1 */
+    display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+progress {
+    vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+
+template, /* 1 */
+[hidden] {
+    display: none;
+}
+
+a {
+    background-color: transparent;
+}
+
+a:active,
+a:hover {
+    outline-width: 0;
+}
+
+abbr[title] {
+    border-bottom: none; /* 1 */
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+}
+
+b,
+strong {
+    font-weight: inherit;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+dfn {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+mark {
+    background-color: #ff0;
+    color: #000;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+img {
+    border-style: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+}
+
+figure {
+    margin: 1em 40px;
+}
+
+hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Change font properties to `inherit` in all browsers (opinionated).
+ */
+
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+
+}
+
+optgroup {
+    font-weight: bold;
+}
+
+button,
+input, /* 1 */
+select {
+    /* 2 */
+    overflow: visible;
+}
+
+button,
+input,
+select,
+textarea {
+    /* 1 */
+    margin: 0;
+    color: #666;
+}
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritence of text transform in Firefox.
+ */
+
+button,
+select {
+    /* 1 */
+    text-transform: none;
+
+}
+
+/**
+ * Change the cursor in all browsers (opinionated).
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    cursor: pointer;
+
+}
+
+[disabled] {
+    cursor: default;
+}
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+button:-moz-focusring,
+input:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+}
+
+textarea {
+    overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**********************原样式******************************/
+
+div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6,
+p, pre, a, img, strong,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label,
+table, tbody, tfoot, thead, tr, th, td {
+    text-decoration: none;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑", Arial;
+}
+
+@font-face {
+    src: url('../fonts/SOURCEHANSANSCN-NORMAL.OTF');
+    font-family: 'youyuan';
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 1250px;
+    line-height: 1.5;
+    font-family: "微软雅黑", Arial;
+    color: #666;
+    font-size: 14px;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+input, select,textarea {
+    padding: 0 10px;
+    outline: none;
+    height: 34px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+textarea {
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+/*****scrollbar start ******/
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+
+/*****scrollbar end ******/
+
+/*下拉框的样式*/
+select::-ms-expand {
+    display: none; /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+}
+
+select {
+    /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    border: solid 1px #ddd;
+    /*很关键：将默认的select选择框样式清除*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url(../images/arrow_down_ico.png) no-repeat scroll right center transparent;
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+}
+
+/* ********************主题部分内容样式******************** */
+
+body {
+    background: #f3f7f8;
+}
+
+.mt20 {
+    margin-top: 20px
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.wd110 {
+    width: 110px;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/******----btn start-----********/
+.btn-default {
+    width: 110px;
+    height: 34px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    background: #63a8eb;
+    border-radius: 2px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.btn-default:hover {
+    background: #548ce5;
+}
+/******----btn end-----********/
+
+
+
+
+/*--公共头部 start --- */
+#header {  width: 100%; min-width: 1250px;height: 60px;  text-align: center;  font-size: 14px;  color: #fff;  background: #414763;  position:  absolute;  top: 0;  left: 0;  -webkit-box-sizing: border-box;  box-sizing: border-box;  z-index: 9;  }
+/*------头部Logo start--------*/
+#header .logo{height: 100%;width: 180px; float: left;}
+#header .logo .sys-logo{display: inline-block;width: 100%; height: 100%; background:url('../images/logo_icon.png') center center no-repeat;background-size:100%}
+/*------头部Logo end--------*/
+/*------头部列表统一样式 start--------*/
+#header li{float: left; height: 60px; padding: 0; margin-right: 40px; list-style: none;line-height: 60px;}
+#header li a{font-size: 0px; color: white; display: inline-block; height: 100%; width: 72px;}
+#header li a:hover{font-size: 0px; color: #63a8eb;}
+#header li a.current{box-sizing: border-box; border-bottom: 3px solid #63a8eb; color: #63a8eb;}
+#header li span{font-size: 18px;}
+/*------头部列表统一样式 end --------*/
+/*------头部一级导航 start--------*/
+#header .first-nav {float: left; margin-left: 56px;height: 100%; }
+#header .nav-icon{display: inline-block;width: 23px; height: 17px; margin-right: 10px;vertical-align: -2px;}
+#header .first-nav-in{background: url('../images/2.0-first-nav.png'); }
+#header .first-nav-op{background: url('../images/2.0-first-nav.png') 0 -17px; }
+#header .first-nav-st{background: url('../images/2.0-first-nav.png') 0 -34px; }
+#header .first-nav-cs{background: url('../images/2.0-first-nav.png') 0 -51px; }
+#header .first-nav-ec{background: url('../images/2.0-first-nav.png') 0 -68px; }
+#header a:hover .first-nav-in,#header a.current .first-nav-in{background: url('../images/2.0-first-nav.png') -25px 0; }
+#header a:hover .first-nav-op,#header a.current .first-nav-op{background: url('../images/2.0-first-nav.png') -25px -17px; }
+#header a:hover .first-nav-st,#header a.current .first-nav-st{background: url('../images/2.0-first-nav.png') -25px -34px; }
+#header a:hover .first-nav-cs,#header a.current .first-nav-cs{background: url('../images/2.0-first-nav.png') -25px -51px; }
+#header a:hover .first-nav-ec,#header a.current .first-nav-ec{background: url('../images/2.0-first-nav.png') -25px -68px; }
+/*------头部一级导航 end--------*/
+/*------头部设置导航 start--------*/
+#header .setting-nav{float: right;}
+#header .setting-icon{display: inline-block;width: 23px; height: 18px; margin-right: 10px;vertical-align: -3px;}
+#header .setting-ico-sys{background: url('../images/2.0-first-nav.png') 0 -85px;}
+#header a:hover .setting-ico-sys{background: url('../images/2.0-first-nav.png') -25px -85px;}
+/*------头部设置导航 end--------*/
+/*------头部退出 start--------*/
+#header .quit-nav{float: right;}
+#header .quit-nav li{margin-right: 30px;}
+#header .quit-icon{display: inline-block;width: 18px; height: 18px; margin-right: 10px;vertical-align: -3px;}
+#header .quit-ico{background: url('../images/2.0-first-nav.png') 0 -103px;}
+#header a:hover .quit-ico{background: url('../images/2.0-first-nav.png') -25px -103px;}
+/*------头部退出  end--------*/
+/*--公共头部 end --- */
+
+
+
+/*--公共左边导航 start --- */
+#content {  padding-top: 60px;  width: 100%;  min-height: 100%;  position: relative;  -webkit-box-sizing: border-box;  box-sizing: border-box;  }
+#sidebar {  padding-top: 60px;  height: 100%;  width: 180px;  color: #fff; background: #2a303e;  position: absolute;  top: 0;  bottom: 0;  left: 0;  -webkit-box-sizing: border-box;  box-sizing: border-box;  }
+/*------左侧二级导航 start--------*/
+#sidebar .avatar {margin-top: 20px; height: 46px; text-align: center;}
+#sidebar .avatar img{width: 46px; height: 46px; border-radius: 50%;}
+#sidebar .user-name{margin-top: 20px;text-align: center;}
+#sidebar .second-nav{margin-top: 48px;text-align: center;}
+#sidebar .second-nav li{ margin-top: 28px; list-style: none;}
+#sidebar .second-nav li span{font-size: 14px;}
+#sidebar .second-nav a{font-size: 0px;color: #b4b4b4;position: relative;}
+#sidebar .second-nav a:hover{color: #fff;}
+#sidebar .second-nav a.current{color: #fff;}
+#sidebar .second-nav a .light-dot{position: absolute; top: -6px; left: -14px; display: inline-block; margin-right: 10px; width: 4px; height: 4px; border-radius: 50%;}
+#sidebar .second-nav a.current .light-dot{background-color: white;}
+/*------左侧二级导航 end--------*/
+/*--公共左边导航 end--- */
+
+
+
+/*--公共主体内容 start--- */
+#section {
+    padding: 20px 30px;
+    margin-left: 180px;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 30px;
+    width:100%;
+    min-height: 800px;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/********--公共主体内容 end--- ********/
+
+/********--搜索框 start --- ********/
+
+.search-box {
+    font-size: 0;
+}
+
+.search-group {
+    margin: 0 20px 20px 0;
+    font-size: 0;
+    display: inline-block;
+}
+
+.search-group *,.date-group * {
+    box-sizing: border-box;
+}
+
+.search-group select,
+.search-group input[type="text"],
+.search-group input[type="submit"] {
+    font-size: 14px;
+    margin-left: 10px;
+
+}
+
+.search-group label {
+    font-size: 14px;
+    color: #666;
+}
+
+.search-group select,
+.search-group input[type="text"] {
+    padding: 0 10px;
+    width: 174px;
+    height: 34px;
+    border: 1px solid #dddddd;
+}
+
+.search-group .btn-default {
+    margin-right: 20px;
+}
+
+.date-group {
+    margin-right: 20px;
+    display: inline-block;
+    font-size: 0;
+    vertical-align: top;
+}
+
+.date-group label,.date-group span{
+    font-size: 14px;
+}
+
+.date-group input:nth-of-type(1) {
+    margin-right: 10px;
+}
+
+.date-group input:nth-of-type(2) {
+    margin-left: 10px;
+}
+
+.date-group input {
+    margin-left: 10px;
+    padding: 0 10px;
+    width: 100px;
+    line-height: 34px;
+    height: 34px;
+    font-size: 14px;
+    color: #666;
+}
+/********--搜索框 end--- ********/
+
+/********--表格 start --- ********/
+.table-list {
+    font-size:14px;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #e8e8e8;
+    border-bottom: none;
+}
+
+.table-list thead tr th,
+.table-list tbody tr td {
+    padding: 22px 5px;
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
+    vertical-align: middle;
+}
+
+.table-list thead tr th {
+    padding: 18px 5px;
+    font-weight: normal;
+    color: #333;
+}
+
+.table-list thead tr {
+    background: #eeeeee;
+    color: #666;
+}
+
+.table-list tbody tr:nth-of-type(2n) {
+    background-color: #f8f8f8;
+}
+
+/********--表格 end--- ********/
+
+/*******表格 操作按钮   start****/
+.operate-group {
+    font-size: 0;
+    text-align: center;
+}
+
+.operate-group a:link,
+.operate-group a:active,
+.operate-group a:visited {
+    color: #666;
+}
+
+.operate-group a {
+    padding: 4px 6px;
+    margin-right: 5px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.operate-group a:hover {
+    color: #63a8eb;
+    border-color: #63a8eb;
+}
+
+.operate-group a:active {
+    color: #666;
+}
+
+.operate-group .delete {
+    margin: 0;
+}
+
+.operate-group .delete:hover {
+    color: #e7441f;
+    border: 1px solid #e7441f;
+}
+
+/*******表格 操作按钮   end****/
+
+/********--表单 start ---********/
+
+/*******--表单 end--- ********/
+
+/*-------PageNav start ---------*/
+.pageNav {
+    text-align: center;
+    color: #666;
+    font-size: 0;
+}
+
+.pageNav * {
+    box-sizing: border-box;
+}
+
+.pageNav a {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 26px;
+    height: 25px;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    color: #666666;
+    font-size: 14px;
+}
+
+.pageNav a:last-of-type {
+    width: 68px;
+    position: relative;
+    padding-right: 10px;
+}
+
+.pageNav a:first-of-type {
+    width: 68px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.pageNav a:first-of-type:before {
+    content: "";
+    display: inline-block;
+    background: url(../images/arrow-left.png) no-repeat;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    width: 5px;
+    height: 9px;
+}
+
+.pageNav a:last-of-type:before {
+    content: "";
+    display: inline-block;
+    background: url(../images/arrow-right.png) no-repeat;
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 5px;
+    height: 9px;
+}
+
+.pageNav a:first-of-type:hover:before {
+    background: url(../images/arrow-left-hover.png) no-repeat;
+}
+
+.pageNav a:last-of-type:hover:before {
+    background: url(../images/arrow-right-hover.png) no-repeat
+}
+
+.pageNav a:hover {
+    background-color: #63a8eb;
+    border: 1px solid #63a8eb;
+    color: white;
+}
+
+.pageNav a.hoverd {
+    background-color: #63a8eb;
+    border: 1px solid #63a8eb;
+    color: white;
+}
+
+.pageNav input {
+    margin: 0 5px;
+    height: 25px;
+    width: 26px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 0;
+    vertical-align: top;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.pageNav input[type='submit'] {
+    width: auto;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.pageNav input[type='button'] {
+    width: auto;
+    padding: 0 15px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.pageNav input[type='submit']:hover {
+    background-color: #63a8eb;
+    border: 1px solid #63a8eb;
+    color: white;
+}
+
+.pageNav input[type='button']:hover {
+    background-color: #63a8eb;
+    border: 1px solid #63a8eb;
+    color: white;
+}
+
+.pageNav input[type='text'] {
+    padding: 0 5px;
+    height: 25px;
+    width: 35px;
+    text-align: center;
+}
+
+.pageNav button {
+    height: 28px;
+    margin: -6px 5px 0 0;
+    border-radius: 0;
+}
+
+.pageNav span {
+    color: #666;
+    font-size: 14px;
+}
+
+.pageNav .cur_page {
+    color: #000;
+}
+
+.pageNav .all_items {
+    display: inline-block;
+    margin-left: 10px;
+    color: #000;
+}
+
+
+/*-------PageNav end---------*/
+
+
+/***** 表单  start *****/
+.form-table {
+    width: 100%;
+    table-layout:fixed;
+}
+
+.form-table label {
+    display: inline-block;
+    padding-left: 10px;
+    color: #666;
+    width: 70px;
+    position: relative;
+    /*vertical-align: middle;*/
+}
+.form-table .search-group span {
+    /*font-size: 14px;*/
+    /*vertical-align: top;*/
+}
+
+.form-table tbody tr td:nth-child(2n) label {
+    text-align: left;
+}
+
+.form-table .search-group input,
+.form-table .search-group select {
+    height: 34px;
+    width: 200px;
+}
+
+.form-table .search-group input[type='password'] {
+    margin-left: 10px;
+}
+
+.form-table .search-group .wd100 {
+    width: 100px;
+}
+
+.form-table .search-group .wd300 {
+    width: 300px;
+}
+
+.form-table tbody tr td {
+    width: 50%;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-table .search-group {
+    margin: 0;
+}
+
+.btn-group {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-group input[type='button'],
+.btn-group input[type='submit'],
+.btn-group button {
+    margin: 10px 10px 0px 10px;
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    vertical-align: top;
+}
+
+em.must-point {
+    font-style: normal;
+    color: #ff6600;
+    position: absolute;
+    left: 0px;
+    top: 2px;
+    font-size: 14px;
+}
+
+/***** 表单  end *****/
+
+/*弹框关闭*/
+.close_log {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 9px;
+    float: right;
+    background: url('./../images/close.png') no-repeat 50% 50%;
+}
+/*弹框关闭*/
+/*标题 start*/
+.page_header{
+    font-size:32px;
+    font-weight:normal;
+    line-height: 1;
+    padding-bottom:40px;
+    color:#666;
+}
+/*标题 end*/
+
+/********切换副标题 start*************/
+.tab {
+    border-bottom: 1px solid #ddd
+}
+
+.tab a {
+    display: inline-block;
+    padding: 0 0 10px 0;
+    width: 90px;
+    font-size: 14px;
+    color: #666;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: -1px;
+    margin-right: 20px;
+}
+
+
+.tab a.active {
+    color: #63a8eb;
+    border-bottom: 1px solid #63a8eb;
+}
+/********切换副标题 end*************/
