@@ -7,22 +7,30 @@
 	import win from './diaWin.vue';
 	import look from './diaLookprize.vue';
 	import writeInfo from './diaWriteinfo.vue';
-	import {sharGetPrize,quiteDia} from '../vuex/actions';
+	import {sharGetPrize,quiteDia,initData} from '../vuex/actions';
 
 	export default {
 		store,
 		vuex:{
 			actions:{
-				sharGetPrize
+				sharGetPrize,initData
 			},
 			getters:{
-				currentDialog:state=> state.dialog
+				currentDialog:state=> state.dialog,
+				initDialog:state => state.initDia
 			}
 		},
 		components:{
 			share,successHelp,forbid,follow,win,look,writeInfo
 		},
 		ready(){
+			var vThis = this;
+			this.$http.post("http://rap.taobao.org/mockjs/4090/getReplyInfo",{"uuid":1}).then(function(res){
+				console.log(res.data);
+				if(res.data.success){
+					vThis.initData(res.data);
+				}
+			})
 		}
 	}
 </script>
@@ -37,7 +45,7 @@
 			<div class="tips">
 				友谊的小船已红划了40米，还差260米即有机会领取丰富大奖，快来帮他吧！
 			</div>
-			<div class="get-gift" @click="sharGetPrize('look')">
+			<div class="get-gift" @click="sharGetPrize(initDialog)">
 				划龙舟，拿大奖
 			</div>
 			<div class="my-gift">

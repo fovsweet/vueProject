@@ -12,7 +12,8 @@ module.exports = {
 		}
 	},
 	entry:{
-		'festival':'./src/festival'
+		'festival':'./src/festival',
+		'data':'./src/data.js'
 	},
 	output:{
 		path:'build',
