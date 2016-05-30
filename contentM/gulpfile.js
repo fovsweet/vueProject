@@ -9,7 +9,7 @@ gulp.task('watch',function(){
 gulp.task('connect',function(){
 	connect.server({
 		root:'./',
-		port:'8089',
+		port:'8090',
 		ip:'192.168.1.19',
 		livereload:true,
 		middleware:function(connect,opt){

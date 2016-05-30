@@ -50,7 +50,7 @@
 					<td>
 						<div class="operate-group">
 							<a class="copyBtn" href="javascript:;" data-clipboard-text="{{data.smBodyTitle}}">复制链接</a>
-							<a href="">编辑</a>
+							<a href="smCon/init?type=0&uuid={{data.smConSysuuid}}">编辑</a>
 							<a href="javascript:;" class="delete" @click="delSpecialInfo(data)">删除</a>
 						</div>
 					</td>
@@ -58,7 +58,7 @@
 			</tbody>
 		</table>
 		<div class="no-data" v-show="specialList.none">
-			暂无专题.请<a href="#">点击新增</a>
+			暂无专题.请<a target="_blank" href="smCon/init?type=1&cateId={{activeList.smCgSysuuid}}">点击新增</a>
 		</div>
 		<!-- pageNav start -->
 		<div v-show="specialList.totalPages > 1" id="Pagination" class="pageNav mt30"></div>

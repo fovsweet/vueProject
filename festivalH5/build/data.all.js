@@ -40,14 +40,13 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _mockjs = __webpack_require__(179);
+	var _mockjs = __webpack_require__(1);
 
 	var _mockjs2 = _interopRequireDefault(_mockjs);
 
@@ -73,8 +72,7 @@
 	});
 
 /***/ },
-
-/***/ 179:
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -8534,5 +8532,4 @@
 	;
 
 /***/ }
-
-/******/ });
+/******/ ]);

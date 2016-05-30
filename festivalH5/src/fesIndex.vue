@@ -7,6 +7,8 @@
 	import win from './diaWin.vue';
 	import look from './diaLookprize.vue';
 	import writeInfo from './diaWriteinfo.vue';
+	import begin from './diaBegin.vue';
+	import over from './diaOver.vue';
 	import {sharGetPrize,quiteDia,initData} from '../vuex/actions';
 
 	export default {
@@ -21,16 +23,17 @@
 			}
 		},
 		components:{
-			share,successHelp,forbid,follow,win,look,writeInfo
+			share,successHelp,forbid,follow,win,look,writeInfo,begin,over
 		},
 		ready(){
-			var vThis = this;
-			this.$http.post("http://rap.taobao.org/mockjs/4090/getReplyInfo",{"uuid":1}).then(function(res){
+			/*var vThis = this;
+			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 				console.log(res.data);
 				if(res.data.success){
 					vThis.initData(res.data);
 				}
-			})
+			})*/
+			this.initData();
 		}
 	}
 </script>
@@ -109,13 +112,14 @@
 		position: relative;
 	}
 	.boat{
-		width: 2.675rem;
-		height: 2.775rem;
+		width: 3rem;
+		height: 3.1rem;
 		background: url('../static/img/boat.png') center center no-repeat;
 		background-size: 100% 100%;
 		position: absolute;
-		top: -.5rem;
-		left: 10rem;
+		top: 1rem;
+		left: 2.2rem;
+		transition: all .3s ease;
 	}
 	.tips{
 		width: 100%;
