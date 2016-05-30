@@ -4631,6 +4631,9 @@
 				},
 				initDialog: function initDialog(state) {
 					return state.initDia;
+				},
+				festivalInfo: function festivalInfo(state) {
+					return state.festivalInfo;
 				}
 			}
 		},
@@ -4651,20 +4654,31 @@
 	// </script>
 	//
 	// <template>
-	// 	<div class="container">
+	// 	<div class="container" v-cloak>
 	// 		<div class="head">
 	// 			<div class="river">
 	// 				<div class="boat">					
 	// 				</div>
 	// 			</div>
-	// 			<div class="tips">
-	// 				友谊的小船已红划了40米，还差260米即有机会领取丰富大奖，快来帮他吧！
+	// 			<div class="tips" v-if="festivalInfo.tips == 0">
+	// 				邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}
 	// 			</div>
-	// 			<div class="get-gift" @click="sharGetPrize(initDialog)">
-	// 				划龙舟，拿大奖
+	// 			<div class="tips" v-if="festivalInfo.tips == 1">
+	// 				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
 	// 			</div>
-	// 			<div class="my-gift">
-	// 				<a href="javascript:;">查看我的奖品</a>
+	// 			<!-- 未集满，不能抽奖 -->
+	// 			<div class="get-gift"  @click="sharGetPrize(initDialog)">
+	// 				{{festivalInfo.btnName}}
+	// 			</div>
+	// 			<!-- 已集满，可抽奖 -->
+	// 			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " @click="sharGetPrize(initDialog)">
+	// 				 还剩余X次抽奖机会
+	// 			</div> -->
+	// 			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " >
+	// 				 还剩余0次抽奖机会
+	// 			</div> -->
+	// 			<div class="my-gift" v-if="festivalInfo.hitPrize">
+	// 				<a href="javascript:;" >查看我的奖品</a>
 	// 			</div>
 	// 		</div>
 	// 		<!-- 显示何种弹窗组件 start -->
@@ -4890,8 +4904,38 @@
 	  //奖品详情
 	  prizeInfo: '',
 
-	  //按钮文案
-	  btnName: ''
+	  //当前状态
+	  activeStatus: 0,
+
+	  //主页需更改文案
+	  festivalInfo: {
+	    //表示状态为0的提示语句 1表示状态为1的提示语句
+	    tips: 0,
+	    //用户名字
+	    peopleName: '',
+	    //奖品名字
+	    prizeName: '',
+	    //按钮文案
+	    btnName: '',
+	    //助力数量
+	    helpNum: '',
+	    //剩余数量
+	    remainNum: '',
+	    //单位
+	    unit: '',
+	    //是否显示查看《我的奖品》
+	    hitPrize: false
+	  },
+
+	  //点赞后助力多少的提示文案
+	  helpdText: '',
+
+	  //抽奖信息
+	  getPrize: {
+	    isGet: true,
+	    name: '',
+	    url: ''
+	  }
 
 	};
 
@@ -4906,33 +4950,82 @@
 	  QUIT_DIALOG: function QUIT_DIALOG(state) {
 	    state.dialog = '';
 	  },
+
+	  //更改点赞后提示文本
+	  SET_HELP_TEXT: function SET_HELP_TEXT(state, data) {
+	    state.helpdText = data;
+	  },
+
+	  //设置抽奖的奖品信息
+	  SET_PRIZE: function SET_PRIZE(state, data) {
+	    if (data.lotterPrize == 1) {
+	      state.getPrize.isGet = true;
+	      state.getPrize.name = data.raRewardName;
+	      state.getPrize.url = data.ccPicSmallUr;
+	    } else {
+	      state.getPrize.isGet = false;
+	    }
+	  },
+
+	  //初始化数据
 	  INIT_DATA: function INIT_DATA(state, data) {
 	    if (data.status == 'normal') {
-
+	      //当点赞时，会返回提示语句有值，则赋给提示文本
+	      if (data.replyAlertMessage) {
+	        state.helpdText = data.replyAlertMessage;
+	      }
 	      state.listOrder = data.raReplyVoLists;
+	      state.festivalInfo.btnName = data.btnName;
+	      state.festivalInfo.peopleName = data.shareName;
+	      state.festivalInfo.prizeName = data.firstRewarddName;
+	      state.festivalInfo.helpNum = data.finishedNum;
+	      state.festivalInfo.remainNum = data.unfinishedNum;
+	      state.festivalInfo.unit = data.raUnit;
 
-	      if (data.btnFlag == 1) {
+	      if (data.btnFlag == 0) {
 
-	        state.initDia = 'successHelp';
+	        //自己进入，发起活动
+	        state.initDia = 'share';
+	        state.activeStatus = 0;
+	      } else if (data.btnFlag == 1) {
+
+	        //自己进入，集赞未完成，发起活动
+	        state.festivalInfo.tips = 1;
+	        state.initDia = 'share';
+	        state.activeStatus = 1;
 	      } else if (data.btnFlag == 2) {
 
-	        state.initDia = 'forbid';
+	        //集赞完成，查看奖品
+	        state.festivalInfo.tips = 1;
+	        state.initDia = 'win';
+	        state.festivalInfo.hitPrize = true;
 	      } else if (data.btnFlag == 3) {
 
-	        state.initDia = 'follow';
-	      } else if (data.btnFlag == 4) {
-
-	        state.initDia = 'win';
+	        //其它人进入，集赞未完成，帮助划船，还有另一种状态，超过点赞次数限制
+	        state.initDia = 'successHelp';
+	        state.festivalInfo.tips = 1;
+	        state.activeStatus = 3;
 	      } else if (data.btnFlag == 5) {
 
-	        state.initDia = 'look';
+	        //其它人进入，集赞未完成，但已超过次数限制
+	        state.initDia = 'forbid';
+	        state.festivalInfo.tips = 1;
+	        state.activeStatus = 5;
+	      } else if (data.btnFlag == 4) {
+
+	        //其它人进入，集赞已完成
+	        state.initDia = 'win';
+	        state.festivalInfo.tips = 1;
+	        state.activeStatus = 4;
 	      }
 	    } else if (data.status == 'nostart') {
 
 	      state.initDia = 'begin';
+	      state.festivalInfo.tips = 0;
 	    } else if (data.status == 'close') {
 
 	      state.initDia = 'over';
+	      state.festivalInfo.tips = 0;
 	    }
 	  }
 	};
@@ -5710,7 +5803,7 @@
 /* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -5726,8 +5819,22 @@
 	//设置弹框为哪个组件
 	var sharGetPrize = exports.sharGetPrize = function sharGetPrize(_ref, dia) {
 		var dispatch = _ref.dispatch;
+		var state = _ref.state;
 
-		dispatch('SET_DIALOG', dia);
+		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
+		if (state.activeStatus == 3) {
+			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/doReply", vd).then(function (res) {
+				dispatch('INIT_DATA', res.data.helpInfoVo);
+				dispatch('SET_DIALOG', dia);
+			});
+		} else if (state.activeStatus == 2) {
+			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/getRandomCC", vd).then(function (res) {
+				dispatch('SET_PRIZE', res.data.lotteryInfoVo);
+				dispatch('SET_DIALOG', dia);
+			});
+		} else {
+			//dispatch('SET_DIALOG',dia);
+		}
 	};
 
 	//隐藏弹框
@@ -5854,6 +5961,11 @@
 		vuex: {
 			actions: {
 				quiteDia: _actions.quiteDia
+			},
+			getters: {
+				helpdText: function helpdText(state) {
+					return state.helpdText;
+				}
 			}
 		}
 	};
@@ -5862,7 +5974,7 @@
 	// <div  class="dia-mask" transition="dia" @click="quiteDia">
 	// 	<div  class="dia-container success-help">
 	// 		<a href="javascript:;" class="dia-close"></a>
-	// 		<div class="success-area">恭喜你,成功为好友划了3000米!</div>
+	// 		<div class="success-area">{{helpdText}}</div>
 	// 	</div>
 	// </div>
 	// </template>
@@ -5885,7 +5997,7 @@
 /* 125 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\r\n\t<div  class=\"dia-container success-help\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\"></a>\r\n\t\t<div class=\"success-area\">恭喜你,成功为好友划了3000米!</div>\r\n\t</div>\r\n</div>\r\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\r\n\t<div  class=\"dia-container success-help\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\"></a>\r\n\t\t<div class=\"success-area\">{{helpdText}}</div>\r\n\t</div>\r\n</div>\r\n";
 
 /***/ },
 /* 126 */
@@ -6263,6 +6375,11 @@
 		vuex: {
 			actions: {
 				quiteDia: _actions.quiteDia
+			},
+			getters: {
+				getPrize: function getPrize(state) {
+					return state.getPrize;
+				}
 			}
 		}
 	};
@@ -6271,12 +6388,12 @@
 	// <div  class="dia-mask" transition="dia" @click.stop.prevent="quiteDia">
 	// 	<div  class="dia-container win">
 	// 		<!-- <a href="javascript:;" class="dia-close" @click="quiteDia"></a> -->
-	// 		<!-- <div class="win-area">
+	// 		 <div class="win-area" v-show="getPrize.isGet">
 	// 			<div class="win-word">恭喜您中奖啦!</div>
-	// 			<img src="../static/img/qrcode.png">
-	// 			<div class="prize">到店礼品券</div>
-	// 		</div> -->
-	// 		<div class="lose-area">
+	// 			<img :src="getPrize.url">
+	// 			<div class="prize">{{getPrize.name}}</div>
+	// 		</div>
+	// 		<div class="lose-area" v-show="!getPrize.isGet">
 	// 			<div class="lose-word">很遗憾没中奖!</div>
 	// 			<img src="../static/img/lose.png">
 	// 		</div>
@@ -6330,7 +6447,7 @@
 /* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click.stop.prevent=\"quiteDia\">\r\n\t<div  class=\"dia-container win\">\r\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a> -->\r\n\t\t<!-- <div class=\"win-area\">\r\n\t\t\t<div class=\"win-word\">恭喜您中奖啦!</div>\r\n\t\t\t<img src=\"" + __webpack_require__(138) + "\">\r\n\t\t\t<div class=\"prize\">到店礼品券</div>\r\n\t\t</div> -->\r\n\t\t<div class=\"lose-area\">\r\n\t\t\t<div class=\"lose-word\">很遗憾没中奖!</div>\r\n\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click.stop.prevent=\"quiteDia\">\r\n\t<div  class=\"dia-container win\">\r\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a> -->\r\n\t\t <div class=\"win-area\" v-show=\"getPrize.isGet\">\r\n\t\t\t<div class=\"win-word\">恭喜您中奖啦!</div>\r\n\t\t\t<img :src=\"getPrize.url\">\r\n\t\t\t<div class=\"prize\">{{getPrize.name}}</div>\r\n\t\t</div> \r\n\t\t<div class=\"lose-area\" v-show=\"!getPrize.isGet\">\r\n\t\t\t<div class=\"lose-word\">很遗憾没中奖!</div>\r\n\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
 
 /***/ },
 /* 145 */
@@ -6702,7 +6819,7 @@
 /* 158 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\">\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\">\n\t\t\t友谊的小船已红划了40米，还差260米即有机会领取丰富大奖，快来帮他吧！\n\t\t</div>\n\t\t<div class=\"get-gift\" @click=\"sharGetPrize(initDialog)\">\n\t\t\t划龙舟，拿大奖\n\t\t</div>\n\t\t<div class=\"my-gift\">\n\t\t\t<a href=\"javascript:;\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" v-link=\"{path:'/list',activeClass:'current'}\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/active',activeClass:'current'}\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/prize',activeClass:'current'}\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <router-view keep-alive></router-view>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 0\">\n\t\t\t邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 1\">\n\t\t\t{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize(initDialog)\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" >查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" v-link=\"{path:'/list',activeClass:'current'}\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/active',activeClass:'current'}\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/prize',activeClass:'current'}\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <router-view keep-alive></router-view>\n</div>\n";
 
 /***/ },
 /* 159 */

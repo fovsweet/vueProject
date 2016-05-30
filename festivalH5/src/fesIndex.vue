@@ -19,7 +19,8 @@
 			},
 			getters:{
 				currentDialog:state=> state.dialog,
-				initDialog:state => state.initDia
+				initDialog:state => state.initDia,
+				festivalInfo:state => state.festivalInfo
 			}
 		},
 		components:{
@@ -39,20 +40,31 @@
 </script>
 
 <template>
-	<div class="container">
+	<div class="container" v-cloak>
 		<div class="head">
 			<div class="river">
 				<div class="boat">					
 				</div>
 			</div>
-			<div class="tips">
-				友谊的小船已红划了40米，还差260米即有机会领取丰富大奖，快来帮他吧！
+			<div class="tips" v-if="festivalInfo.tips == 0">
+				邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}
 			</div>
-			<div class="get-gift" @click="sharGetPrize(initDialog)">
-				划龙舟，拿大奖
+			<div class="tips" v-if="festivalInfo.tips == 1">
+				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
 			</div>
-			<div class="my-gift">
-				<a href="javascript:;">查看我的奖品</a>
+			<!-- 未集满，不能抽奖 -->
+			<div class="get-gift"  @click="sharGetPrize(initDialog)">
+				{{festivalInfo.btnName}}
+			</div>
+			<!-- 已集满，可抽奖 -->
+			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " @click="sharGetPrize(initDialog)">
+				 还剩余X次抽奖机会
+			</div> -->
+			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " >
+				 还剩余0次抽奖机会
+			</div> -->
+			<div class="my-gift" v-if="festivalInfo.hitPrize">
+				<a href="javascript:;" >查看我的奖品</a>
 			</div>
 		</div>
 		<!-- 显示何种弹窗组件 start -->

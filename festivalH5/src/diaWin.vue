@@ -4,6 +4,9 @@
 		vuex:{
 			actions:{
 				quiteDia
+			},
+			getters:{
+				getPrize:state => state.getPrize
 			}
 		}
 	}
@@ -12,12 +15,12 @@
 <div  class="dia-mask" transition="dia" @click.stop.prevent="quiteDia">
 	<div  class="dia-container win">
 		<!-- <a href="javascript:;" class="dia-close" @click="quiteDia"></a> -->
-		<!-- <div class="win-area">
+		 <div class="win-area" v-show="getPrize.isGet">
 			<div class="win-word">恭喜您中奖啦!</div>
-			<img src="../static/img/qrcode.png">
-			<div class="prize">到店礼品券</div>
-		</div> -->
-		<div class="lose-area">
+			<img :src="getPrize.url">
+			<div class="prize">{{getPrize.name}}</div>
+		</div> 
+		<div class="lose-area" v-show="!getPrize.isGet">
 			<div class="lose-word">很遗憾没中奖!</div>
 			<img src="../static/img/lose.png">
 		</div>

@@ -4,6 +4,9 @@
 		vuex:{
 			actions:{
 				quiteDia
+			},
+			getters:{
+				helpdText:state => state.helpdText
 			}
 		}
 	}
@@ -12,7 +15,7 @@
 <div  class="dia-mask" transition="dia" @click="quiteDia">
 	<div  class="dia-container success-help">
 		<a href="javascript:;" class="dia-close"></a>
-		<div class="success-area">恭喜你,成功为好友划了3000米!</div>
+		<div class="success-area">{{helpdText}}</div>
 	</div>
 </div>
 </template>
