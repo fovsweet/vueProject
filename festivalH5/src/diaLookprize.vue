@@ -4,6 +4,9 @@
 		vuex:{
 			actions:{
 				quiteDia,sharGetPrize
+			},
+			getters:{
+				prizeList:state => state.prizeList
 			}
 		}
 	}
@@ -15,12 +18,10 @@
 		<div class="look-area">
 			<h1>查看奖品</h1>
 			<h2>请在公众号"我的卡包"查看领奖信息</h2>
-			<!-- <div class="list">
-				<p>1.到店礼品券</p>
-				<p>2.礼品券</p>
-				<p>3.保健品券</p>
-			</div> -->
-			<div class="no-prize">
+			<div class="list" v-if="prizeList.length > 0">
+				<p v-for="data in prizeList">{{data.raRewardName}}</p>
+			</div> 
+			<div class="no-prize" v-if="prizeList.length < 1">
 				<img src="../static/img/lose.png">
 			</div> 
 			<div class="btn" @click="sharGetPrize('win')">填写领奖信息</div>

@@ -26,7 +26,7 @@ const state = {
   //主页需更改文案
   festivalInfo:{
     //表示状态为0的提示语句 1表示状态为1的提示语句
-    tips:0,  
+    tips:'',  
     //用户名字
     peopleName:'',
     //奖品名字
@@ -51,6 +51,15 @@ const state = {
     isGet:true,
     name:'',
     url:''
+  },
+
+  //奖品列表
+  prizeList:[],
+
+  //船儿划动
+  boatMove:{
+    top:'1rem',
+    left:'2.2rem'
   }
 
   
@@ -81,7 +90,10 @@ const mutations = {
     }else{
       state.getPrize.isGet = false;
     }
-    
+  },
+  //设置查看奖品列表
+  SET_PRIZE_LIST(state,data){
+    state.prizeList = data.lotteryInfoList;
   },
   //初始化数据
   INIT_DATA(state,data){
@@ -97,24 +109,31 @@ const mutations = {
       state.festivalInfo.helpNum = data.finishedNum;
       state.festivalInfo.remainNum = data.unfinishedNum;
       state.festivalInfo.unit = data.raUnit;
+      if(data.finishedNum/data.raNum >0 && data.finishedNum/data.raNum <= 1 ){
+         state.boatMove.top = (data.finishedNum/data.raNum*9+1)+'rem';
+         state.boatMove.left = (data.finishedNum/data.raNum*9+2.2)+'rem';
+      }
 
       if(data.btnFlag == 0){
-
+          
           //自己进入，发起活动
-          state.initDia = 'share';
           state.activeStatus = 0;
+          state.initDia = 'share';
+          
 
       }else if(data.btnFlag == 1){
-
+          
           //自己进入，集赞未完成，发起活动
           state.festivalInfo.tips = 1;
-          state.initDia = 'share';
           state.activeStatus = 1;
+          state.initDia = 'share';
+          
 
       }else if(data.btnFlag == 2){
 
           //集赞完成，查看奖品
           state.festivalInfo.tips = 1;
+          state.activeStatus = 2;
           state.initDia = 'win';
           state.festivalInfo.hitPrize = true;
 
@@ -122,23 +141,24 @@ const mutations = {
       else if(data.btnFlag == 3){
 
           //其它人进入，集赞未完成，帮助划船，还有另一种状态，超过点赞次数限制
-          state.initDia = 'successHelp'
           state.festivalInfo.tips = 1;
           state.activeStatus =3;
+          state.initDia = 'successHelp'
+         
 
       }else if(data.btnFlag == 5){
 
           //其它人进入，集赞未完成，但已超过次数限制
-          state.initDia = 'forbid'
           state.festivalInfo.tips = 1;
           state.activeStatus = 5;
+          state.initDia = 'forbid'
+          
 
       }else if(data.btnFlag == 4){
-
           //其它人进入，集赞已完成
-          state.initDia = 'win'
           state.festivalInfo.tips = 1;
           state.activeStatus = 4;
+          state.initDia = 'share'
 
       }
     }else if(data.status == 'nostart'){
