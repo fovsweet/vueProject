@@ -54,19 +54,19 @@
 
 	var _fesIndex2 = _interopRequireDefault(_fesIndex);
 
-	var _cacl = __webpack_require__(159);
+	var _cacl = __webpack_require__(171);
 
 	var _cacl2 = _interopRequireDefault(_cacl);
 
-	var _vueRouter = __webpack_require__(160);
+	var _vueRouter = __webpack_require__(172);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(161);
+	var _routes = __webpack_require__(173);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _vueResource = __webpack_require__(179);
+	var _vueResource = __webpack_require__(191);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
@@ -88,7 +88,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';var _getOwnPropertyDescriptor=__webpack_require__(3);var _getOwnPropertyDescriptor2=_interopRequireDefault(_getOwnPropertyDescriptor);var _isExtensible=__webpack_require__(29);var _isExtensible2=_interopRequireDefault(_isExtensible);var _getOwnPropertyNames=__webpack_require__(32);var _getOwnPropertyNames2=_interopRequireDefault(_getOwnPropertyNames);var _defineProperties=__webpack_require__(46);var _defineProperties2=_interopRequireDefault(_defineProperties);var _freeze=__webpack_require__(51);var _freeze2=_interopRequireDefault(_freeze);var _create=__webpack_require__(55);var _create2=_interopRequireDefault(_create);var _stringify=__webpack_require__(192);var _stringify2=_interopRequireDefault(_stringify);var _defineProperty=__webpack_require__(62);var _defineProperty2=_interopRequireDefault(_defineProperty);var _keys=__webpack_require__(65);var _keys2=_interopRequireDefault(_keys);var _typeof2=__webpack_require__(69);var _typeof3=_interopRequireDefault(_typeof2);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};} /*!
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';var _getOwnPropertyDescriptor=__webpack_require__(3);var _getOwnPropertyDescriptor2=_interopRequireDefault(_getOwnPropertyDescriptor);var _isExtensible=__webpack_require__(29);var _isExtensible2=_interopRequireDefault(_isExtensible);var _getOwnPropertyNames=__webpack_require__(32);var _getOwnPropertyNames2=_interopRequireDefault(_getOwnPropertyNames);var _defineProperties=__webpack_require__(46);var _defineProperties2=_interopRequireDefault(_defineProperties);var _freeze=__webpack_require__(51);var _freeze2=_interopRequireDefault(_freeze);var _create=__webpack_require__(55);var _create2=_interopRequireDefault(_create);var _stringify=__webpack_require__(60);var _stringify2=_interopRequireDefault(_stringify);var _defineProperty=__webpack_require__(62);var _defineProperty2=_interopRequireDefault(_defineProperty);var _keys=__webpack_require__(65);var _keys2=_interopRequireDefault(_keys);var _typeof2=__webpack_require__(69);var _typeof3=_interopRequireDefault(_typeof2);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};} /*!
 	 * Vue.js v1.0.12
 	 * (c) 2015 Evan You
 	 * Released under the MIT License.
@@ -2688,7 +2688,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(5);
-	var $Object = __webpack_require__(194).Object;
+	var $Object = __webpack_require__(23).Object;
 	module.exports = function getOwnPropertyDescriptor(it, key){
 	  return $Object.getOwnPropertyDescriptor(it, key);
 	};
@@ -2878,7 +2878,7 @@
 
 	// most Object methods by ES6 should accept primitives
 	var $export = __webpack_require__(22)
-	  , core    = __webpack_require__(194)
+	  , core    = __webpack_require__(23)
 	  , fails   = __webpack_require__(18);
 	module.exports = function(KEY, exec){
 	  var fn  = (core.Object || {})[KEY] || Object[KEY]
@@ -2892,7 +2892,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(20)
-	  , core      = __webpack_require__(194)
+	  , core      = __webpack_require__(23)
 	  , ctx       = __webpack_require__(24)
 	  , hide      = __webpack_require__(26)
 	  , PROTOTYPE = 'prototype';
@@ -2954,7 +2954,13 @@
 	module.exports = $export;
 
 /***/ },
-/* 23 */,
+/* 23 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3043,7 +3049,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(31);
-	module.exports = __webpack_require__(194).Object.isExtensible;
+	module.exports = __webpack_require__(23).Object.isExtensible;
 
 /***/ },
 /* 31 */
@@ -3069,7 +3075,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(34);
-	var $Object = __webpack_require__(194).Object;
+	var $Object = __webpack_require__(23).Object;
 	module.exports = function getOwnPropertyNames(it){
 	  return $Object.getOwnPropertyNames(it);
 	};
@@ -3253,7 +3259,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(48);
-	var $Object = __webpack_require__(194).Object;
+	var $Object = __webpack_require__(23).Object;
 	module.exports = function defineProperties(T, D){
 	  return $Object.defineProperties(T, D);
 	};
@@ -3307,7 +3313,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(53);
-	module.exports = __webpack_require__(194).Object.freeze;
+	module.exports = __webpack_require__(23).Object.freeze;
 
 /***/ },
 /* 53 */
@@ -3392,7 +3398,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(57);
-	var $Object = __webpack_require__(194).Object;
+	var $Object = __webpack_require__(23).Object;
 	module.exports = function create(P, D){
 	  return $Object.create(P, D);
 	};
@@ -3457,8 +3463,22 @@
 	module.exports = __webpack_require__(20).document && document.documentElement;
 
 /***/ },
-/* 60 */,
-/* 61 */,
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(61), __esModule: true };
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(23)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3469,7 +3489,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(64);
-	var $Object = __webpack_require__(194).Object;
+	var $Object = __webpack_require__(23).Object;
 	module.exports = function defineProperty(it, key, desc){
 	  return $Object.defineProperty(it, key, desc);
 	};
@@ -3493,7 +3513,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(67);
-	module.exports = __webpack_require__(194).Object.keys;
+	module.exports = __webpack_require__(23).Object.keys;
 
 /***/ },
 /* 67 */
@@ -3851,7 +3871,7 @@
 	__webpack_require__(95);
 	__webpack_require__(96);
 	__webpack_require__(97);
-	module.exports = __webpack_require__(194).Symbol;
+	module.exports = __webpack_require__(23).Symbol;
 
 /***/ },
 /* 89 */
@@ -4098,7 +4118,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var global         = __webpack_require__(20)
-	  , core           = __webpack_require__(194)
+	  , core           = __webpack_require__(23)
 	  , LIBRARY        = __webpack_require__(75)
 	  , wksExt         = __webpack_require__(86)
 	  , defineProperty = __webpack_require__(27).f;
@@ -4187,7 +4207,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\fesIndex.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(158)
+	__vue_template__ = __webpack_require__(170)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -4240,7 +4260,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  height: 100%;\n  margin: 0;\n  background-color: #493119;\n}\ndiv {\n  box-sizing: border-box;\n}\na {\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  -webkit-tap-highlight-color: transparent;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n[v-cloak] {\n  display: none;\n}\n.container {\n  background: url(" + __webpack_require__(102) + ") center top no-repeat;\n  background-size: 100% auto;\n  padding-top: 1rem;\n}\n.river {\n  width: 100%;\n  height: 13.6rem;\n  background: url(" + __webpack_require__(103) + ") center top no-repeat;\n  background-size: 100% auto;\n  position: relative;\n}\n.boat {\n  width: 3rem;\n  height: 3.1rem;\n  background: url(" + __webpack_require__(104) + ") center center no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  top: 1rem;\n  left: 2.2rem;\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.tips {\n  width: 100%;\n  height: 2.875rem;\n  background: url(" + __webpack_require__(105) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .55rem;\n  color: white;\n  line-height: 1.5;\n  padding: .6rem 1.5rem;\n}\n.get-gift {\n  width: 10rem;\n  height: 2.25rem;\n  border-radius: 2.25rem;\n  background-color: #ffeb55;\n  font-size: .9rem;\n  text-align: center;\n  color: #333;\n  line-height: 2.25rem;\n  margin: 0 auto;\n}\n.my-gift {\n  width: 6rem;\n  height: 1.125rem;\n  line-height: 1.125rem;\n  border-radius: 1.125rem;\n  text-align: center;\n  margin: .5rem auto 0 auto;\n  font-size: .6rem;\n  color: #f8f2c7;\n  background-color: rgba(56, 38, 19, 0.9);\n}\n.my-gift a {\n  display: inline-block;\n  color: #f8f2c7;\n}\n.content .tab-group {\n  margin-top: .75rem;\n  text-align: center;\n  font-size: 0;\n}\n.content .tab-group .tab {\n  display: inline-block;\n  width: 5.15rem;\n  height: 2.8rem;\n  background: url(" + __webpack_require__(106) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .65rem;\n  line-height: 2.8rem;\n  color: #dfdfdf;\n  text-align: center;\n}\n.content .tab-group .current {\n  background: url(" + __webpack_require__(107) + ") center center no-repeat;\n  background-size: 100% 100%;\n  color: white;\n}\n/*弹框样式*/\n.dia-mask {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  padding: 1rem;\n  background: rgba(0, 0, 0, 0.8);\n  text-align: center;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  display: -webkit-flex;\n  -webkit-justify-content: center;\n  -webkit-align-items: center;\n  display: -webkit-box;\n  -webkit-box-pack: center;\n  -webkit-box-align: center;\n  font-family: 'SimSun';\n  transition: opacity .3s ease;\n  -webkit-transition: opacity .3s ease;\n  -moz-transition: opacity .3s ease;\n}\n.dia-enter,\n.dia-leave {\n  opacity: 0;\n}\n.dia-enter .dia-container,\n.dia-leave .dia-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.dia-close {\n  display: inline-block;\n  position: absolute;\n  top: 1rem;\n  right: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  background: url(" + __webpack_require__(108) + ") center center no-repeat;\n  background-size: 100% 100%;\n}\n.dia-container {\n  position: relative;\n  background-color: #fff;\n  transition: all .3s ease;\n  -webkit-transition: all .3s ease;\n  -moz-transition: all .3s ease;\n}\n", ""]);
+	exports.push([module.id, "body {\n  height: 100%;\n  margin: 0;\n  background-color: #493119;\n}\ndiv {\n  box-sizing: border-box;\n}\na {\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  -webkit-tap-highlight-color: transparent;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n[v-cloak] {\n  display: none;\n}\n.container {\n  background: url(" + __webpack_require__(102) + ") center top no-repeat;\n  background-size: 100% auto;\n  padding-top: 1rem;\n}\n.river {\n  width: 100%;\n  height: 13.6rem;\n  background: url(" + __webpack_require__(103) + ") center top no-repeat;\n  background-size: 100% auto;\n  position: relative;\n}\n.boat {\n  width: 3rem;\n  height: 3.1rem;\n  background: url(" + __webpack_require__(104) + ") center center no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  top: 1rem;\n  left: 2.2rem;\n  -webkit-transition: all 0.5s ease-in;\n  transition: all 0.5s ease-in;\n}\n.tips {\n  width: 100%;\n  height: 2.875rem;\n  background: url(" + __webpack_require__(105) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .55rem;\n  color: white;\n  line-height: 1.5;\n  padding: .6rem 1.5rem;\n}\n.get-gift {\n  width: 10rem;\n  height: 2.25rem;\n  border-radius: 2.25rem;\n  background-color: #ffeb55;\n  font-size: .9rem;\n  text-align: center;\n  color: #333;\n  line-height: 2.25rem;\n  margin: 0 auto;\n}\n.my-gift {\n  width: 6rem;\n  height: 1.125rem;\n  line-height: 1.125rem;\n  border-radius: 1.125rem;\n  text-align: center;\n  margin: .5rem auto 0 auto;\n  font-size: .6rem;\n  color: #f8f2c7;\n  background-color: rgba(56, 38, 19, 0.9);\n}\n.my-gift a {\n  display: inline-block;\n  color: #f8f2c7;\n}\n.content .tab-group {\n  margin-top: .75rem;\n  text-align: center;\n  font-size: 0;\n}\n.content .tab-group .tab {\n  display: inline-block;\n  width: 5.15rem;\n  height: 2.8rem;\n  background: url(" + __webpack_require__(106) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .65rem;\n  line-height: 2.8rem;\n  color: #dfdfdf;\n  text-align: center;\n}\n.content .tab-group .current {\n  background: url(" + __webpack_require__(107) + ") center center no-repeat;\n  background-size: 100% 100%;\n  color: white;\n}\n/*弹框样式*/\n.dia-mask {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  padding: 1rem;\n  background: rgba(0, 0, 0, 0.8);\n  text-align: center;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  display: -webkit-flex;\n  -webkit-justify-content: center;\n  -webkit-align-items: center;\n  display: -webkit-box;\n  -webkit-box-pack: center;\n  -webkit-box-align: center;\n  font-family: 'SimSun';\n  transition: opacity .3s ease;\n  -webkit-transition: opacity .3s ease;\n  -moz-transition: opacity .3s ease;\n}\n.dia-enter,\n.dia-leave {\n  opacity: 0;\n}\n.dia-enter .dia-container,\n.dia-leave .dia-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.dia-close {\n  display: inline-block;\n  position: absolute;\n  top: 1rem;\n  right: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  background: url(" + __webpack_require__(108) + ") center center no-repeat;\n  background-size: 100% 100%;\n}\n.dia-container {\n  position: relative;\n  background-color: #fff;\n  transition: all .3s ease;\n  -webkit-transition: all .3s ease;\n  -moz-transition: all .3s ease;\n}\n", ""]);
 
 	// exports
 
@@ -4607,11 +4627,11 @@
 
 	var _diaWriteinfo2 = _interopRequireDefault(_diaWriteinfo);
 
-	var _diaBegin = __webpack_require__(180);
+	var _diaBegin = __webpack_require__(158);
 
 	var _diaBegin2 = _interopRequireDefault(_diaBegin);
 
-	var _diaOver = __webpack_require__(186);
+	var _diaOver = __webpack_require__(164);
 
 	var _diaOver2 = _interopRequireDefault(_diaOver);
 
@@ -4623,7 +4643,7 @@
 		store: _store2.default,
 		vuex: {
 			actions: {
-				sharGetPrize: _actions.sharGetPrize, initData: _actions.initData
+				sharGetPrize: _actions.sharGetPrize, initData: _actions.initData, getPrizeList: _actions.getPrizeList
 			},
 			getters: {
 				currentDialog: function currentDialog(state) {
@@ -4634,13 +4654,17 @@
 				},
 				festivalInfo: function festivalInfo(state) {
 					return state.festivalInfo;
+				},
+				boatMove: function boatMove(state) {
+					return state.boatMove;
 				}
+
 			}
 		},
 		components: {
 			share: _diaShare2.default, successHelp: _diaSuccessHelp2.default, forbid: _diaForbid2.default, follow: _diaFollow2.default, win: _diaWin2.default, look: _diaLookprize2.default, writeInfo: _diaWriteinfo2.default, begin: _diaBegin2.default, over: _diaOver2.default
 		},
-		ready: function ready() {
+		compiled: function compiled() {
 			/*var vThis = this;
 	  this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 	  	console.log(res.data);
@@ -4657,7 +4681,7 @@
 	// 	<div class="container" v-cloak>
 	// 		<div class="head">
 	// 			<div class="river">
-	// 				<div class="boat">					
+	// 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left}">					
 	// 				</div>
 	// 			</div>
 	// 			<div class="tips" v-if="festivalInfo.tips == 0">
@@ -4678,7 +4702,7 @@
 	// 				 还剩余0次抽奖机会
 	// 			</div> -->
 	// 			<div class="my-gift" v-if="festivalInfo.hitPrize">
-	// 				<a href="javascript:;" >查看我的奖品</a>
+	// 				<a href="javascript:;" @click="getPrizeList('look')">查看我的奖品</a>
 	// 			</div>
 	// 		</div>
 	// 		<!-- 显示何种弹窗组件 start -->
@@ -4745,7 +4769,7 @@
 	// 		position: absolute;
 	// 		top: 1rem;
 	// 		left: 2.2rem;
-	// 		transition: all .3s ease;
+	// 		transition: all .5s ease-in;
 	// 	}
 	// 	.tips{
 	// 		width: 100%;
@@ -4910,7 +4934,7 @@
 	  //主页需更改文案
 	  festivalInfo: {
 	    //表示状态为0的提示语句 1表示状态为1的提示语句
-	    tips: 0,
+	    tips: '',
 	    //用户名字
 	    peopleName: '',
 	    //奖品名字
@@ -4935,6 +4959,15 @@
 	    isGet: true,
 	    name: '',
 	    url: ''
+	  },
+
+	  //奖品列表
+	  prizeList: [],
+
+	  //船儿划动
+	  boatMove: {
+	    top: '1rem',
+	    left: '2.2rem'
 	  }
 
 	};
@@ -4967,6 +5000,11 @@
 	    }
 	  },
 
+	  //设置查看奖品列表
+	  SET_PRIZE_LIST: function SET_PRIZE_LIST(state, data) {
+	    state.prizeList = data.lotteryInfoList;
+	  },
+
 	  //初始化数据
 	  INIT_DATA: function INIT_DATA(state, data) {
 	    if (data.status == 'normal') {
@@ -4981,42 +5019,46 @@
 	      state.festivalInfo.helpNum = data.finishedNum;
 	      state.festivalInfo.remainNum = data.unfinishedNum;
 	      state.festivalInfo.unit = data.raUnit;
+	      if (data.finishedNum / data.raNum > 0 && data.finishedNum / data.raNum <= 1) {
+	        state.boatMove.top = data.finishedNum / data.raNum * 9 + 1 + 'rem';
+	        state.boatMove.left = data.finishedNum / data.raNum * 9 + 2.2 + 'rem';
+	      }
 
 	      if (data.btnFlag == 0) {
 
 	        //自己进入，发起活动
-	        state.initDia = 'share';
 	        state.activeStatus = 0;
+	        state.initDia = 'share';
 	      } else if (data.btnFlag == 1) {
 
 	        //自己进入，集赞未完成，发起活动
 	        state.festivalInfo.tips = 1;
-	        state.initDia = 'share';
 	        state.activeStatus = 1;
+	        state.initDia = 'share';
 	      } else if (data.btnFlag == 2) {
 
 	        //集赞完成，查看奖品
 	        state.festivalInfo.tips = 1;
+	        state.activeStatus = 2;
 	        state.initDia = 'win';
 	        state.festivalInfo.hitPrize = true;
 	      } else if (data.btnFlag == 3) {
 
 	        //其它人进入，集赞未完成，帮助划船，还有另一种状态，超过点赞次数限制
-	        state.initDia = 'successHelp';
 	        state.festivalInfo.tips = 1;
 	        state.activeStatus = 3;
+	        state.initDia = 'successHelp';
 	      } else if (data.btnFlag == 5) {
 
 	        //其它人进入，集赞未完成，但已超过次数限制
-	        state.initDia = 'forbid';
 	        state.festivalInfo.tips = 1;
 	        state.activeStatus = 5;
+	        state.initDia = 'forbid';
 	      } else if (data.btnFlag == 4) {
-
 	        //其它人进入，集赞已完成
-	        state.initDia = 'win';
 	        state.festivalInfo.tips = 1;
 	        state.activeStatus = 4;
+	        state.initDia = 'share';
 	      }
 	    } else if (data.status == 'nostart') {
 
@@ -5808,7 +5850,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.initData = exports.quiteDia = exports.sharGetPrize = undefined;
+	exports.getPrizeList = exports.initData = exports.quiteDia = exports.sharGetPrize = undefined;
 
 	var _vue = __webpack_require__(2);
 
@@ -5822,10 +5864,14 @@
 		var state = _ref.state;
 
 		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
+		console.log(state.activeStatus);
 		if (state.activeStatus == 3) {
-			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/doReply", vd).then(function (res) {
+			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4", vd).then(function (res) {
 				dispatch('INIT_DATA', res.data.helpInfoVo);
 				dispatch('SET_DIALOG', dia);
+				setTimeout(function () {
+					dispatch('QUIT_DIALOG');
+				}, 3000);
 			});
 		} else if (state.activeStatus == 2) {
 			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/getRandomCC", vd).then(function (res) {
@@ -5850,11 +5896,22 @@
 
 		//dispatch('INIT_DATA',data.helpInfoVo);
 		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
-		_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo", vd).then(function (res) {
+		_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo?openId=3", vd).then(function (res) {
 			console.log(res.data);
 			if (res.data.success) {
 				dispatch('INIT_DATA', res.data.helpInfoVo);
 			}
+		});
+	};
+
+	//查看奖品数据
+	var getPrizeList = exports.getPrizeList = function getPrizeList(_ref4, dia) {
+		var dispatch = _ref4.dispatch;
+
+		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
+		_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/viewRewardInfo?shareId=&uuid=", vd).then(function (res) {
+			dispatch('SET_PRIZE_LIST', res.data);
+			dispatch('SET_DIALOG', dia);
 		});
 	};
 
@@ -6546,6 +6603,11 @@
 		vuex: {
 			actions: {
 				quiteDia: _actions.quiteDia, sharGetPrize: _actions.sharGetPrize
+			},
+			getters: {
+				prizeList: function prizeList(state) {
+					return state.prizeList;
+				}
 			}
 		}
 	};
@@ -6557,12 +6619,10 @@
 	// 		<div class="look-area">
 	// 			<h1>查看奖品</h1>
 	// 			<h2>请在公众号"我的卡包"查看领奖信息</h2>
-	// 			<!-- <div class="list">
-	// 				<p>1.到店礼品券</p>
-	// 				<p>2.礼品券</p>
-	// 				<p>3.保健品券</p>
-	// 			</div> -->
-	// 			<div class="no-prize">
+	// 			<div class="list" v-if="prizeList.length > 0">
+	// 				<p v-for="data in prizeList">{{data.raRewardName}}</p>
+	// 			</div>
+	// 			<div class="no-prize" v-if="prizeList.length < 1">
 	// 				<img src="../static/img/lose.png">
 	// 			</div>
 	// 			<div class="btn" @click="sharGetPrize('win')">填写领奖信息</div>
@@ -6633,7 +6693,7 @@
 /* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container look\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"look-area\">\r\n\t\t\t<h1>查看奖品</h1>\r\n\t\t\t<h2>请在公众号\"我的卡包\"查看领奖信息</h2>\r\n\t\t\t<!-- <div class=\"list\">\r\n\t\t\t\t<p>1.到店礼品券</p>\r\n\t\t\t\t<p>2.礼品券</p>\r\n\t\t\t\t<p>3.保健品券</p>\r\n\t\t\t</div> -->\r\n\t\t\t<div class=\"no-prize\">\r\n\t\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t\t</div> \r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('win')\">填写领奖信息</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container look\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"look-area\">\r\n\t\t\t<h1>查看奖品</h1>\r\n\t\t\t<h2>请在公众号\"我的卡包\"查看领奖信息</h2>\r\n\t\t\t<div class=\"list\" v-if=\"prizeList.length > 0\">\r\n\t\t\t\t<p v-for=\"data in prizeList\">{{data.raRewardName}}</p>\r\n\t\t\t</div> \r\n\t\t\t<div class=\"no-prize\" v-if=\"prizeList.length < 1\">\r\n\t\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t\t</div> \r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('win')\">填写领奖信息</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
 
 /***/ },
 /* 152 */
@@ -6817,12 +6877,260 @@
 
 /***/ },
 /* 158 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 0\">\n\t\t\t邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 1\">\n\t\t\t{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize(initDialog)\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" >查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" v-link=\"{path:'/list',activeClass:'current'}\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/active',activeClass:'current'}\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/prize',activeClass:'current'}\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <router-view keep-alive></router-view>\n</div>\n";
+	var __vue_script__, __vue_template__
+	__webpack_require__(159)
+	__vue_script__ = __webpack_require__(162)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaBegin.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(163)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaBegin.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
 
 /***/ },
 /* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(160);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(161) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/beging.png";
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	// <script>
+
+	// </script>
+	//
+	// <template>
+	// 	<div  class="dia-mask" transition="dia" @click="quiteDia">
+	// 	<div  class="dia-container begin">
+	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
+	// 		<img src="../static/img/qrcode.png">
+	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
+	// 	</div>
+	// </div>
+	// </template>
+	//
+	// <style lang='less'>
+	// 	.begin{
+	// 		width: 12.15rem;
+	// 		height: 14.325rem;
+	// 		background: url('../static/img/beging.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 3.4rem;
+	//
+	// 		img{
+	// 			width: 8.5rem;
+	// 			height: 8.5rem;
+	// 		}
+	// 	}
+	// 	.begin-area{
+	// 		width: 100%;
+	// 		font-size: .6rem;
+	// 		color: #ff8033;
+	//
+	// 		span{
+	// 			color: #222;
+	// 		}
+	// 	}
+	// </style>
+	"use strict";
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(165)
+	__vue_script__ = __webpack_require__(168)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaOver.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(169)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaOver.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(166);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(167) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeYAAAI2CAMAAACym9tPAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAN2aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MmY4ZmJjNGUtMTk4NS04ZTQxLWFkYjktYWRjNjYxNGZiYzZkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzMEE5OEFFMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzMEE5OEFEMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE1NGRjZDExLTU1YzQtMzQ0My05YzA3LWRiNThiMGM0MTY2YiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyZjhmYmM0ZS0xOTg1LThlNDEtYWRiOS1hZGM2NjE0ZmJjNmQiLz4gPC9yZGY6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"
+
+/***/ },
+/* 168 */
+/***/ function(module, exports) {
+
+	// <script>
+
+	// </script>
+	//
+	// <template>
+	// 	<div  class="dia-mask" transition="dia" @click="quiteDia">
+	// 	<div  class="dia-container begin">
+	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
+	// 		<img src="../static/img/qrcode.png">
+	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
+	// 	</div>
+	// </div>
+	// </template>
+	//
+	// <style lang='less'>
+	// 	.begin{
+	// 		width: 12.15rem;
+	// 		height: 14.325rem;
+	// 		background: url('../static/img/over.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 3.4rem;
+	//
+	// 		img{
+	// 			width: 8.5rem;
+	// 			height: 8.5rem;
+	// 		}
+	// 	}
+	// 	.begin-area{
+	// 		width: 100%;
+	// 		font-size: .6rem;
+	// 		color: #ff8033;
+	//
+	// 		span{
+	// 			color: #222;
+	// 		}
+	// 	}
+	// </style>
+	"use strict";
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\" :style=\"{top:boatMove.top,left:boatMove.left}\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 0\">\n\t\t\t邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 1\">\n\t\t\t{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize(initDialog)\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" @click=\"getPrizeList('look')\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" v-link=\"{path:'/list',activeClass:'current'}\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/active',activeClass:'current'}\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/prize',activeClass:'current'}\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <router-view keep-alive></router-view>\n</div>\n";
+
+/***/ },
+/* 171 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6867,7 +7175,7 @@
 	}(window);
 
 /***/ },
-/* 160 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -9581,7 +9889,7 @@
 	}));
 
 /***/ },
-/* 161 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9594,20 +9902,20 @@
 		router.map({
 			'*': {
 				name: 'default',
-				component: __webpack_require__(162)
+				component: __webpack_require__(174)
 			},
 
 			'/list': {
 				name: 'list',
-				component: __webpack_require__(162)
+				component: __webpack_require__(174)
 			},
 			'/active': {
 				name: 'active',
-				component: __webpack_require__(168)
+				component: __webpack_require__(180)
 			},
 			'/prize': {
 				name: 'prize',
-				component: __webpack_require__(173)
+				component: __webpack_require__(185)
 			}
 			/*'/prize':{
 	  	name:'prize',
@@ -9620,17 +9928,17 @@
 	};
 
 /***/ },
-/* 162 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(163)
-	__vue_script__ = __webpack_require__(165)
+	__webpack_require__(175)
+	__vue_script__ = __webpack_require__(177)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\listInfo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(166)
+	__vue_template__ = __webpack_require__(178)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -9649,13 +9957,13 @@
 	})()}
 
 /***/ },
-/* 163 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(164);
+	var content = __webpack_require__(176);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(109)(content, {});
@@ -9675,7 +9983,7 @@
 	}
 
 /***/ },
-/* 164 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(101)();
@@ -9689,7 +9997,7 @@
 
 
 /***/ },
-/* 165 */
+/* 177 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9699,8 +10007,12 @@
 	});
 	// <script>
 	exports.default = {
-		ready: function ready() {
-			console.log(111);
+		vuex: {
+			getters: {
+				listOrder: function listOrder(state) {
+					return state.listOrder;
+				}
+			}
 		}
 	};
 	// </script>
@@ -9708,42 +10020,15 @@
 	// <template>
 	// 	<div class="footer">
 	// 			<div class="count">
-	// 				<div class="count-info">已有2位好友帮了友谊的小船</div>
+	// 				<div class="count-info">已有{{listOrder.length}}位好友帮了友谊的小船</div>
 	// 			</div>
 	// 			<ul class="list-order">
-	// 				<li class="clearfix">
+	// 				<li class="clearfix" v-for="data in listOrder">
 	// 					<div class="item-icon">
-	// 						<img src="../static/img/1315539365.jpg">
+	// 						<img :src="data.userImageUrl">
 	// 					</div>
 	// 					<div class="item-info">
-	// 						<div class="item-name">徐克</div>
-	// 						<div class="item-tips">帮你划了40米，快来感谢我</div>
-	// 					</div>
-	// 				</li>
-	// 				<li class="clearfix">
-	// 					<div class="item-icon">
-	// 						<img src="../static/img/1315539365.jpg">
-	// 					</div>
-	// 					<div class="item-info">
-	// 						<div class="item-name">徐克</div>
-	// 						<div class="item-tips">帮你划了40米，快来感谢我</div>
-	// 					</div>
-	// 				</li>
-	// 				<li class="clearfix">
-	// 					<div class="item-icon">
-	// 						<img src="../static/img/1315539365.jpg">
-	// 					</div>
-	// 					<div class="item-info">
-	// 						<div class="item-name">徐克</div>
-	// 						<div class="item-tips">帮你划了40米，快来感谢我</div>
-	// 					</div>
-	// 				</li>
-	// 				<li class="clearfix">
-	// 					<div class="item-icon">
-	// 						<img src="../static/img/1315539365.jpg">
-	// 					</div>
-	// 					<div class="item-info">
-	// 						<div class="item-name">徐克</div>
+	// 						<div class="item-name">{{data.userName}}</div>
 	// 						<div class="item-tips">帮你划了40米，快来感谢我</div>
 	// 					</div>
 	// 				</li>
@@ -9821,29 +10106,24 @@
 	// </style>
 
 /***/ },
-/* 166 */
-/***/ function(module, exports, __webpack_require__) {
+/* 178 */
+/***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n<div class=\"footer\">\n\t\t<div class=\"count\">\n\t\t\t<div class=\"count-info\">已有2位好友帮了友谊的小船</div> \n\t\t</div>\n\t\t<ul class=\"list-order\">\n\t\t\t<li class=\"clearfix\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(167) + "\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">徐克</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t\t<li class=\"clearfix\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(167) + "\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">徐克</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t\t<li class=\"clearfix\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(167) + "\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">徐克</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t\t<li class=\"clearfix\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(167) + "\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">徐克</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n";
-
-/***/ },
-/* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "../html/img/1315539365.jpg";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n<div class=\"footer\">\n\t\t<div class=\"count\">\n\t\t\t<div class=\"count-info\">已有{{listOrder.length}}位好友帮了友谊的小船</div> \n\t\t</div>\n\t\t<ul class=\"list-order\">\n\t\t\t<li class=\"clearfix\" v-for=\"data in listOrder\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img :src=\"data.userImageUrl\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">{{data.userName}}</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n";
 
 /***/ },
-/* 168 */
+/* 179 */,
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(169)
-	__vue_script__ = __webpack_require__(171)
+	__webpack_require__(181)
+	__vue_script__ = __webpack_require__(183)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\activeInfo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(172)
+	__vue_template__ = __webpack_require__(184)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -9862,13 +10142,13 @@
 	})()}
 
 /***/ },
-/* 169 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(170);
+	var content = __webpack_require__(182);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(109)(content, {});
@@ -9888,7 +10168,7 @@
 	}
 
 /***/ },
-/* 170 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(101)();
@@ -9902,7 +10182,7 @@
 
 
 /***/ },
-/* 171 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -9974,23 +10254,23 @@
 	// </style>
 
 /***/ },
-/* 172 */
+/* 184 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n<div class=\"footer\">\n\t<div class=\"detail\">\n\t\t本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n\t</div>\n</div>\n";
 
 /***/ },
-/* 173 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(174)
-	__vue_script__ = __webpack_require__(176)
+	__webpack_require__(186)
+	__vue_script__ = __webpack_require__(188)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\prizeInfo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(177)
+	__vue_template__ = __webpack_require__(189)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10009,13 +10289,13 @@
 	})()}
 
 /***/ },
-/* 174 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(175);
+	var content = __webpack_require__(187);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(109)(content, {});
@@ -10035,7 +10315,7 @@
 	}
 
 /***/ },
-/* 175 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(101)();
@@ -10049,7 +10329,7 @@
 
 
 /***/ },
-/* 176 */
+/* 188 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10097,19 +10377,19 @@
 	// </style>
 
 /***/ },
-/* 177 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n<div class=\"footer\" keep-alive>\n\t<div class=\"prize\">\n\t\t<img src=\"" + __webpack_require__(178) + "\">\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n<div class=\"footer\" keep-alive>\n\t<div class=\"prize\">\n\t\t<img src=\"" + __webpack_require__(190) + "\">\n\t</div>\n</div>\n";
 
 /***/ },
-/* 178 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "../html/img/prize.png";
 
 /***/ },
-/* 179 */
+/* 191 */
 /***/ function(module, exports) {
 
 	/**
@@ -11769,277 +12049,6 @@
 
 	/***/ }
 	/******/ ]);
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(181)
-	__vue_script__ = __webpack_require__(184)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\diaBegin.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(185)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "./diaBegin.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(182);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(109)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(101)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(183) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "../html/img/beging.png";
-
-/***/ },
-/* 184 */
-/***/ function(module, exports) {
-
-	// <script>
-
-	// </script>
-	//
-	// <template>
-	// 	<div  class="dia-mask" transition="dia" @click="quiteDia">
-	// 	<div  class="dia-container begin">
-	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
-	// 		<img src="../static/img/qrcode.png">
-	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
-	// 	</div>
-	// </div>
-	// </template>
-	//
-	// <style lang='less'>
-	// 	.begin{
-	// 		width: 12.15rem;
-	// 		height: 14.325rem;
-	// 		background: url('../static/img/beging.png') center center no-repeat;
-	// 		background-size: 100% 100%;
-	// 		padding-top: 3.4rem;
-	//
-	// 		img{
-	// 			width: 8.5rem;
-	// 			height: 8.5rem;
-	// 		}
-	// 	}
-	// 	.begin-area{
-	// 		width: 100%;
-	// 		font-size: .6rem;
-	// 		color: #ff8033;
-	//
-	// 		span{
-	// 			color: #222;
-	// 		}
-	// 	}
-	// </style>
-	"use strict";
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 186 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(187)
-	__vue_script__ = __webpack_require__(190)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\diaOver.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(191)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "./diaOver.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 187 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(188);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(109)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(101)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(189) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 189 */
-/***/ function(module, exports) {
-
-	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeYAAAI2CAMAAACym9tPAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAN2aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MmY4ZmJjNGUtMTk4NS04ZTQxLWFkYjktYWRjNjYxNGZiYzZkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzMEE5OEFFMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzMEE5OEFEMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE1NGRjZDExLTU1YzQtMzQ0My05YzA3LWRiNThiMGM0MTY2YiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyZjhmYmM0ZS0xOTg1LThlNDEtYWRiOS1hZGM2NjE0ZmJjNmQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4V0md1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwBQTFRFTGlxAcbbFLjCAcbbAcbbAcbbAcbbAcbbAcbbAcbbFLjCAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeRoJeRoJeAcbbAcbbAcbbAcbbAcbbAcbbAcbbRoJeAcbbRoJeAcbbAcbbRoJeAcbbAcbbRoJeAcbbAcbbAcbbRoJeRoJeAcbbAcbbAcbbRoJeAcbbAcbbRoJeAcbbAcbbAcbbRoJeRoJeRoJeRoJeRoJeAcbbRoJeRoJeAcbbAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeAcbbAcbbRoJeAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeRoJeRoJeRoJeAcbbRoJeAcbbAcbbRoJeRoJeAcbbRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeAcbbAcbbRoJeRoJeJ6WfRoJe/PjuAcbb////2+Te7PXt+/jussa5g6eQ3fLsWIxsz+/r9vj3wOzpnLem5OvmZ5V5dp6Fx9XM7fLvvM7DkK+b0d3Vseno+/ju5Ojb6vTtp7+woebn2vHrEcnc8/bt2ODRzNnInLqiye7ql+Tmp+jodd3khuHlQtPg5vTsft/lS9Xh4PPs9/fuuOrpieHlssi0X5JyZNrjet/kIc3eXtni6ezfF8vdtcq2rOjo+PbrONHfT9bhxO3q1/HrWNjilOPmUYlnTohkjK+VcJ1/B8fcgeDlVYxqfKWJkePmrMWv097ODcncKM7enubnjuLm8PDkZ9vjzO/qm+XnbdzjwNK/RdTgPtLgob2maJh5MtDfsOnoWo9u5urc1PDrHczdS4Vi0NzMLs/f2+PUus66uuvpbZx9SoVhCsjcpOfnlradSdXhf6eLeaOGb9zjh62SydjGp8GrdqGDtOrp8fHmadvjVdfhgqiNYpR0bNvjBMfbvezp9vTppcCp7e7i4ObYkbKZ8PbtQoZlOo5zmLifZZZ3xtXExNTCL5iHosa0JaKZiLOcDBJOpgAAAHR0Uk5TALwDpcO1/vDh0gHvd92qzRf3akX7QIkXk5zAGx+R69SWUX3kBm6MSLnO6Qz2EjKE19AqCaCvmYH6J2Yu9OvHXWc/DatxsMHgSv1OoVvaXnPKI/E15TgPYVYv32+XVAlihFk0HTuJKH8TtcU7T6e6s2N5Wxld2CPyAAAXdklEQVR42uycfVAU9xnHE42mteZF2sSoBczEltDQ0CQ4Y8a0aBASM2lJfOsEUFIdXzCaaTq37A672dnZ23t1mIuJR1601Y4wtpTYtL5ACgPpxNSYgSkaEQqGQhTLjMwURRPz0pd9v929vb19vd2D/f6lx93e7u+zz/N73vZuuild9MimjTmF5VszC4pLstfkeexS3prskuKCzK3lhTkbNz1ykysTNG3u0pzC0s0FVbll9oFVhF6WW1WwubQwZ+ncaS4ujSLhVm6tqMpds9KTPlqZlVtVsbWSBO4CVPTKW5YXlmYWbS9b4klvLSnbXpRZWrh8i+vThba7cX1pZnFulmfyKSu3OLN0/cYpbd/bSLwVVdl5nsmvvOyqChL3tqllvi8U5u/MXeWZelqVuzO/8IW5k55vZX7RlOQrpV2UXzkZaW/a4fKVpb1j06Sx4WXFa1ymCbWmeFn62/W28pKVLspkKXdJeVpHZ0sL8lyI6mLxgqXpCnl5iYtPg0qWp6Ulv+iS06gX086iH89c4mLTXibNfDytKOe4sbXOuDsnjZoQFW50rTvqrkiXhsemXJeWAeWmR8VkeZaLylhfKx1C7mVu7GU4ElvmeMr5LiUTlO9syLMyXUSmKHOWkzG7lKcC582pXAgoCIdQaw7tI+znvNm50VdK18ELgqDfpGOFwyHRHQSCQds5OzUO25HaogjJAvSZdCwMBAM+h2FeucORlLdYOB2CCr0oinIsAiYdPkTeMRgiwozY77ZXbXFisyLbwitGSA6gFyJF/QPhWEAmHT4ocQzOwOzJdmAjo8BjNWZeiNmeNSA5lEMwewocR3m9xwbMsGk+G6M3Ah/ECGNdByVbN+n1Tpvrs7aQjSKCzRlBTcYcBsGQzN3ECLITc5bDpgGLUnnxiE+I2YcgiKH8mWBY4hDiOMyeImeNEaT02uNZ+IwZM0YweTgUQmiR/4wgrHB7t2cnjRlMK7MZs8GdOcI6bD/qrBCMVJmDpgzKLb5WQupkA4I4KSDFDIMYJCtZB+zDmJeF+ZmDMHvKnZMyWz1IQGXLPCtSqJAFHI85kWQw4+TLYdhPHRcjtGImPwZZfT9kOSZ5fknX+eOyGyoCezFUDnOcjwZjmCGVmP3ymFmRuzBBaMPMZWJW6iWnTPjpMmZyLwyKlwjBgwzPYGLMXtpJc5h9spgJJJFLgGXDbOqo5A4QlrtDlONsWHUgLux5abwxshyyO+tqTKHkwoIBEghMyQ+JDFa6ED4fa3iYOBDTtNYJ8myYSsnJswmg1mGGyYvF/GwTzBfQyNkhrSpdg5yEnzXcoGhZvVQXGScSVTGCYjPkPGfQAGbu0IjHMsx+9mCBCAkY9Wptn2Y7Y5JT557jow0YRgMsX5CrRSWyf3F+TDp9r6ZqmML7cO5PBKoY43twCBaKapKJXgjL3XAR8mbAI0H6OukEQWsq7ohJz526gwvSGLyoJwRH6FImmCTuwTmu/OKFTcJM5lRe1WesLEj2Q4z54hjzHs0l2p1OyKYMPNvqE/byk2EO02UMwg/xzUOYwyc1jwgMh9RjJt0on0tJzsCHmoDZA7FHQXHyHLwhzcuU54CcqtLE2haiXHkmkxcqcmPe5eV8fCD+c5BcYSwRZpQ7kg/xxaVukiMjIUQoctP1Cv8fga0pjVbaj7k4RZhhJu2FWddN8AE5KIsZUouZcqWBIDevAGkqlsMp6mwU25806/TZ7FAmAfOmAAr6BUgkjjhJg2ATsZBop5ZJwMjlj693YvKYIVEiFxR+MmmxPFWY82xPnXX2pkIgFiQSdHhl4xSYq2GxS+vl0ihUBgas8qCC95Jww7AEnDbMqIVlT9v7VDpHs+nsIoiqxowyxozAXsa5Up8juMQKM4I5BMF4rF8NJceMxOrrgZjtG+2TKcv2oe3t+lpOYcaEcERSHOEdrIQISTeMhzG+Nh3Dgcg4TlgSGnGbQvJURgVmVFOUbY62291p1ptOMVUwHI0ZkkIIhnhjixmm+gUhkM+iIvKYIbkQLxkIVA1mT+x+FFiz11LMeTb/WvdSA0kzJC5KKGHmqoXBEGVNfgSLlUqCMkYqi1lpfA9FQrAfEnkJRcxI3Pcg1kZjNv/4zK+MnDuMqE2oqK3PC7PZDUpluvx7vWoxJ7iDgsxgArt3i8qXDsJcaC9mEx9nVsKMBGBCWJtkwmwSOxKW+5gGzBFxMQRSMX1kB2abH3guMHDqIWaxcDgkzpuVS0ko3dLyslVu2b6lJmvm4qcgPebgVMw2D+Yb+SG/MEhP2MAaQlY0xDT1vGgsLZNp+GgpW5BBFBwbZFG5N6c60vaU2IvZyINTAb58qX69cJosN4FJBd1+REN1SqZ2SSgmVIQzEiq7e84GJnep5Yowrjcg7uGGlT4VJrNtHhFCaCtCwl4kaYDgFfrzkFx2J6iIgFggViGxEHOWHXDXPffU9+6et3j+HXd8pv/MEbYzINnV4GRVDDz5jE1izOQ9ZNYz0aQroWwfF0yEWqdVKSa84Bd3z7ivmpcBzDBbpdSKWd2hoYSJmUmYcWrwl/qeQEraFzcvzLjrh6lBfOfPp3+jWiwDJ8555xRiprqXAdMoYyj9PYh5v42hIHq1n7h9xdpF1jJ+dvYzM6vjZHxrtgizXA5O10zNafwzD74zt1MwFZz5FX/s/tmrrSp9rsv4SbWs9DvtEOc/LcJMP4AT5AM7ut8MgmqHvpLcomHmfmEwU0U5yOKp/M9Eq/6DeU9ZYNTPzXusOoE+NxLBYB6LMBNYoqQHM2NnDmGsV2A3B4ozZu2Tk59LF/7W6U+aa9N3zZhZXW0+ZoxLnBBNCZVKzkG6ZwRK2pz+iAlGR0D87cLFAHSRPYCnEjNl099/1DTIa2+uVtLXRnw2Lio3OuXJ8SRpIF2GgwhxqIfSr2J+3Krc6mvZ1Z85/15TTPrZxbKHf+/cOx8ePPn2v19//X/6K51cLRpPH8y+SEA0hSKI6EPMXyCLOP83kZ3dlmF4l97w/Jy4w/7hyN5/HQB41esNYjB+hSTZD+JkzGExSuGpo9SDUpZF3P/5x9EP9r0qC/q+FRuMbcq3SY947q2/A2J16F4xLAHmiMxsl3OE04/3yefnKG5dvN1Br/bLb354Tm6TztDvujfcI4m8Pj50BojT+IDupISb5QiLucKWzs4ZN2hpvTMl3zowzq/4r0++Ew/6R0/qpPzwN8UH2v8mIKt+zxQWGc/7U/JF/aI1f+2TI3GgZ+iKun8m3pV/vwtIoDqPK+tVJ1326yf3STjPma3Zc0+7R3SEI7uBhOpwGaRAHTIrv+vTd8WgH3pQG+UH7hd+et/fAAXVoC4Ey4XWyK799b0fizh/Z7aWn9Rf8JDgo6++Aihr0KVguQYTLf5r7/9VvEPfqb4kIsyj9h9IQhmYcClYronEy//bg78TJdFrVVJ+VNBSPv8JkFzDLgaLNay4/tc/EEViT6uzZcFoyL4/q6AMXHQ5WKyLSQic+UhY535exQa9QOCx3wJUqabLBWGpumqSMnjjPQHoeUkzq3WCosheQKVcc7bXmOkyqNCgb0/SzVgk6DoeBVSrzUVhodrUQXhfwHmxMueFsXeeVE8ZqD3uwrBMx2tVUth1PkZvupLf/mXsfa8AWlTv0rBM9aopnBE0KhcmpvzgHF22TEVhQy4OizRUox7Dgf0xzisSljh/yr/nDUCjRhtcIJaoYVQTh9/ECp+JWpPz+LccBDSrttVFYoFaazVy+AsP8cfflaX8bX6K4BCgQx3H7A9WWhu6Wi5dvtx87UbdlZH6+vpTp05Foz17aNUyunqC0VX2/8wfe6JR8r1N9fUjV+puXGu+fPlSS1dDq/2B5bEOzRxinG+RC8Me4OsiHwFAGnAeaB3rH75wrW6kvenUxZ49tY2jgPkabazd03PxVFP7SN21C8P9Y60DTqcMAId4zrNlMPMd5vO7da5Jb7fFxtrQ33ZhsLO976ue3sZxwB6NN/b2fNXX3jl4oa2/wWJz7+7VdYr/5MvbD8dRXs277Ld1L0Fji+lXera7v625rr0vah/YJNCjfe11zW393WdNv/aWRn0n9TJf+Hwmzm3fwnceDVz1YZMmhga6Wy4PjvRFJ0aB9NHoRLRvZPByS7dJjv3GYb1n8ifebWdIKN/LTxEcMHStPWNGwsqutubOpi97rwLprau9XzZ1Nrd1GUk+xnoMnMBRjua3xFMGi/iUeZfBSzzcrjkSO9twiaQbnRgHJpvGJ6Ik70sNmh36sfbDhr6Y72NMF2HOMMNlszrRqfIuHiDxXunraKwBJrtqGjv6rpC4Vbrz1s4TBr9wN1fenrlaOMj5BPvquwdMuYmblGOxs2NDg/XR2smPNw53bbR+cGhM2bhbmkxwawc5u50vwPw09+KnZl3Q6fZhmWzj7BdDN+qjp6ceXwnt09H6G0NfyNA+Ptx+2pzv+COHNFbznMVNcv6fvXsJrerOAzh+Ek1iUk2iRvG1qNGIGJQoVLGoq4LioyhDq7MpLbh3VhcihJC1EJJYmnc0cRoVm8aoHWqYgA+0MtJaFIRArWAXomC7cj/X5pyb+KiaJrW5fz9fEP43uT7y+3DOuefchycOT+IP8/Xn//75v9//mD5U/+ebL7/95Yuv+D6n/dUXv3z75TfpDeKbH7//789fff71pP3hhxLmktHLnBO4lq0pWubJqrkJc3FyMvXYdIKp5tmj8+qyiTxloSnag8Q5fstNRXK72mwCqj5hXT/CXJK869Fogqo3+SCxj58oL5n4cxaa0kfnvWP32ScMJrCSTzVY+YQ5L74xaC6B1Zq8LGx1FOUmH+B301xC61RMuzOK1tlnB9u12HZHFO31ODvYbiRveh59P805Uwmv5G0Yi6PkY0Z6DCXcx9rbo+R1I2cMJbySF/OWRwWudIZb8uqC+VHyvEW3oYTXucz7I5MrYp7yxyzMmrK1JB86gznkGjIv18aMWZiFWZiFWZiFWc+WvK7gAOaQS94wl4cZszALszALszALs55rOMbNwRxydclHa2PGLMzCLMzCLMzCLMyYMWMWZmEWZmEWZmEWZsyYMQuzpnJXM/+DIOaAq41xCzFjFmZhFmZhFmZhFmbMmDELszALszALszALM2bMmIVZU7maGHcGZszCLMzCLMzCLMzCjBkzZmEWZmEWZmEWZmHGjBmzMAuzMAuzMAuzXsi8KV49NpSQmQviVbWhYBZmYRZmYRZmYRZmzMIszMIszMKsiVUf427GHHLVMW4BZszCLMzCLMzCLMzCjBkzZmEWZmEWZmEWZmHGjBmzMAuzMAuzMAuzMGPGjFmYhVmYhVmYhVmYMQuzMAuzMAuzMAuzMGMWZmEWZmEWZmEWZmHGLMzCLMzCLMzCLMyYMWMWZmEWZmEWZmEWZsyYMQuzsqTDMe5szCF3MMZNYcYszMIszMIszMIszJgxYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWZiFWZiFWZiFGbMwC7MwC7MwC7MwCzNmYRZmYRZmYRZmYRZmzAqReXO8qDeUkJlnxIsaQ8EszMIszMIszMIszJiFWZiFWZiFWZiFWZgxC7MwC7MwC7MwC7MwYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWZiFWZiFWZiFGTNmzMIszMIszMIszMKMGTNmYRZmYRZmYRZmYcaMGbOyt8cx7ibMIVcd4xZgxizMwizMwizMwizMmDFjFmZhFma9YeatmN8G5sJ4VWsomIVZmIVZmIVZmIUZszALszALszALszALM2ZhFmZhFmZhFmZhFmbMwizMwizMwqyJM5fEq2ZDCZl5eryqMxTMwqypWmeMuwpzyNXEuDMwYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWdnAvBVzyNXGuIVRTrwaNpSQmfPi1SFDwSzMwizMwizMwqy4gRh3N+aQq4txp2N+O5gPxKsbhhJev8W4i6KF8eo7Qwmvlhh3fbQhXnUZSnhdi3ErovfjVa+hhFd/jDs32hav7hpKcNXHtvkfR/+Ml7dNJbjOxbZro6gyP14fNJbQuh7Tzo+iaEa8rjGWwDoUy6Y+SjMn10fum0tgPUpe8FeUZv40vjFoLmFV/euYfXa0NL5xxGDC6l7yOHvjE+bS+Nb5bpMJamM+H8OujH6vKr7ZajQhdTJ5ALZ9hPnd+OYVowmo5kS5MHeEOTk4N9lrB3jOnFo6ohxVzo6/cMdwgulyory2KGbOPOV82nRC6Uzy+Cs1L1GOdqZcCAusjoS0OKMcfVLgyciw6kqUNy0ZZc68gsTmHEYNiWeqYoxytCb56lkjCulcKjU9dyxztCj5+oAhZX1HmzK77D1PKUdzk2/0m1LWdySzMe+NnimzObcbU5Y3mFHe8axytD/zPU87B3JdJFVV+RxzNC355k83jSqLa8koF6x7XjlanJw7p5qOGlbWdimjnL80elFzMnc44imM7FdObXihclR0YNTZ9pydfTeqPK3oxczR6mWZ+zQ1GlkWNjSqvGV59EftL8vc64LH29lX+6hyYWn0x+3MH73jkLFlVzV3R/G2Lo5e1szRe6Y6zhhdFlXXNEq3bE/08jaMcT5/77HpZUtdY+BmvEo5vT2P2W+nTnWBzopu9I9Rm7UkenV7y8b8jtRPbX/FR5IcrO5svDrQ09rQ0nKsvb39eFtb24PedNfSi6729qGWO609w81XG4/We/veOI/KqdTu0uh12r8q9VQdlw5P3LXzZt2NS5ePPzp7t//iqQup1++nUyd+uH73Ye+948daWnuaz3QexvoMcu9TA3uvMnq9Slc+O+u7LZ3j/+u7O2uHGy4fv3L6+sVTqUnsfBr+fw+vHD/2Xd9vtUff9qPKoZNPDSd/Q270uhV9MPu54V48O9h685UXQbuP1g7fGep69HCSaV+qfrH/yMlrXUMN9wdudr5dl2m7GzqeHsbmudF42pPz4pne6j/9aPDypb6egebm5sb0r56e+62tLceOPzp5uuOHExdSf3sXbv2+qV++dKMudPS+B03P/PB5i6NxtrQqFUAX0vv3sw/S6IcGzgSF3t137bnd5TsfRuMvd++uVGA1PUHP/oP6wZvnjvz63A+Xv7A0+lPl7luUnwq30YP6oaw5qHefaW3rf+FPs2hN9OfbuGLzXzLiglWz1m7JKZ62fv2K+fPnl8+cObPi/XQV6UX5/PkL1k8rzskpWTtr2Tv5b/Cgfrvj9Ml7g0OXbvx2taZ6qp2wP67tO9bb/0f/+Olzo4m1fO67MyY+w/zNVdMP7FhRXrFz20cbSyvH8fdXlu5ZM2/bvvc/KF+xsDhn965Vs9/YHv729dMnr7S1n2voG25u/JvO17uPDvQNtZ28futlw105L5qEitbMzCsY/5zKVhXmTFtQPmfpvHWludHktbx0zz/m7pszc8XC9xYVLtv0xjb3X9Pw/R0P0/KDx1ru9PU01zbWP/4LNvrDnWcG7jcMdT04+1pnpe+s2Dh5sy3a+NmnxVVlr6RdVrioeMGGin1p2qLojbS8dN3+7R9+sGHBtLwtVZvL3vgRvunWids/dHQ8PNv7YORCbcud1taenuHm5quNT6ofqfrgSI/j2zXpbzU31z05H73Ucq59sK33bPqU9OKtpvFtSnk7P5n8keYu/mhpxacLdryXs6WkpGRWScnunJy84uL16b3xh0vnrdlTGf3tfbxkTXpTL1+x48CWqlVlqZArW/mv1ZGeoKf375/NKV+wI2/Lrs1BnTZsfXd7Jd8Xv9htBP1NH9Qnu/yqhXs30vwzB/Us2b/n7you32ZPPYEq/z+ZSFHFAmCse5tKGbpzD7YItuE0VbMKHS2nqV7CA6Pdy0+IR0yB2ZSRn5du/XW07KscYCrB4ycqPRohdAJMuoGRKcIRflY85mpmwKgP4OTlpkUFL2jra8fKDOyVJlJ5wGEUkA/idKUDI/VEhSMSrYQgA7VmzHx8GoyM/PyGvCDADQWwwhfK5QBK8fOzMGrw8XmbKYgl8Fj5KAoHG8no0ihiAX+T4xsDIM2QAAAAAElFTkSuQmCC"
-
-/***/ },
-/* 190 */
-/***/ function(module, exports) {
-
-	// <script>
-
-	// </script>
-	//
-	// <template>
-	// 	<div  class="dia-mask" transition="dia" @click="quiteDia">
-	// 	<div  class="dia-container begin">
-	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
-	// 		<img src="../static/img/qrcode.png">
-	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
-	// 	</div>
-	// </div>
-	// </template>
-	//
-	// <style lang='less'>
-	// 	.begin{
-	// 		width: 12.15rem;
-	// 		height: 14.325rem;
-	// 		background: url('../static/img/over.png') center center no-repeat;
-	// 		background-size: 100% 100%;
-	// 		padding-top: 3.4rem;
-	//
-	// 		img{
-	// 			width: 8.5rem;
-	// 			height: 8.5rem;
-	// 		}
-	// 	}
-	// 	.begin-area{
-	// 		width: 100%;
-	// 		font-size: .6rem;
-	// 		color: #ff8033;
-	//
-	// 		span{
-	// 			color: #222;
-	// 		}
-	// 	}
-	// </style>
-	"use strict";
-
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 192 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(193), __esModule: true };
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core  = __webpack_require__(194)
-	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return $JSON.stringify.apply($JSON, arguments);
-	};
-
-/***/ },
-/* 194 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ }
 /******/ ]);

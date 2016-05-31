@@ -9,24 +9,26 @@
 	import writeInfo from './diaWriteinfo.vue';
 	import begin from './diaBegin.vue';
 	import over from './diaOver.vue';
-	import {sharGetPrize,quiteDia,initData} from '../vuex/actions';
+	import {sharGetPrize,quiteDia,initData,getPrizeList} from '../vuex/actions';
 
 	export default {
 		store,
 		vuex:{
 			actions:{
-				sharGetPrize,initData
+				sharGetPrize,initData,getPrizeList
 			},
 			getters:{
 				currentDialog:state=> state.dialog,
 				initDialog:state => state.initDia,
-				festivalInfo:state => state.festivalInfo
+				festivalInfo:state => state.festivalInfo,
+				boatMove:state => state.boatMove
+
 			}
 		},
 		components:{
 			share,successHelp,forbid,follow,win,look,writeInfo,begin,over
 		},
-		ready(){
+		compiled(){
 			/*var vThis = this;
 			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 				console.log(res.data);
@@ -43,7 +45,7 @@
 	<div class="container" v-cloak>
 		<div class="head">
 			<div class="river">
-				<div class="boat">					
+				<div class="boat" :style="{top:boatMove.top,left:boatMove.left}">					
 				</div>
 			</div>
 			<div class="tips" v-if="festivalInfo.tips == 0">
@@ -64,7 +66,7 @@
 				 还剩余0次抽奖机会
 			</div> -->
 			<div class="my-gift" v-if="festivalInfo.hitPrize">
-				<a href="javascript:;" >查看我的奖品</a>
+				<a href="javascript:;" @click="getPrizeList('look')">查看我的奖品</a>
 			</div>
 		</div>
 		<!-- 显示何种弹窗组件 start -->
@@ -131,7 +133,7 @@
 		position: absolute;
 		top: 1rem;
 		left: 2.2rem;
-		transition: all .3s ease;
+		transition: all .5s ease-in;
 	}
 	.tips{
 		width: 100%;

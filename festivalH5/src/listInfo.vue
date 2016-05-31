@@ -1,7 +1,9 @@
 <script>
 	export default {
-		ready(){
-			console.log(111);
+		vuex:{
+			getters:{
+				listOrder:state => state.listOrder
+			}
 		}
 	}
 </script>
@@ -9,42 +11,15 @@
 <template>
 	<div class="footer">
 			<div class="count">
-				<div class="count-info">已有2位好友帮了友谊的小船</div> 
+				<div class="count-info">已有{{listOrder.length}}位好友帮了友谊的小船</div> 
 			</div>
 			<ul class="list-order">
-				<li class="clearfix">
+				<li class="clearfix" v-for="data in listOrder">
 					<div class="item-icon">
-						<img src="../static/img/1315539365.jpg">
+						<img :src="data.userImageUrl">
 					</div>
 					<div class="item-info">
-						<div class="item-name">徐克</div>
-						<div class="item-tips">帮你划了40米，快来感谢我</div>
-					</div>
-				</li>
-				<li class="clearfix">
-					<div class="item-icon">
-						<img src="../static/img/1315539365.jpg">
-					</div>
-					<div class="item-info">
-						<div class="item-name">徐克</div>
-						<div class="item-tips">帮你划了40米，快来感谢我</div>
-					</div>
-				</li>
-				<li class="clearfix">
-					<div class="item-icon">
-						<img src="../static/img/1315539365.jpg">
-					</div>
-					<div class="item-info">
-						<div class="item-name">徐克</div>
-						<div class="item-tips">帮你划了40米，快来感谢我</div>
-					</div>
-				</li>
-				<li class="clearfix">
-					<div class="item-icon">
-						<img src="../static/img/1315539365.jpg">
-					</div>
-					<div class="item-info">
-						<div class="item-name">徐克</div>
+						<div class="item-name">{{data.userName}}</div>
 						<div class="item-tips">帮你划了40米，快来感谢我</div>
 					</div>
 				</li>
