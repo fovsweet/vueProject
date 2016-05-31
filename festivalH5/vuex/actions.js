@@ -13,7 +13,7 @@ export const sharGetPrize = ({ dispatch,state },dia) =>{
 			dispatch('SET_DIALOG',dia);
 		})
 	}else{
-		//dispatch('SET_DIALOG',dia);
+		dispatch('SET_DIALOG',dia);
 	}
 }
 
