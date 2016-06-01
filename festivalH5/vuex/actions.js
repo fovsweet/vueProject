@@ -7,6 +7,7 @@ export const sharGetPrize = ({ dispatch,state },dia) =>{
 		vue.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4",vd).then(function(res){
 			dispatch('INIT_DATA',res.data.helpInfoVo);
 			dispatch('SET_DIALOG',dia);
+			dispatch('SET_ANIMATE');
 			setTimeout(function(){dispatch('QUIT_DIALOG');}, 3000);
 		})
 	}else if(state.activeStatus == 2){
@@ -43,5 +44,10 @@ export const getPrizeList = ({ dispatch },dia) =>{
 					dispatch('SET_PRIZE_LIST',res.data)
 					dispatch('SET_DIALOG',dia);
 			})
+}
+
+export const setList = ({ dispatch },dia) =>{
+	dispatch('SET_LIST_CONT',dia);
+	console.log(dia);
 }
 

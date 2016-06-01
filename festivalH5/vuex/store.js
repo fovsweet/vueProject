@@ -60,7 +60,8 @@ const state = {
   boatMove:{
     top:'1rem',
     left:'2.2rem'
-  }
+  },
+  currentList:'listInfo',
 
   
 
@@ -95,6 +96,12 @@ const mutations = {
   SET_PRIZE_LIST(state,data){
     state.prizeList = data.lotteryInfoList;
   },
+  SET_ANIMATE(state){
+    state.boatMove.ani = 'all .5s ease-in';
+  },
+  SET_LIST_CONT(state,dia){
+    state.currentList = dia;
+  },
   //初始化数据
   INIT_DATA(state,data){
     if(data.status == 'normal'){
@@ -112,6 +119,7 @@ const mutations = {
       if(data.finishedNum/data.raNum >0 && data.finishedNum/data.raNum <= 1 ){
          state.boatMove.top = (data.finishedNum/data.raNum*9+1)+'rem';
          state.boatMove.left = (data.finishedNum/data.raNum*9+2.2)+'rem';
+         state.boatMove.boatOp = 1;
       }
 
       if(data.btnFlag == 0){

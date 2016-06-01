@@ -66,7 +66,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _vueResource = __webpack_require__(191);
+	var _vueResource = __webpack_require__(190);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
@@ -4260,7 +4260,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  height: 100%;\n  margin: 0;\n  background-color: #493119;\n}\ndiv {\n  box-sizing: border-box;\n}\na {\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  -webkit-tap-highlight-color: transparent;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n[v-cloak] {\n  display: none;\n}\n.container {\n  background: url(" + __webpack_require__(102) + ") center top no-repeat;\n  background-size: 100% auto;\n  padding-top: 1rem;\n}\n.river {\n  width: 100%;\n  height: 13.6rem;\n  background: url(" + __webpack_require__(103) + ") center top no-repeat;\n  background-size: 100% auto;\n  position: relative;\n}\n.boat {\n  width: 3rem;\n  height: 3.1rem;\n  background: url(" + __webpack_require__(104) + ") center center no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  top: 1rem;\n  left: 2.2rem;\n  -webkit-transition: all 0.5s ease-in;\n  transition: all 0.5s ease-in;\n}\n.tips {\n  width: 100%;\n  height: 2.875rem;\n  background: url(" + __webpack_require__(105) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .55rem;\n  color: white;\n  line-height: 1.5;\n  padding: .6rem 1.5rem;\n}\n.get-gift {\n  width: 10rem;\n  height: 2.25rem;\n  border-radius: 2.25rem;\n  background-color: #ffeb55;\n  font-size: .9rem;\n  text-align: center;\n  color: #333;\n  line-height: 2.25rem;\n  margin: 0 auto;\n}\n.my-gift {\n  width: 6rem;\n  height: 1.125rem;\n  line-height: 1.125rem;\n  border-radius: 1.125rem;\n  text-align: center;\n  margin: .5rem auto 0 auto;\n  font-size: .6rem;\n  color: #f8f2c7;\n  background-color: rgba(56, 38, 19, 0.9);\n}\n.my-gift a {\n  display: inline-block;\n  color: #f8f2c7;\n}\n.content .tab-group {\n  margin-top: .75rem;\n  text-align: center;\n  font-size: 0;\n}\n.content .tab-group .tab {\n  display: inline-block;\n  width: 5.15rem;\n  height: 2.8rem;\n  background: url(" + __webpack_require__(106) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .65rem;\n  line-height: 2.8rem;\n  color: #dfdfdf;\n  text-align: center;\n}\n.content .tab-group .current {\n  background: url(" + __webpack_require__(107) + ") center center no-repeat;\n  background-size: 100% 100%;\n  color: white;\n}\n/*弹框样式*/\n.dia-mask {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  padding: 1rem;\n  background: rgba(0, 0, 0, 0.8);\n  text-align: center;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  display: -webkit-flex;\n  -webkit-justify-content: center;\n  -webkit-align-items: center;\n  display: -webkit-box;\n  -webkit-box-pack: center;\n  -webkit-box-align: center;\n  font-family: 'SimSun';\n  transition: opacity .3s ease;\n  -webkit-transition: opacity .3s ease;\n  -moz-transition: opacity .3s ease;\n}\n.dia-enter,\n.dia-leave {\n  opacity: 0;\n}\n.dia-enter .dia-container,\n.dia-leave .dia-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.dia-close {\n  display: inline-block;\n  position: absolute;\n  top: 1rem;\n  right: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  background: url(" + __webpack_require__(108) + ") center center no-repeat;\n  background-size: 100% 100%;\n}\n.dia-container {\n  position: relative;\n  background-color: #fff;\n  transition: all .3s ease;\n  -webkit-transition: all .3s ease;\n  -moz-transition: all .3s ease;\n}\n", ""]);
+	exports.push([module.id, "body {\n  height: 100%;\n  margin: 0;\n  background-color: #493119;\n}\ndiv {\n  box-sizing: border-box;\n}\na {\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  -webkit-tap-highlight-color: transparent;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n[v-cloak] {\n  display: none;\n}\n.container {\n  background: url(" + __webpack_require__(102) + ") center top no-repeat;\n  background-size: 100% auto;\n  padding-top: 1rem;\n}\n.river {\n  width: 100%;\n  height: 13.6rem;\n  background: url(" + __webpack_require__(103) + ") center top no-repeat;\n  background-size: 100% auto;\n  position: relative;\n}\n.boat {\n  width: 3rem;\n  height: 3.1rem;\n  background: url(" + __webpack_require__(104) + ") center center no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  -webkit-transition: all 0s ease-in;\n  transition: all 0s ease-in;\n  opacity: 0;\n}\n.tips {\n  width: 100%;\n  height: 2.875rem;\n  background: url(" + __webpack_require__(105) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .55rem;\n  color: white;\n  line-height: 1.5;\n  padding: .6rem 1.5rem;\n}\n.get-gift {\n  width: 10rem;\n  height: 2.25rem;\n  border-radius: 2.25rem;\n  background-color: #ffeb55;\n  font-size: .9rem;\n  text-align: center;\n  color: #333;\n  line-height: 2.25rem;\n  margin: 0 auto;\n}\n.my-gift {\n  width: 6rem;\n  height: 1.125rem;\n  line-height: 1.125rem;\n  border-radius: 1.125rem;\n  text-align: center;\n  margin: .5rem auto 0 auto;\n  font-size: .6rem;\n  color: #f8f2c7;\n  background-color: rgba(56, 38, 19, 0.9);\n}\n.my-gift a {\n  display: inline-block;\n  color: #f8f2c7;\n}\n.content .tab-group {\n  margin-top: .75rem;\n  text-align: center;\n  font-size: 0;\n}\n.content .tab-group .tab {\n  display: inline-block;\n  width: 5.15rem;\n  height: 2.8rem;\n  background: url(" + __webpack_require__(106) + ") center center no-repeat;\n  background-size: 100% 100%;\n  font-size: .65rem;\n  line-height: 2.8rem;\n  color: #dfdfdf;\n  text-align: center;\n}\n.content .tab-group .current {\n  background: url(" + __webpack_require__(107) + ") center center no-repeat;\n  background-size: 100% 100%;\n  color: white;\n}\n/*弹框样式*/\n.dia-mask {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  padding: 1rem;\n  background: rgba(0, 0, 0, 0.8);\n  text-align: center;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n  -ms-flex-align: center;\n      align-items: center;\n  display: -webkit-flex;\n  -webkit-justify-content: center;\n  -webkit-align-items: center;\n  display: -webkit-box;\n  -webkit-box-pack: center;\n  -webkit-box-align: center;\n  font-family: 'SimSun';\n  transition: opacity .3s ease;\n  -webkit-transition: opacity .3s ease;\n  -moz-transition: opacity .3s ease;\n}\n.dia-enter,\n.dia-leave {\n  opacity: 0;\n}\n.dia-enter .dia-container,\n.dia-leave .dia-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.dia-close {\n  display: inline-block;\n  position: absolute;\n  top: 1rem;\n  right: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  background: url(" + __webpack_require__(108) + ") center center no-repeat;\n  background-size: 100% 100%;\n}\n.dia-container {\n  position: relative;\n  background-color: #fff;\n  transition: all .3s ease;\n  -webkit-transition: all .3s ease;\n  -moz-transition: all .3s ease;\n}\n", ""]);
 
 	// exports
 
@@ -4635,15 +4635,28 @@
 
 	var _diaOver2 = _interopRequireDefault(_diaOver);
 
+	var _listInfo = __webpack_require__(174);
+
+	var _listInfo2 = _interopRequireDefault(_listInfo);
+
+	var _activeInfo = __webpack_require__(179);
+
+	var _activeInfo2 = _interopRequireDefault(_activeInfo);
+
+	var _prizeInfo = __webpack_require__(184);
+
+	var _prizeInfo2 = _interopRequireDefault(_prizeInfo);
+
 	var _actions = __webpack_require__(117);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <script>
 	exports.default = {
 		store: _store2.default,
 		vuex: {
 			actions: {
-				sharGetPrize: _actions.sharGetPrize, initData: _actions.initData, getPrizeList: _actions.getPrizeList
+				sharGetPrize: _actions.sharGetPrize, initData: _actions.initData, getPrizeList: _actions.getPrizeList, setList: _actions.setList
 			},
 			getters: {
 				currentDialog: function currentDialog(state) {
@@ -4657,14 +4670,17 @@
 				},
 				boatMove: function boatMove(state) {
 					return state.boatMove;
+				},
+				currentList: function currentList(state) {
+					return state.currentList;
 				}
 
 			}
 		},
 		components: {
-			share: _diaShare2.default, successHelp: _diaSuccessHelp2.default, forbid: _diaForbid2.default, follow: _diaFollow2.default, win: _diaWin2.default, look: _diaLookprize2.default, writeInfo: _diaWriteinfo2.default, begin: _diaBegin2.default, over: _diaOver2.default
+			share: _diaShare2.default, successHelp: _diaSuccessHelp2.default, forbid: _diaForbid2.default, follow: _diaFollow2.default, win: _diaWin2.default, look: _diaLookprize2.default, writeInfo: _diaWriteinfo2.default, begin: _diaBegin2.default, over: _diaOver2.default, listInfo: _listInfo2.default, activeInfo: _activeInfo2.default, prizeInfo: _prizeInfo2.default
 		},
-		compiled: function compiled() {
+		created: function created() {
 			/*var vThis = this;
 	  this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 	  	console.log(res.data);
@@ -4681,7 +4697,7 @@
 	// 	<div class="container" v-cloak>
 	// 		<div class="head">
 	// 			<div class="river">
-	// 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left}">					
+	// 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}">					
 	// 				</div>
 	// 			</div>
 	// 			<div class="tips" v-if="festivalInfo.tips == 0">
@@ -4691,7 +4707,7 @@
 	// 				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
 	// 			</div>
 	// 			<!-- 未集满，不能抽奖 -->
-	// 			<div class="get-gift"  @click="sharGetPrize(initDialog)">
+	// 			<div class="get-gift"  @click="sharGetPrize('look')">
 	// 				{{festivalInfo.btnName}}
 	// 			</div>
 	// 			<!-- 已集满，可抽奖 -->
@@ -4710,18 +4726,18 @@
 	// 		<!-- 显示何种弹窗组件 end-->
 	// 		<div class="content">
 	// 			<div class="tab-group">
-	// 				<div class="tab" v-link="{path:'/list',activeClass:'current'}">
+	// 				<div class="tab" @click="setList('listInfo')">
 	// 					好友助力榜
 	// 				</div>
-	// 				<div class="tab"  v-link="{path:'/active',activeClass:'current'}">
+	// 				<div class="tab" @click="setList('activeInfo')">
 	// 					活动详情
 	// 				</div>
-	// 				<div class="tab"  v-link="{path:'/prize',activeClass:'current'}">
+	// 				<div class="tab" @click="setList('prizeInfo')">
 	// 					奖品介绍
 	// 				</div>
 	// 			</div>
 	// 		</div>
-	// 		 <router-view keep-alive></router-view>
+	// 		 <component :is="currentList"></component>
 	// 	</div>
 	// </template>
 	//
@@ -4767,9 +4783,8 @@
 	// 		background: url('../static/img/boat.png') center center no-repeat;
 	// 		background-size: 100% 100%;
 	// 		position: absolute;
-	// 		top: 1rem;
-	// 		left: 2.2rem;
-	// 		transition: all .5s ease-in;
+	// 		transition: all 0s ease-in;
+	// 		opacity: 0
 	// 	}
 	// 	.tips{
 	// 		width: 100%;
@@ -4836,7 +4851,7 @@
 	//
 	// 	/*弹框样式*/
 	// 	.dia-mask {
-	// 		position: fixed;
+	// 		position: absolute;
 	// 		top: 0;
 	// 		bottom: 0;
 	// 		left: 0;
@@ -4887,7 +4902,6 @@
 	// 		-moz-transition: all .3s ease;
 	// 	}
 	// </style>
-	// <script>
 
 /***/ },
 /* 111 */
@@ -4968,7 +4982,8 @@
 	  boatMove: {
 	    top: '1rem',
 	    left: '2.2rem'
-	  }
+	  },
+	  currentList: 'listInfo'
 
 	};
 
@@ -5004,6 +5019,12 @@
 	  SET_PRIZE_LIST: function SET_PRIZE_LIST(state, data) {
 	    state.prizeList = data.lotteryInfoList;
 	  },
+	  SET_ANIMATE: function SET_ANIMATE(state) {
+	    state.boatMove.ani = 'all .5s ease-in';
+	  },
+	  SET_LIST_CONT: function SET_LIST_CONT(state, dia) {
+	    state.currentList = dia;
+	  },
 
 	  //初始化数据
 	  INIT_DATA: function INIT_DATA(state, data) {
@@ -5022,6 +5043,7 @@
 	      if (data.finishedNum / data.raNum > 0 && data.finishedNum / data.raNum <= 1) {
 	        state.boatMove.top = data.finishedNum / data.raNum * 9 + 1 + 'rem';
 	        state.boatMove.left = data.finishedNum / data.raNum * 9 + 2.2 + 'rem';
+	        state.boatMove.boatOp = 1;
 	      }
 
 	      if (data.btnFlag == 0) {
@@ -5850,7 +5872,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.getPrizeList = exports.initData = exports.quiteDia = exports.sharGetPrize = undefined;
+	exports.setList = exports.getPrizeList = exports.initData = exports.quiteDia = exports.sharGetPrize = undefined;
 
 	var _vue = __webpack_require__(2);
 
@@ -5869,6 +5891,7 @@
 			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4", vd).then(function (res) {
 				dispatch('INIT_DATA', res.data.helpInfoVo);
 				dispatch('SET_DIALOG', dia);
+				dispatch('SET_ANIMATE');
 				setTimeout(function () {
 					dispatch('QUIT_DIALOG');
 				}, 3000);
@@ -5913,6 +5936,13 @@
 			dispatch('SET_PRIZE_LIST', res.data);
 			dispatch('SET_DIALOG', dia);
 		});
+	};
+
+	var setList = exports.setList = function setList(_ref5, dia) {
+		var dispatch = _ref5.dispatch;
+
+		dispatch('SET_LIST_CONT', dia);
+		console.log(dia);
 	};
 
 /***/ },
@@ -6625,7 +6655,7 @@
 	// 			<div class="no-prize" v-if="prizeList.length < 1">
 	// 				<img src="../static/img/lose.png">
 	// 			</div>
-	// 			<div class="btn" @click="sharGetPrize('win')">填写领奖信息</div>
+	// 			<div class="btn" @click="sharGetPrize('writeInfo')">填写领奖信息</div>
 	// 		</div>
 	// 	</div>
 	// </div>
@@ -6693,7 +6723,7 @@
 /* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container look\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"look-area\">\r\n\t\t\t<h1>查看奖品</h1>\r\n\t\t\t<h2>请在公众号\"我的卡包\"查看领奖信息</h2>\r\n\t\t\t<div class=\"list\" v-if=\"prizeList.length > 0\">\r\n\t\t\t\t<p v-for=\"data in prizeList\">{{data.raRewardName}}</p>\r\n\t\t\t</div> \r\n\t\t\t<div class=\"no-prize\" v-if=\"prizeList.length < 1\">\r\n\t\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t\t</div> \r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('win')\">填写领奖信息</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container look\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"look-area\">\r\n\t\t\t<h1>查看奖品</h1>\r\n\t\t\t<h2>请在公众号\"我的卡包\"查看领奖信息</h2>\r\n\t\t\t<div class=\"list\" v-if=\"prizeList.length > 0\">\r\n\t\t\t\t<p v-for=\"data in prizeList\">{{data.raRewardName}}</p>\r\n\t\t\t</div> \r\n\t\t\t<div class=\"no-prize\" v-if=\"prizeList.length < 1\">\r\n\t\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t\t</div> \r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('writeInfo')\">填写领奖信息</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
 
 /***/ },
 /* 152 */
@@ -6759,7 +6789,7 @@
 
 
 	// module
-	exports.push([module.id, ".wirte {\n  width: 12.75rem;\n  height: 18.675rem;\n  background: url(" + __webpack_require__(155) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4.5rem;\n}\n.wirte-area {\n  width: 100%;\n  font-size: .75rem;\n  color: #222;\n  padding: 0 1.5rem;\n}\n.wirte-area h1 {\n  font-size: .75rem;\n  font-weight: normal;\n  margin: 0;\n}\n.wirte-area .info {\n  text-align: left;\n}\n.wirte-area .info label {\n  margin-bottom: .25rem;\n  font-size: .6rem;\n  color: #666;\n  display: block;\n}\n.wirte-area .info input {\n  width: 9.75rem;\n  height: 1.75rem;\n  margin-bottom: .5rem;\n  padding-left: .25rem;\n  display: block;\n  padding: 0;\n  border: 1px solid #eee;\n  background-color: #fff;\n  outline: medium;\n  border-radius: 0;\n  -webkit-appearance: none;\n}\n.wirte-area .btn {\n  width: 4.5rem;\n  height: 1.75rem;\n  line-height: 1.75rem;\n  color: #222;\n  text-align: center;\n  border-radius: 1.75rem;\n  border: 2px solid #222;\n  margin: .25rem auto;\n  background-color: #ffeb55;\n}\n", ""]);
+	exports.push([module.id, ".diaa {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.8);\n}\n.wirte {\n  width: 12.75rem;\n  height: 18.675rem;\n  background: url(" + __webpack_require__(155) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4.5rem;\n}\n.wirte-area {\n  width: 100%;\n  font-size: .75rem;\n  color: #222;\n  padding: 0 1.5rem;\n}\n.wirte-area h1 {\n  font-size: .75rem;\n  font-weight: normal;\n  margin: 0;\n}\n.wirte-area .info {\n  text-align: left;\n}\n.wirte-area .info label {\n  margin-bottom: .25rem;\n  font-size: .6rem;\n  color: #666;\n  display: block;\n}\n.wirte-area .info input {\n  width: 9.75rem;\n  height: 1.75rem;\n  margin-bottom: .5rem;\n  padding-left: .25rem;\n  display: block;\n  padding: 0;\n  border: 1px solid #eee;\n  background-color: #fff;\n  outline: medium;\n  border-radius: 0;\n  -webkit-appearance: none;\n}\n.wirte-area .btn {\n  width: 4.5rem;\n  height: 1.75rem;\n  line-height: 1.75rem;\n  color: #222;\n  text-align: center;\n  border-radius: 1.75rem;\n  border: 2px solid #222;\n  margin: .25rem auto;\n  background-color: #ffeb55;\n}\n", ""]);
 
 	// exports
 
@@ -6791,6 +6821,8 @@
 	};
 	// </script>
 	// <template>
+	// <div class="diaa">
+	// </div>
 	// <div  class="dia-mask" transition="dia" >
 	// 	<div  class="dia-container wirte">
 	// 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
@@ -6808,8 +6840,17 @@
 	// 		</div>
 	// 	</div>
 	// </div>
+	//
 	// </template>
 	// <style lang="less">
+	// 	.diaa{
+	// 		position: fixed;
+	// 		top: 0;
+	// 		left: 0;
+	// 		bottom: 0;
+	// 		right: 0;
+	// 		background: rgba(0,0,0,0.8);
+	// 	}
 	// 	.wirte{
 	// 		width: 12.75rem;
 	// 		height: 18.675rem;
@@ -6873,7 +6914,7 @@
 /* 157 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container wirte\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"wirte-area\">\r\n\t\t\t<h1>填写领奖信息</h1>\r\n\t\t\t<div class=\"info\">\r\n\t\t\t\t<label>姓名</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t\t<label>联系电话</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t\t<label>您附近的体验馆或收货地址</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t</div>\r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('win')\">提交</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div class=\"diaa\">\r\n</div>\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container wirte\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"wirte-area\">\r\n\t\t\t<h1>填写领奖信息</h1>\r\n\t\t\t<div class=\"info\">\r\n\t\t\t\t<label>姓名</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t\t<label>联系电话</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t\t<label>您附近的体验馆或收货地址</label>\r\n\t\t\t\t<input type=\"text\" >\r\n\t\t\t</div>\r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('win')\">提交</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n\r\n";
 
 /***/ },
 /* 158 */
@@ -7127,7 +7168,7 @@
 /* 170 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\" :style=\"{top:boatMove.top,left:boatMove.left}\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 0\">\n\t\t\t邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 1\">\n\t\t\t{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize(initDialog)\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" @click=\"getPrizeList('look')\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" v-link=\"{path:'/list',activeClass:'current'}\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/active',activeClass:'current'}\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\"  v-link=\"{path:'/prize',activeClass:'current'}\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <router-view keep-alive></router-view>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\" :style=\"{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 0\">\n\t\t\t邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}\n\t\t</div>\n\t\t<div class=\"tips\" v-if=\"festivalInfo.tips == 1\">\n\t\t\t{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize('look')\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" @click=\"getPrizeList('look')\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" @click=\"setList('listInfo')\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('activeInfo')\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('prizeInfo')\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <component :is=\"currentList\"></component>\n</div>\n";
 
 /***/ },
 /* 171 */
@@ -9911,11 +9952,11 @@
 			},
 			'/active': {
 				name: 'active',
-				component: __webpack_require__(180)
+				component: __webpack_require__(179)
 			},
 			'/prize': {
 				name: 'prize',
-				component: __webpack_require__(185)
+				component: __webpack_require__(184)
 			}
 			/*'/prize':{
 	  	name:'prize',
@@ -10112,18 +10153,17 @@
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n<div class=\"footer\">\n\t\t<div class=\"count\">\n\t\t\t<div class=\"count-info\">已有{{listOrder.length}}位好友帮了友谊的小船</div> \n\t\t</div>\n\t\t<ul class=\"list-order\">\n\t\t\t<li class=\"clearfix\" v-for=\"data in listOrder\">\n\t\t\t\t<div class=\"item-icon\">\n\t\t\t\t\t<img :src=\"data.userImageUrl\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"item-info\">\n\t\t\t\t\t<div class=\"item-name\">{{data.userName}}</div>\n\t\t\t\t\t<div class=\"item-tips\">帮你划了40米，快来感谢我</div>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n";
 
 /***/ },
-/* 179 */,
-/* 180 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(181)
-	__vue_script__ = __webpack_require__(183)
+	__webpack_require__(180)
+	__vue_script__ = __webpack_require__(182)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\activeInfo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(184)
+	__vue_template__ = __webpack_require__(183)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10142,13 +10182,13 @@
 	})()}
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(182);
+	var content = __webpack_require__(181);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(109)(content, {});
@@ -10168,7 +10208,7 @@
 	}
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(101)();
@@ -10182,7 +10222,7 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10254,23 +10294,23 @@
 	// </style>
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n<div class=\"footer\">\n\t<div class=\"detail\">\n\t\t本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n本活动所赠送的旅游抵用券只限于使用在含交通和住宿的国内长途、海外产品以及邮轮产品（不包括任何长途或者海外的当地游产品）。\n\n1、当地游产品、签证产品、租车产品等不在本活动抵用券的赠送和使用范围内。\n\n2、赠送金额：根据成交订单中人均费用计算。（说明：若用户通过网上预订2成人出行，若每人消费120元，总计赠送120元不限额旅游抵用券。4成人出行，则总计赠送240元不限额旅游抵用券。若2成人，1儿童出行，总计费用360元，则赠送整个订单的人均消费，即120元不限额抵用券）\n\t</div>\n</div>\n";
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(186)
-	__vue_script__ = __webpack_require__(188)
+	__webpack_require__(185)
+	__vue_script__ = __webpack_require__(187)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\prizeInfo.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(189)
+	__vue_template__ = __webpack_require__(188)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -10289,13 +10329,13 @@
 	})()}
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(187);
+	var content = __webpack_require__(186);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(109)(content, {});
@@ -10315,7 +10355,7 @@
 	}
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(101)();
@@ -10329,7 +10369,7 @@
 
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -10377,19 +10417,19 @@
 	// </style>
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n<div class=\"footer\" keep-alive>\n\t<div class=\"prize\">\n\t\t<img src=\"" + __webpack_require__(190) + "\">\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n<div class=\"footer\" keep-alive>\n\t<div class=\"prize\">\n\t\t<img src=\"" + __webpack_require__(189) + "\">\n\t</div>\n</div>\n";
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "../html/img/prize.png";
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports) {
 
 	/**

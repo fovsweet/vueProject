@@ -9,26 +9,30 @@
 	import writeInfo from './diaWriteinfo.vue';
 	import begin from './diaBegin.vue';
 	import over from './diaOver.vue';
-	import {sharGetPrize,quiteDia,initData,getPrizeList} from '../vuex/actions';
+	import listInfo from './listInfo.vue';
+	import activeInfo from './activeInfo.vue';
+	import prizeInfo from './prizeInfo.vue';
+	import {sharGetPrize,quiteDia,initData,getPrizeList,setList} from '../vuex/actions';
 
 	export default {
 		store,
 		vuex:{
 			actions:{
-				sharGetPrize,initData,getPrizeList
+				sharGetPrize,initData,getPrizeList,setList
 			},
 			getters:{
 				currentDialog:state=> state.dialog,
 				initDialog:state => state.initDia,
 				festivalInfo:state => state.festivalInfo,
-				boatMove:state => state.boatMove
+				boatMove:state => state.boatMove,
+				currentList:state => state.currentList
 
 			}
 		},
 		components:{
-			share,successHelp,forbid,follow,win,look,writeInfo,begin,over
+			share,successHelp,forbid,follow,win,look,writeInfo,begin,over,listInfo,activeInfo,prizeInfo
 		},
-		compiled(){
+		created(){
 			/*var vThis = this;
 			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 				console.log(res.data);
@@ -45,7 +49,7 @@
 	<div class="container" v-cloak>
 		<div class="head">
 			<div class="river">
-				<div class="boat" :style="{top:boatMove.top,left:boatMove.left}">					
+				<div class="boat" :style="{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}">					
 				</div>
 			</div>
 			<div class="tips" v-if="festivalInfo.tips == 0">
@@ -55,7 +59,7 @@
 				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
 			</div>
 			<!-- 未集满，不能抽奖 -->
-			<div class="get-gift"  @click="sharGetPrize(initDialog)">
+			<div class="get-gift"  @click="sharGetPrize('look')">
 				{{festivalInfo.btnName}}
 			</div>
 			<!-- 已集满，可抽奖 -->
@@ -74,18 +78,18 @@
 		<!-- 显示何种弹窗组件 end-->
 		<div class="content">
 			<div class="tab-group">
-				<div class="tab" v-link="{path:'/list',activeClass:'current'}">
+				<div class="tab" @click="setList('listInfo')">
 					好友助力榜
 				</div>
-				<div class="tab"  v-link="{path:'/active',activeClass:'current'}">
+				<div class="tab" @click="setList('activeInfo')">
 					活动详情
 				</div>
-				<div class="tab"  v-link="{path:'/prize',activeClass:'current'}">
+				<div class="tab" @click="setList('prizeInfo')">
 					奖品介绍
 				</div>
 			</div>
 		</div>
-		 <router-view keep-alive></router-view>
+		 <component :is="currentList"></component>
 	</div>
 </template>
 
@@ -131,9 +135,8 @@
 		background: url('../static/img/boat.png') center center no-repeat;
 		background-size: 100% 100%;
 		position: absolute;
-		top: 1rem;
-		left: 2.2rem;
-		transition: all .5s ease-in;
+		transition: all 0s ease-in;
+		opacity: 0
 	}
 	.tips{
 		width: 100%;
@@ -200,7 +203,7 @@
 
 	/*弹框样式*/
 	.dia-mask {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;

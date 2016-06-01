@@ -24,7 +24,7 @@
 			<div class="no-prize" v-if="prizeList.length < 1">
 				<img src="../static/img/lose.png">
 			</div> 
-			<div class="btn" @click="sharGetPrize('win')">填写领奖信息</div>
+			<div class="btn" @click="sharGetPrize('writeInfo')">填写领奖信息</div>
 		</div>
 	</div>
 </div>

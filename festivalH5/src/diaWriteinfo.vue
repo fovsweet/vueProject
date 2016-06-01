@@ -9,6 +9,8 @@
 	}
 </script>
 <template>
+<div class="diaa">
+</div>
 <div  class="dia-mask" transition="dia" >
 	<div  class="dia-container wirte">
 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
@@ -26,8 +28,17 @@
 		</div>
 	</div>
 </div>
+
 </template>
 <style lang="less">
+	.diaa{
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: rgba(0,0,0,0.8);
+	}
 	.wirte{
 		width: 12.75rem;
 		height: 18.675rem;
