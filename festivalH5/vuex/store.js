@@ -63,10 +63,8 @@ const state = {
     top:'1rem',
     left:'2.2rem'
   },
-<<<<<<< HEAD
+
   currentList:'listInfo',
-=======
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
 
   //是否关注公众号
   isSubscribe:'',
@@ -108,13 +106,11 @@ const mutations = {
   SET_PRIZE_LIST(state,data){
     state.prizeList = data.lotteryInfoList;
   },
-<<<<<<< HEAD
   SET_ANIMATE(state){
     state.boatMove.ani = 'all .5s ease-in';
   },
   SET_LIST_CONT(state,dia){
     state.currentList = dia;
-=======
   //设置弹框将打开哪一个
   SET_INIT_DIA(sate,data){
     state.initDia = data;
@@ -130,7 +126,6 @@ const mutations = {
   //设置活动详情
   SET_ACTIVE_INFO(state,data){
     state.activeInfo = data;
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
   },
   //初始化数据
   INIT_DATA(state,data){

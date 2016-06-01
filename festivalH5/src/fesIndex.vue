@@ -32,16 +32,12 @@
 		components:{
 			share,successHelp,forbid,follow,win,look,writeInfo,begin,over,listInfo,activeInfo,prizeInfo
 		},
-<<<<<<< HEAD
 		created(){
-=======
-		ready(){
 			var load = document.querySelector('.loading');
 			load.style.opacity = 0;
 			load.style.zIndex = -1;
 		},
 		compiled(){
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
 			/*var vThis = this;
 			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 				console.log(res.data);

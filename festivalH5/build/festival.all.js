@@ -4202,7 +4202,7 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(99)
-	__vue_script__ = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!babel-loader!./../node_modules/vue-loader/lib/selector.js?type=script&index=0!./fesIndex.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
+	__vue_script__ = __webpack_require__(110)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
@@ -4586,70 +4586,1835 @@
 
 
 /***/ },
-/* 110 */,
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _store = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../vuex/store.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _diaShare = __webpack_require__(113);
+
+	var _diaShare2 = _interopRequireDefault(_diaShare);
+
+	var _diaSuccessHelp = __webpack_require__(120);
+
+	var _diaSuccessHelp2 = _interopRequireDefault(_diaSuccessHelp);
+
+	var _diaForbid = __webpack_require__(126);
+
+	var _diaForbid2 = _interopRequireDefault(_diaForbid);
+
+	var _diaFollow = __webpack_require__(132);
+
+	var _diaFollow2 = _interopRequireDefault(_diaFollow);
+
+	var _diaWin = __webpack_require__(139);
+
+	var _diaWin2 = _interopRequireDefault(_diaWin);
+
+	var _diaLookprize = __webpack_require__(146);
+
+	var _diaLookprize2 = _interopRequireDefault(_diaLookprize);
+
+	var _diaWriteinfo = __webpack_require__(152);
+
+	var _diaWriteinfo2 = _interopRequireDefault(_diaWriteinfo);
+
+	var _diaBegin = __webpack_require__(158);
+
+	var _diaBegin2 = _interopRequireDefault(_diaBegin);
+
+	var _diaOver = __webpack_require__(164);
+
+	var _diaOver2 = _interopRequireDefault(_diaOver);
+
+	var _listInfo = __webpack_require__(174);
+
+	var _listInfo2 = _interopRequireDefault(_listInfo);
+
+	var _activeInfo = __webpack_require__(179);
+
+	var _activeInfo2 = _interopRequireDefault(_activeInfo);
+
+	var _prizeInfo = __webpack_require__(184);
+
+	var _prizeInfo2 = _interopRequireDefault(_prizeInfo);
+
+	var _actions = __webpack_require__(117);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <script>
+	exports.default = {
+		store: _store2.default,
+		vuex: {
+			actions: {
+				sharGetPrize: _actions.sharGetPrize, initData: _actions.initData, getPrizeList: _actions.getPrizeList, setList: _actions.setList
+			},
+			getters: {
+				currentDialog: function currentDialog(state) {
+					return state.dialog;
+				},
+				initDialog: function initDialog(state) {
+					return state.initDia;
+				},
+				festivalInfo: function festivalInfo(state) {
+					return state.festivalInfo;
+				},
+				boatMove: function boatMove(state) {
+					return state.boatMove;
+				},
+				currentList: function currentList(state) {
+					return state.currentList;
+				}
+
+			}
+		},
+		components: {
+			share: _diaShare2.default, successHelp: _diaSuccessHelp2.default, forbid: _diaForbid2.default, follow: _diaFollow2.default, win: _diaWin2.default, look: _diaLookprize2.default, writeInfo: _diaWriteinfo2.default, begin: _diaBegin2.default, over: _diaOver2.default, listInfo: _listInfo2.default, activeInfo: _activeInfo2.default, prizeInfo: _prizeInfo2.default
+		},
+		created: function created() {
+			var load = document.querySelector('.loading');
+			load.style.opacity = 0;
+			load.style.zIndex = -1;
+		},
+		compiled: function compiled() {
+			/*var vThis = this;
+	  this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
+	  	console.log(res.data);
+	  	if(res.data.success){
+	  		vThis.initData(res.data);
+	  	}
+	  })*/
+			this.initData();
+		}
+	};
+	// </script>
+	//
+	// <template>
+	// 	<div class="container" v-cloak>
+	// 		<div class="head">
+	// 			<div class="river">
+	// 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}">					
+	// 				</div>
+	// 			</div>
+	// 			<div class="tips" >
+	// 				{{festivalInfo.tips}}
+	// 			</div>
+	// 			<!-- 未集满，不能抽奖 -->
+	// 			<div class="get-gift"  @click="sharGetPrize('look')">
+	// 				{{festivalInfo.btnName}}
+	// 			</div>
+	// 			<!-- 已集满，可抽奖 -->
+	// 			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " @click="sharGetPrize(initDialog)">
+	// 				 还剩余X次抽奖机会
+	// 			</div> -->
+	// 			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " >
+	// 				 还剩余0次抽奖机会
+	// 			</div> -->
+	// 			<div class="my-gift" v-if="festivalInfo.hitPrize">
+	// 				<a href="javascript:;" @click="getPrizeList('look')">查看我的奖品</a>
+	// 			</div>
+	// 		</div>
+	// 		<!-- 显示何种弹窗组件 start -->
+	// 		<component :is="currentDialog"></component>
+	// 		<!-- 显示何种弹窗组件 end-->
+	// 		<div class="content">
+	// 			<div class="tab-group">
+	// 				<div class="tab" @click="setList('listInfo')">
+	// 					好友助力榜
+	// 				</div>
+	// 				<div class="tab" @click="setList('activeInfo')">
+	// 					活动详情
+	// 				</div>
+	// 				<div class="tab" @click="setList('prizeInfo')">
+	// 					奖品介绍
+	// 				</div>
+	// 			</div>
+	// 		</div>
+	// 		 <component :is="currentList"></component>
+	// 	</div>
+	// </template>
+	//
+	// <style lang="less">
+	// 	body{
+	// 		height: 100%;
+	// 		margin: 0;
+	// 		background-color: #493119;
+	// 	}
+	// 	div{
+	// 		box-sizing: border-box;
+	// 	}
+	// 	a{
+	// 		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	// 		-webkit-tap-highlight-color: transparent;
+	// 	}
+	// 	.clearfix{
+	// 		zoom: 1;
+	// 	}
+	// 	.clearfix:after{
+	// 		content: '';
+	// 		display:block;
+	// 		clear: both;
+	// 	}
+	// 	[v-cloak] {
+	// 	  display: none;
+	// 	}
+	// 	.container{
+	// 		background:url('../static/img/newbg.jpg') center top no-repeat;
+	// 		background-size: 100% auto;
+	// 		padding-top: 1rem;
+	// 	}
+	// 	.river{
+	// 		width: 100%;
+	// 		height: 13.6rem;
+	// 		background:url('../static/img/river.png') center top no-repeat;
+	// 		background-size: 100% auto;
+	// 		position: relative;
+	// 	}
+	// 	.boat{
+	// 		width: 3rem;
+	// 		height: 3.1rem;
+	// 		background: url('../static/img/boat.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		position: absolute;
+	// 		transition: all 0s ease-in;
+	// 		opacity: 0
+	// 	}
+	// 	.tips{
+	// 		width: 100%;
+	// 		height: 2.875rem;
+	// 		background: url('../static/img/river-tips.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		font-size: .55rem;
+	// 		color: white;
+	// 		line-height: 1.5;
+	// 		padding: .6rem 1.5rem;
+	// 	}
+	// 	.get-gift{
+	// 		width: 10rem;
+	// 		height: 2.25rem;
+	// 		border-radius: 2.25rem;
+	// 		background-color: #ffeb55;
+	// 		font-size: .9rem;
+	// 		text-align: center;
+	// 		color: #333;
+	// 		line-height: 2.25rem;
+	// 		margin:0 auto;
+	// 	}
+	// 	.my-gift{
+	// 		width: 6rem;
+	// 		height: 1.125rem;
+	// 		line-height: 1.125rem;
+	// 		border-radius:1.125rem;
+	// 		text-align: center;
+	// 		margin: .5rem auto 0 auto;
+	// 		font-size: .6rem;
+	// 		color: #f8f2c7;
+	// 		background-color: rgba(56,38,19,.9);
+	// 	}
+	// 	.my-gift a{
+	// 		display: inline-block;
+	// 		color: #f8f2c7;
+	//
+	// 	}
+	// 	.content{
+	// 		.tab-group{
+	// 			margin-top: .75rem;
+	// 			text-align: center;
+	// 			font-size: 0;
+	//
+	// 			.tab{
+	// 			display: inline-block;
+	// 			width: 5.15rem;
+	// 			height: 2.8rem;
+	// 			background: url('../static/img/tab-btn.png') center center no-repeat;
+	// 			background-size: 100% 100%;
+	// 			font-size: .65rem;
+	// 			line-height: 2.8rem;
+	// 			color: #dfdfdf;
+	// 			text-align: center;
+	// 			}
+	// 			 .current{
+	// 				background: url('../static/img/tab-btn-hover.png') center center no-repeat;
+	// 				background-size: 100% 100%;
+	// 				color: white;
+	// 			}
+	// 		}
+	// 	}
+	//
+	//
+	// 	/*弹框样式*/
+	// 	.dia-mask {
+	// 		position: absolute;
+	// 		top: 0;
+	// 		bottom: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		height: 100%;
+	// 		padding: 1rem;
+	// 		background: rgba(0,0,0,.8);
+	// 		text-align: center;
+	// 		display: flex;
+	// 	    justify-content: center;
+	// 	    align-items: center;
+	// 	    display: -webkit-flex;
+	// 	    -webkit-justify-content: center;
+	// 	    -webkit-align-items: center;
+	// 	    display: -webkit-box;
+	// 		-webkit-box-pack: center;
+	// 		-webkit-box-align: center;
+	// 		font-family: 'SimSun';
+	// 		transition: opacity .3s ease;
+	// 		-webkit-transition: opacity .3s ease;
+	// 		-moz-transition: opacity .3s ease;
+	// 	}
+	// 	.dia-enter, .dia-leave {
+	// 	    opacity: 0;
+	// 	}
+	//
+	// 	.dia-enter .dia-container,
+	// 	.dia-leave .dia-container {
+	// 	    -webkit-transform: scale(1.1);
+	// 	    transform: scale(1.1);
+	// 	}
+	//
+	// 	.dia-close{
+	// 		display: inline-block;
+	// 		position: absolute;
+	// 		top: 1rem;
+	// 		right: 0rem;
+	// 		width: 1.2rem;
+	// 		height: 1.2rem;
+	// 		background: url(../static/img/close.png) center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 	}
+	// 	.dia-container {
+	// 		position:relative;
+	// 		background-color: #fff;
+	// 		transition: all .3s ease;
+	// 		-webkit-transition: all .3s ease;
+	// 		-moz-transition: all .3s ease;
+	// 	}
+	// </style>
+
+/***/ },
 /* 111 */,
 /* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
-/* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */,
-/* 152 */,
-/* 153 */,
-/* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */,
-/* 160 */,
-/* 161 */,
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(114)
+	__vue_script__ = __webpack_require__(116)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaShare.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(118)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaShare.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(115);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaShare.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaShare.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".share-container {\n  position: fixed;\n  height: 100%;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  background: rgba(0, 0, 0, 0.8);\n  transition: opacity .3s ease;\n  -webkit-transition: opacity .3s ease;\n  -moz-transition: opacity .3s ease;\n}\n.share-container img {\n  width: 12rem;\n  float: right;\n  margin-right: 1.25rem;\n  margin-top: 1rem;\n}\n.share-enter,\n.share-leave {\n  opacity: 0;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 116 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// 	<div class="share-container" @click='quiteDia' transition="share">
+	//    		<img src="../static/img/fenxiangzhiyin.png">
+	// 	</div>
+	// </template>
+	//
+	// <style lang="less">
+	//
+	// .share-container {
+	// 	position: fixed;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	top: 0;
+	// 	bottom: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	background: rgba(0,0,0,.8);
+	// 	transition:opacity .3s ease;
+	// 	-webkit-transition: opacity .3s ease;
+	// 	-moz-transition: opacity .3s ease;
+	//
+	// 	img{
+	// 		width: 12rem;
+	// 		float: right;
+	// 		margin-right: 1.25rem;
+	// 		margin-top: 1rem;
+	// 	}
+	// }
+	//
+	// .share-enter, .share-leave {
+	//     opacity: 0;
+	// }
+	//
+	// </style>
+	// <script>
+
+/***/ },
+/* 117 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.writeInfo = exports.setList = exports.pushInfo = exports.getActiveInfo = exports.getPrizeInfo = exports.getPrizeList = exports.initData = exports.quiteDia = exports.sharGetPrize = undefined;
+
+	var _vue = __webpack_require__(2);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//更改弹框为哪个组件的使用状态
+	var sharGetPrize = exports.sharGetPrize = function sharGetPrize(_ref, dia) {
+		var dispatch = _ref.dispatch;
+		var state = _ref.state;
+
+		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId, "raDefUuid": state.raDefUuid };
+		if (state.activeStatus == 3) {
+			_vue2.default.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4", vd).then(function (res) {
+				dispatch('INIT_DATA', res.data.helpInfoVo);
+				dispatch('SET_DIALOG', dia);
+				dispatch('SET_ANIMATE');
+				setTimeout(function () {
+					dispatch('QUIT_DIALOG');
+				}, 3000);
+			});
+			//帮好友集赞
+			_vue2.default.http.post("doReply", vd, { emulateJSON: true }).then(function (res) {
+				dispatch('SET_HELP_TEXT', res.data.helpInfoVo.replyAlertMessage);
+				dispatch('SET_DIALOG', dia);
+				setTimeout(function () {
+					dispatch('QUIT_DIALOG');
+					dispatch('INIT_DATA', res.data.helpInfoVo);
+				}, 20000);
+			});
+		} else if (state.activeStatus == 2) {
+			//抽奖
+			_vue2.default.http.post("getRandomCC", vd, { emulateJSON: true }).then(function (res) {
+				dispatch('SET_PRIZE', res.data.lotteryInfoVo);
+				dispatch('SET_DIALOG', dia);
+			});
+		} else if (state.activeStatus == 5) {
+			//更改回状态为4时候的逻辑
+			dispatch('SET_DIALOG', dia);
+			/*if(state.isSubscribe == 'yes'){
+	         dispatch('SET_INIT_DIA','share');
+	       }else if(state.isSubscribe == 'no'){
+	         dispatch('SET_INIT_DIA','follow');
+	       }*/
+		} else {
+				//其它状态弹框
+				dispatch('SET_DIALOG', dia);
+			}
+	};
+
+	//隐藏弹框
+	var quiteDia = exports.quiteDia = function quiteDia(_ref2) {
+		var dispatch = _ref2.dispatch;
+
+		dispatch('QUIT_DIALOG');
+	};
+
+	//初始化数据
+	var initData = exports.initData = function initData(_ref3, data) {
+		var dispatch = _ref3.dispatch;
+
+		//dispatch('INIT_DATA',data.helpInfoVo);
+		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
+		_vue2.default.http.post("getReplyInfo", vd, { emulateJSON: true }).then(function (res) {
+			console.log(res.data);
+			if (res.data.status == 'success') {
+				dispatch('INIT_DATA', res.data.helpInfoVo);
+			}
+		});
+	};
+
+	//查看奖品数据
+	var getPrizeList = exports.getPrizeList = function getPrizeList(_ref4, dia) {
+		var dispatch = _ref4.dispatch;
+
+		var vd = { "uuid": uuid, "shareId": wxshareId };
+		_vue2.default.http.post("viewRewardInfo", vd, { emulateJSON: true }).then(function (res) {
+			dispatch('SET_PRIZE_LIST', res.data);
+			dispatch('SET_DIALOG', dia);
+		});
+	};
+
+	//查看奖品详情
+	var getPrizeInfo = exports.getPrizeInfo = function getPrizeInfo(_ref5) {
+		var dispatch = _ref5.dispatch;
+
+		var vd = { "uuid": uuid };
+		_vue2.default.http.post("getPicInfo", vd, { emulateJSON: true }).then(function (res) {
+			dispatch('SET_PRIZE_INFO', res.data.raDefPicList);
+		});
+	};
+
+	//查看活动详情
+	var getActiveInfo = exports.getActiveInfo = function getActiveInfo(_ref6) {
+		var dispatch = _ref6.dispatch;
+
+		var vd = { "uuid": uuid };
+		_vue2.default.http.post("getDesc", vd, { emulateJSON: true }).then(function (res) {
+			dispatch('SET_ACTIVE_INFO', res.data.desc);
+		});
+	};
+
+	//提交领奖信息
+	var pushInfo = exports.pushInfo = function pushInfo(_ref7) {
+		var dispatch = _ref7.dispatch;
+		var state = _ref7.state;
+
+		var vd = { "uuid": uuid, "openId": wxopenId, "shareId": wxshareId };
+		vd.username = state.getPrizeInfo.username;
+		vd.telphone = state.getPrizeInfo.telphone;
+		vd.address = state.getPrizeInfo.address;
+		if (vd.username.trim() == '' && vd.telphone.trim() == '' && vd.address.trim() == '') {
+			return;
+		} else {
+			_vue2.default.http.post("writeRewardInfo", vd, { emulateJSON: true }).then(function (res) {
+				dispatch('QUIT_DIALOG');
+			});
+		}
+	};
+
+	var setList = exports.setList = function setList(_ref8, dia) {
+		var dispatch = _ref8.dispatch;
+
+		dispatch('SET_LIST_CONT', dia);
+		console.log(dia);
+	};
+
+	//填写领奖信息
+	var writeInfo = exports.writeInfo = function writeInfo(_ref9, dia) {
+		var dispatch = _ref9.dispatch;
+		var state = _ref9.state;
+
+		dispatch('SET_DIALOG', dia);
+	};
+
+/***/ },
+/* 118 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\t<div class=\"share-container\" @click='quiteDia' transition=\"share\">\n   \t\t<img src=\"" + __webpack_require__(119) + "\">\n\t</div>\n";
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/fenxiangzhiyin.png";
+
+/***/ },
+/* 120 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(121)
+	__vue_script__ = __webpack_require__(124)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaSuccessHelp.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(125)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaSuccessHelp.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(122);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaSuccessHelp.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaSuccessHelp.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".success-help {\n  width: 13.075rem;\n  height: 6.4rem;\n  background: url(" + __webpack_require__(123) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4.4rem;\n}\n.success-area {\n  width: 100%;\n  font-size: .75rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/helpd.png";
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia
+			},
+			getters: {
+				helpdText: function helpdText(state) {
+					return state.helpdText;
+				}
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div  class="dia-mask" transition="dia" @click="quiteDia">
+	// 	<div  class="dia-container success-help">
+	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
+	// 		<div class="success-area">{{helpdText}}</div>
+	// 	</div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// 	.success-help{
+	// 		width: 13.075rem;
+	// 		height: 6.4rem;
+	// 		background: url('../static/img/helpd.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 4.4rem;
+	// 	}
+	// 	.success-area{
+	// 		width: 100%;
+	// 		font-size: .75rem;
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 125 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click=\"quiteDia\">\r\n\t<div  class=\"dia-container success-help\">\r\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\r\n\t\t<div class=\"success-area\">{{helpdText}}</div>\r\n\t</div>\r\n</div>\r\n";
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(127)
+	__vue_script__ = __webpack_require__(130)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaForbid.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(131)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaForbid.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 127 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(128);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaForbid.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaForbid.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".forbid-help {\n  width: 12.75rem;\n  height: 11.1rem;\n  background: url(" + __webpack_require__(129) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.8rem;\n}\n.forbid-area {\n  width: 100%;\n  font-size: .75rem;\n  text-align: left;\n  padding-left: .5rem;\n  padding-right: .5rem;\n}\n.forbid-area p {\n  margin: .5rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 129 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/forbid-help.png";
+
+/***/ },
+/* 130 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div  class="dia-mask" transition="dia" >
+	// 	<div  class="dia-container forbid-help">
+	// 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
+	// 		<div class="forbid-area">
+	// 		<p>新爱的John:</p>
+	// 		<p>您已经帮20个好友助力了人缘太好了！</p>
+	// 		<p>因本次活动限制，不能再帮其他好友助力了哦。</p>
+	// 		</div>
+	// 	</div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// 	.forbid-help{
+	// 		width: 12.75rem;
+	// 		height: 11.1rem;
+	// 		background: url('../static/img/forbid-help.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 3.8rem;
+	// 	}
+	// 	.forbid-area{
+	// 		width: 100%;
+	// 		font-size: .75rem;
+	// 		text-align: left;
+	// 		padding-left: .5rem;
+	// 		padding-right: .5rem;
+	//
+	// 		p{
+	// 			margin:.5rem;
+	// 		}
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 131 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container forbid-help\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"forbid-area\">\r\n\t\t<p>新爱的John:</p>\r\n\t\t<p>您已经帮20个好友助力了人缘太好了！</p>\r\n\t\t<p>因本次活动限制，不能再帮其他好友助力了哦。</p>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+
+/***/ },
+/* 132 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(133)
+	__vue_script__ = __webpack_require__(136)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaFollow.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(137)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaFollow.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(134);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaFollow.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaFollow.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".follow {\n  width: 12.5rem;\n  height: 16.5rem;\n  background: url(" + __webpack_require__(135) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 5rem;\n}\n.follow-area {\n  text-align: center;\n}\n.follow-area img {\n  width: 8.5rem;\n  height: 8.5rem;\n  margin-bottom: .75rem;\n}\n.follow-area .follow-word {\n  color: #222;\n  font-size: .6rem;\n}\n.follow-area .follow-word span {\n  color: #ff8033;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/follow.png";
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div  class="dia-mask" transition="dia" @click.stop.prevent="quiteDia">
+	// 	<div  class="dia-container follow">
+	// 		<!-- <a href="javascript:;" class="dia-close" @click="quiteDia"></a> -->
+	// 		<div class="follow-area">
+	// 			<img src="../static/img/qrcode.png">
+	// 			<div class="follow-word">
+	// 			关注我们&nbsp;<span>即有机会把XXX领回家</span>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// 	.follow{
+	// 		width: 12.5rem;
+	// 		height: 16.5rem;
+	// 		background: url('../static/img/follow.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 5rem;
+	// 	}
+	// 	.follow-area{
+	// 		text-align: center;
+	//
+	// 		img{
+	// 			width: 8.5rem;
+	// 			height: 8.5rem;
+	// 			margin-bottom: .75rem;
+	// 		}
+	//
+	// 		.follow-word{
+	// 			color: #222;
+	// 			font-size: .6rem;
+	//
+	// 			span{
+	// 				color: #ff8033;
+	// 			}
+	// 		}
+	//
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click.stop.prevent=\"quiteDia\">\r\n\t<div  class=\"dia-container follow\">\r\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a> -->\r\n\t\t<div class=\"follow-area\">\r\n\t\t\t<img src=\"" + __webpack_require__(138) + "\">\r\n\t\t\t<div class=\"follow-word\">\r\n\t\t\t关注我们&nbsp;<span>即有机会把XXX领回家</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+
+/***/ },
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/qrcode.png";
+
+/***/ },
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(140)
+	__vue_script__ = __webpack_require__(143)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaWin.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(144)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaWin.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 140 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(141);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaWin.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaWin.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 141 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".win {\n  width: 9.675rem;\n  height: 12.15rem;\n  background: url(" + __webpack_require__(142) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4.4rem;\n}\n.win-area {\n  text-align: center;\n}\n.win-area img {\n  width: 3.5rem;\n  height: 3.5rem;\n  margin-top: .6rem;\n  margin-bottom: .6rem;\n}\n.win-area .win-word {\n  color: #222;\n  font-size: .75rem;\n}\n.win-area .prize {\n  font-size: .6rem;\n}\n.lose-area .lose-word {\n  color: #222;\n  font-size: .75rem;\n}\n.lose-area img {\n  margin-top: .6rem;\n  width: 2.25rem;\n  height: 3.65rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 142 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/win.png";
+
+/***/ },
+/* 143 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia
+			},
+			getters: {
+				getPrize: function getPrize(state) {
+					return state.getPrize;
+				}
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div  class="dia-mask" transition="dia" @click.stop.prevent="quiteDia">
+	// 	<div  class="dia-container win">
+	// 		<!-- <a href="javascript:;" class="dia-close" @click="quiteDia"></a> -->
+	// 		 <div class="win-area" v-show="getPrize.isGet">
+	// 			<div class="win-word">恭喜您中奖啦!</div>
+	// 			<img :src="getPrize.url">
+	// 			<div class="prize">{{getPrize.name}}</div>
+	// 		</div>
+	// 		<div class="lose-area" v-show="!getPrize.isGet">
+	// 			<div class="lose-word">很遗憾没中奖!</div>
+	// 			<img src="../static/img/lose.png">
+	// 		</div>
+	// 	</div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// 	.win{
+	// 		width: 9.675rem;
+	// 		height: 12.15rem;
+	// 		background: url('../static/img/win.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 4.4rem;
+	// 	}
+	// 	.win-area{
+	// 		text-align: center;
+	//
+	// 		img{
+	// 			width: 3.5rem;
+	// 			height: 3.5rem;
+	// 			margin-top: .6rem;
+	// 			margin-bottom: .6rem;
+	// 		}
+	//
+	// 		.win-word{
+	// 			color: #222;
+	// 			font-size: .75rem;
+	//
+	// 		}
+	//
+	// 		.prize{
+	// 			font-size: .6rem;
+	// 		}
+	// 	}
+	// 	.lose-area{
+	// 		.lose-word{
+	// 			color: #222;
+	// 			font-size: .75rem;
+	// 		}
+	//
+	// 		img{
+	// 			margin-top: .6rem;
+	// 			width: 2.25rem;
+	// 			height:3.65rem;
+	// 		}
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 144 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" @click.stop.prevent=\"quiteDia\">\r\n\t<div  class=\"dia-container win\">\r\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a> -->\r\n\t\t <div class=\"win-area\" v-show=\"getPrize.isGet\">\r\n\t\t\t<div class=\"win-word\">恭喜您中奖啦!</div>\r\n\t\t\t<img :src=\"getPrize.url\">\r\n\t\t\t<div class=\"prize\">{{getPrize.name}}</div>\r\n\t\t</div> \r\n\t\t<div class=\"lose-area\" v-show=\"!getPrize.isGet\">\r\n\t\t\t<div class=\"lose-word\">很遗憾没中奖!</div>\r\n\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+
+/***/ },
+/* 145 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAACSCAMAAADyzS3pAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAN2aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MmY4ZmJjNGUtMTk4NS04ZTQxLWFkYjktYWRjNjYxNGZiYzZkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJCM0IzMzFBMjMzMTExRTY5QTg0RUMwNkZBRjM1NzcwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJCM0IzMzE5MjMzMTExRTY5QTg0RUMwNkZBRjM1NzcwIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAyMjRkOTQ3LTMzZTMtZjI0Yy05NzViLWFlZjY0ZmY3ZWZlMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyZjhmYmM0ZS0xOTg1LThlNDEtYWRiOS1hZGM2NjE0ZmJjNmQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6HlhzCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwBQTFRFTGlxsbGxoqKioqKi3t7eoqKirKys2tra2tra2traoqKi////oqKioqKio6OjoqKioqKioqKioqKioqKioqKixcXFoKCgoqKi6OjooqKioqKi////oqKi////////oqKioqKioqKioqKioqKi////oqKioqKioqKi////2traoqKioqKioqKi/v7+2tra////////oqKioqKioqKin5+fl5eXoqKioqKioqKi2tra2tra3t7eoqKi29vboqKioqKi29vboqKioqKioqKi////////oqKioqKinp6e2tra2tra3t7e8vLy2travr6+oqKioqKi29vb+Pj4////8vLy6enp3Nzc////6urqoqKiwcHB/////v7+////oqKix8fH////s7OztbW1pqam7u7u3t7eoqKi////2trarq6u////2tra2tra+Pj4v7+/oqKi+/v79PT0pqam2tra2tra2tra4eHhz8/P29vb1tbW1NTUw8PD3d3d2tra////oqKi2traoqKi////9fX1////u7u7np6e////2tra////////zs7O/Pz8lpaW5OTk////////////5eXl+fn5////+fn529vb2tra/f39qqqq////qKioqKio////3t7e1tbW8vLyycnJwMDA1dXV6enpwMDAwMDAwMDAwMDApaWl////5OTk+fn5srKy0NDQv7+/wMDAycnJ////rq6usLCwsrKy////+vr609PTmpqa////p6en////kpKSkpKSkpKSkpKSmJiYkpKSkpKSzc3N////4uLisbGx2tra7OzswMDAoqKi////2tra2dnZ5OTk3Nzc/v7+kpKS+fn5/f399vb2xMTE4uLi6enp2NjY1NTU+/v79PT07e3tw8PD9/f35+fnx8fH7+/v3t7e8PDw6+vrp6enrq6upKSk1tbW0tLSysrKzs7Otra28vLy1NTUsbGxhYWFm5ububm5qqqqpqam0NDQwcHB29vb6+vrra2tv7+/zMzM4ODg3d3dvb29NB5jWQAAAMl0Uk5TAAH57an9Ay0els0t9HTxW7zICkyMBR6/CBnn4Hz++98QBkE9x9lGh3girGzj3nmHR1U6uTcrtJ7bKTLmgeEto/FoZNUJ7DOQFZuIoROM1NCW97D3yLLVoMyZ7DTQZm/ahPnt2r2mZlSp6xWRR8/5wvTn6P3BOvThzMjlT7L8fyVgqYzM5uX9vmX2PfPw/czXKBn86Fy82WvLxnT14pLC8JPCH7RXOIRrnqYa19ygybu4gSLy1LS214jz1MK/YLGAofHd2aUMslc3xBBJ3AAAB/BJREFUaN7tmmdYFEcYx+EuhxFBqqKIiooSCwQBe8Xeey/YNXZjYi+R2Ft677333ns+cDt7eEAoVzzaA6JwIVEBldPMbLm7bbN3c5cPPg//Dz67w+zvZmfeed933jUgwDMFjRsV3Ss4VqujNNrR4Qt7p3YJ8IseCE0LoUQKCc9s6yu3fehoSl66rWG+jL1Hfx2FUWxoJBk3KGw6pSZtqEcjnxAaERublc7dBfYdSHmigT1UwV2GsmulC2Vuu0VQnmpAvMpyuVB94d0Iygt1TsWRh3d2m78Jo7SUV9L0xg16XFTG+BgNt/CU1xqgtpqRUXhjwyhN3Qy7hhCyg+NV2XHU/8bOJEVTESpzEjSdGE31D8Kih1I+aAZ2FXW+oKm1mJ2j9YlMaYbLzXF7+E96LOWjusstZXRYj2gN5bOGyqBTdZQ/1FrOumf4BU0lyqADw8L9gdbKzXZgH78MW87BdvPPjAwMlKLH+wdNdZWiu/sJPUCaJPmJTIVIIk6GtNOWugsk7CgxWhrEqwAw2nOKL92q8tEBSk1PD3jlVxSaSi9f99SRiGO6tEs9EMlsdVwsuHxFlT1BlDlKezQCeeVll9efr630eLJDpT1yAFbWUqVFDhWiB0h7WIGK7A3y6BFCdIy0hwWoqkjWeGKE6M7SHnnqaGAuUDcRmQgDPFK1jGMVptfSDhc8Q4NyyWqGCNDxUnQl8JQteVSAbusDGlzEjtonNLiBm+t4n9C2KzgL0REvI9I5L+3aCzSodX9woRCdxrdv32W3VArQJeVIJSKYoaqq8upVfl853NGZosSMa352G+xoYi7NHIT6B4mSoOtqay/f4joZ3Xd8NyE6ijsDJjEd69C1jXeiNiSVbV/vlq+KspxI9nz0AjcH6LqC954YYomduyhTXEU+Nj7P9TwPr7PZS4uBGb541NloKoy006lfV3LXMG1nzE9ndlkqt3DXDGjYZtomIOfT6Jdthpt8g9N366RFmF7MH3hDgEvu4N7ZcA25fUO2AG0xFDLocr6hxnlaUsr5alyjKGYvKgwoJlgNQuuzG5hfLuIXBOjdygeSTJXZNVVGfvNe5yN6HvsD14Qx4JzwLUAdX2eQO65HC4OttcbFsQGjNV+IgkOwub2ImR90htz5K5X5U61rpVwmVihvebTZdc2R+8jWGIJY074p4+wN+XJoh8EVmU0cOkz+2MieOCqLJAzakKeG5lz21kB5NO9HLotdkaPR6JpUi73Czv5SmcP1MleUz6RIa50baoXDKEjFnNulwmFiVJwj3EEVChtR5KIYrXpcLts7ZzJVl5dYy4oaTUUyKUNMoBJacFBada9MJmaqzmZfx5gjzK1uMdbRXvH0ny48uD4ljYFWs0IShXIRTTqmhCqKYNNsnsavkcgthWGqIWGSE/fLRo/IHb6Xhi3Vk+P6xzwgJ7TQYYxD+eS4skgF3Gl5mzhKl4mv8Skk+StLcOQfWgXEazV98cUy5eLv+p3yc55XdjwF1Qa1qfg6XCLuULX9ozNieyuqX3F2PJMvpuG/GwQlqhU6Ppz1wbaObPBq0tcdy0X6CaXmUfharQel8NY5UCXXrGVl1m9zefWD0QmDje8WJ6hJajBoVsu0x/5FOpv7+wTlyt7Q4NbiYp1MoUj77pdHv2CohY7ym420Sc/o9K+5v2F2d1DXxBj3ynJEX0kd8cLnH2/R6/ftHDJsyEwayVDAokvOrMjN/aUfdg2Hj0rMCg8OjsiKG9dW+o2nlgU1mGhOl9gG/UXQ6Y+ff/Twu1JkmLRCqTnKkRqqWTI3HbDBDDqd8vQ7z7ioUXHRC7PC4StMh2+RNiI648SRZTyqoNh9OqCgE0j6k/hj1eKTHRc5UaUGiG5y3uqroZU/SEpu8x0Y60LpL7lNB3oNuIdOvkeIXgpf2Y2lb3KbDigU5ZYTfmODp4Ql7ix9qftNwxCInkWGToGPHtYrqxRFAjL0fPjoHAxaD9+qAxn6OEQvwKFXwzBDhl4C0Q/h0HNhhw1EaHTWm4dD74EdFhOhx8In92LIN3bBDilE6E7wydO4UZ+HHZaSkMegeFWKQ+vhex0kQT+K8gwsWf81APNJ0I+grAuPPgzAV0RuD6I349ELoCcg3edz8Oh5AIwlQa+D6NV49F7YpR2ZSwUv4dF/wy6fEaCfg8/twZJL6dkAnCJAL4foZTgyjMRJZDHsRWjWi3DoepreDEDHFCJ3jTVrGCrpOUTRIDABgGdwE40CPDRs0NFrG3kCPvWkMplNS95HfmaKt+iHUVDFLSHSSNhptrd5zgY0nrmKZD4FTEhKWOftoKcg9H41Mt2CxFuj88XrCiHASaY3kbiQg7PBkVflV7DaSaafJkuexgRMk7W6YheZnkSaT8ptxibaXfeQZqoyC3hRQKZ3E6Jfk27uYiGZHkKIflNsGaIhI7UjQ+8TzkVTsZRMDyJDvy2Yi2paTpvI0G+pgmn6EBn6HedUKIFpOpkM/Qm7ReoNtLImkqGn6RtKa6pprPaToT/9Jjn5xKG5dovlL/QJ5Y2eUIMHD37FZrHYK6xFJbuHHaDn+fK/M+/mazetuIa7XA3tdiT/X2gf1YwWatDMc5wmsw13ihuI1cJpwndwaHFDM7oZfTuj14jRa/yGbilGt2xGN6NvV3RPJ2kqdzY7wDds9DU2TuVJg7mGZL5hh6/owEn3MaDJroYDPp1jBNO98f5hIye65f+DpooahPoP/vs0zWbZk74AAAAASUVORK5CYII="
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(147)
+	__vue_script__ = __webpack_require__(150)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaLookprize.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(151)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaLookprize.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(148);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaLookprize.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaLookprize.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".look {\n  width: 12.75rem;\n  height: 16rem;\n  background: url(" + __webpack_require__(149) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4rem;\n}\n.look-area {\n  width: 100%;\n  font-size: .75rem;\n  color: #222;\n  padding: 0 1.5rem;\n}\n.look-area h1 {\n  font-size: .9rem;\n  font-weight: normal;\n}\n.look-area h2 {\n  font-size: .6rem;\n  font-weight: normal;\n  color: #666;\n}\n.look-area .list {\n  text-align: left;\n  min-height: 4rem;\n}\n.look-area .list p {\n  margin-top: .75rem;\n  margin-bottom: 0;\n  font-size: .6rem;\n}\n.look-area .btn {\n  width: 6.75rem;\n  height: 1.75rem;\n  line-height: 1.75rem;\n  color: #222;\n  text-align: center;\n  border-radius: 1.75rem;\n  border: 2px solid #222;\n  margin: .75rem auto;\n  background-color: #ffeb55;\n}\n.look-area .no-prize img {\n  margin-top: .6rem;\n  width: 2.25rem;\n  height: 3.65rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 149 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/look-prize.png";
+
+/***/ },
+/* 150 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia, sharGetPrize: _actions.sharGetPrize, writeInfo: _actions.writeInfo
+			},
+			getters: {
+				prizeList: function prizeList(state) {
+					return state.prizeList;
+				}
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div  class="dia-mask" transition="dia" >
+	// 	<div  class="dia-container look">
+	// 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
+	// 		<div class="look-area">
+	// 			<h1>查看奖品</h1>
+	// 			<h2>请在公众号"我的卡包"查看领奖信息</h2>
+	// 			<div class="list" v-if="prizeList.length > 0">
+	// 				<p v-for="data in prizeList">{{$index}}.{{data.raRewardName}}</p>
+	// 			</div>
+	// 			<div class="no-prize" v-if="prizeList.length < 1">
+	// 				<img src="../static/img/lose.png">
+	// 			</div>
+	// <<<<<<< HEAD
+	// 			<div class="btn" @click="sharGetPrize('writeInfo')">填写领奖信息</div>
+	// =======
+	// 			<div class="btn" @click="writeInfo('writeInfo')">填写领奖信息</div>
+	// >>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
+	// 		</div>
+	// 	</div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// 	.look{
+	// 		width: 12.75rem;
+	// 		height: 16rem;
+	// 		background: url('../static/img/look-prize.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 4rem;
+	// 	}
+	// 	.look-area{
+	// 		width: 100%;
+	// 		font-size: .75rem;
+	// 		color: #222;
+	// 		padding: 0 1.5rem;
+	//
+	// 		h1{
+	// 			font-size: .9rem;
+	// 			font-weight: normal;
+	// 		}
+	//
+	// 		h2{
+	// 			font-size: .6rem;
+	// 			font-weight: normal;
+	// 			color: #666;
+	// 		}
+	//
+	// 		.list{
+	// 			text-align: left;
+	// 			min-height:4rem;
+	//
+	// 			p{
+	// 				margin-top: .75rem;
+	// 				margin-bottom: 0;
+	// 				font-size:.6rem;
+	// 			}
+	// 		}
+	//
+	// 		.btn{
+	// 			width: 6.75rem;
+	// 			height: 1.75rem;
+	// 			line-height: 1.75rem;
+	// 			color: #222;
+	// 			text-align: center;
+	// 			border-radius: 1.75rem;
+	// 			border: 2px solid #222;
+	// 			margin:.75rem auto;
+	// 			background-color: #ffeb55;
+	// 		}
+	//
+	// 		.no-prize{
+	//
+	// 			img{
+	// 				margin-top: .6rem;
+	// 				width: 2.25rem;
+	// 				height:3.65rem;
+	// 			}
+	// 		}
+	//
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 151 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container look\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"look-area\">\r\n\t\t\t<h1>查看奖品</h1>\r\n\t\t\t<h2>请在公众号\"我的卡包\"查看领奖信息</h2>\r\n\t\t\t<div class=\"list\" v-if=\"prizeList.length > 0\">\r\n\t\t\t\t<p v-for=\"data in prizeList\">{{$index}}.{{data.raRewardName}}</p>\r\n\t\t\t</div> \r\n\t\t\t<div class=\"no-prize\" v-if=\"prizeList.length < 1\">\r\n\t\t\t\t<img src=\"" + __webpack_require__(145) + "\">\r\n\t\t\t</div> \r\n<<<<<<< HEAD\r\n\t\t\t<div class=\"btn\" @click=\"sharGetPrize('writeInfo')\">填写领奖信息</div>\r\n=======\r\n\t\t\t<div class=\"btn\" @click=\"writeInfo('writeInfo')\">填写领奖信息</div>\r\n>>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
+
+/***/ },
+/* 152 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(153)
+	__vue_script__ = __webpack_require__(156)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaWriteinfo.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(157)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaWriteinfo.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 153 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(154);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaWriteinfo.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaWriteinfo.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 154 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".diaa {\n  position: fixed;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.8);\n}\n.wirte {\n  width: 12.75rem;\n  height: 18.675rem;\n  background: url(" + __webpack_require__(155) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 4.5rem;\n}\n.wirte-area {\n  width: 100%;\n  font-size: .75rem;\n  color: #222;\n  padding: 0 1.5rem;\n}\n.wirte-area h1 {\n  font-size: .75rem;\n  font-weight: normal;\n  margin: 0;\n}\n.wirte-area .info {\n  text-align: left;\n}\n.wirte-area .info label {\n  margin-bottom: .25rem;\n  font-size: .6rem;\n  color: #666;\n  display: block;\n}\n.wirte-area .info input {\n  width: 9.75rem;\n  height: 1.75rem;\n  margin-bottom: .5rem;\n  padding-left: .25rem;\n  display: block;\n  padding: 0;\n  border: 1px solid #eee;\n  background-color: #fff;\n  outline: medium;\n  border-radius: 0;\n  -webkit-appearance: none;\n  padding-left: .2rem;\n}\n.wirte-area .btn {\n  width: 4.5rem;\n  height: 1.75rem;\n  line-height: 1.75rem;\n  color: #222;\n  text-align: center;\n  border-radius: 1.75rem;\n  border: 2px solid #222;\n  margin: .25rem auto;\n  background-color: #ffeb55;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 155 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/info.png";
+
+/***/ },
+/* 156 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(117);
+
+	exports.default = {
+		vuex: {
+			actions: {
+				quiteDia: _actions.quiteDia, sharGetPrize: _actions.sharGetPrize, pushInfo: _actions.pushInfo
+			},
+			getters: {
+				getPrizeInfo: function getPrizeInfo(state) {
+					return state.getPrizeInfo;
+				}
+			}
+		}
+	};
+	// </script>
+	// <template>
+	// <div class="diaa">
+	// </div>
+	// <div  class="dia-mask" transition="dia" >
+	// 	<div  class="dia-container wirte">
+	// 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
+	// 		<div class="wirte-area">
+	// 			<h1>填写领奖信息</h1>
+	// 			<div class="info">
+	// 				<label>姓名</label>
+	// 				<input type="text" v-model="getPrizeInfo.username">
+	// 				<label>联系电话</label>
+	// 				<input type="text" v-model="getPrizeInfo.telphone">
+	// 				<label>您附近的体验馆或收货地址</label>
+	// 				<input type="text" v-model="getPrizeInfo.address">
+	// 			</div>
+	// 			<div class="btn" @click="pushInfo()">提交</div>
+	// 		</div>
+	// 	</div>
+	// </div>
+	//
+	// </template>
+	// <style lang="less">
+	// 	.diaa{
+	// 		position: fixed;
+	// 		top: 0;
+	// 		left: 0;
+	// 		bottom: 0;
+	// 		right: 0;
+	// 		background: rgba(0,0,0,0.8);
+	// 	}
+	// 	.wirte{
+	// 		width: 12.75rem;
+	// 		height: 18.675rem;
+	// 		background: url('../static/img/info.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 4.5rem;
+	// 	}
+	// 	.wirte-area{
+	// 		width: 100%;
+	// 		font-size: .75rem;
+	// 		color: #222;
+	// 		padding: 0 1.5rem;
+	//
+	// 		h1{
+	// 			font-size: .75rem;
+	// 			font-weight: normal;
+	// 			margin:0;
+	// 		}
+	//
+	// 		.info{
+	// 			text-align: left;
+	//
+	// 			label{
+	// 				margin-bottom: .25rem;
+	// 				font-size: .6rem;
+	// 				color: #666;
+	// 				display: block;
+	// 			}
+	// 			input{
+	// 				width: 9.75rem;
+	// 				height: 1.75rem;
+	// 				margin-bottom: .5rem;
+	// 				padding-left: .25rem;
+	// 				display: block;
+	// 				padding: 0;
+	// 				border:1px solid #eee;
+	// 				background-color: #fff;
+	// 				outline:medium;
+	// 				border-radius: 0;
+	// 				-webkit-appearance:none;
+	// 				padding-left: .2rem;
+	//
+	// 			}
+	// 		}
+	//
+	// 		.btn{
+	// 			width: 4.5rem;
+	// 			height: 1.75rem;
+	// 			line-height: 1.75rem;
+	// 			color: #222;
+	// 			text-align: center;
+	// 			border-radius: 1.75rem;
+	// 			border: 2px solid #222;
+	// 			margin:.25rem auto;
+	// 			background-color: #ffeb55;
+	// 		}
+	// 	}
+	// </style>
+	// <script>
+
+/***/ },
+/* 157 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n<div class=\"diaa\">\r\n</div>\r\n<div  class=\"dia-mask\" transition=\"dia\" >\r\n\t<div  class=\"dia-container wirte\">\r\n\t\t<a href=\"javascript:;\" class=\"dia-close\" @click=\"quiteDia\"></a>\r\n\t\t<div class=\"wirte-area\">\r\n\t\t\t<h1>填写领奖信息</h1>\r\n\t\t\t<div class=\"info\">\r\n\t\t\t\t<label>姓名</label>\r\n\t\t\t\t<input type=\"text\" v-model=\"getPrizeInfo.username\">\r\n\t\t\t\t<label>联系电话</label>\r\n\t\t\t\t<input type=\"text\" v-model=\"getPrizeInfo.telphone\">\r\n\t\t\t\t<label>您附近的体验馆或收货地址</label>\r\n\t\t\t\t<input type=\"text\" v-model=\"getPrizeInfo.address\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"btn\" @click=\"pushInfo()\">提交</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n\r\n";
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(159)
+	__vue_script__ = __webpack_require__(162)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaBegin.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(163)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaBegin.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(160);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaBegin.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(161) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "../html/img/beging.png";
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	// <script>
+
+	// </script>
+	//
+	// <template>
+	// 	<div  class="dia-mask" transition="dia">
+	// 	<div  class="dia-container begin">
+	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
+	// 		<img src="../static/img/qrcode.png">
+	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
+	// 	</div>
+	// </div>
+	// </template>
+	//
+	// <style lang='less'>
+	// 	.begin{
+	// 		width: 12.15rem;
+	// 		height: 14.325rem;
+	// 		background: url('../static/img/beging.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 3.4rem;
+	//
+	// 		img{
+	// 			width: 8.5rem;
+	// 			height: 8.5rem;
+	// 		}
+	// 	}
+	// 	.begin-area{
+	// 		width: 100%;
+	// 		font-size: .6rem;
+	// 		color: #ff8033;
+	//
+	// 		span{
+	// 			color: #222;
+	// 		}
+	// 	}
+	// </style>
+	"use strict";
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\">\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(165)
+	__vue_script__ = __webpack_require__(168)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\diaOver.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(169)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./diaOver.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(166);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/vue-loader/lib/style-rewriter.js!./../node_modules/less-loader/index.js!./../node_modules/vue-loader/lib/selector.js?type=style&index=0!./diaOver.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(101)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".begin {\n  width: 12.15rem;\n  height: 14.325rem;\n  background: url(" + __webpack_require__(167) + ") center center no-repeat;\n  background-size: 100% 100%;\n  padding-top: 3.4rem;\n}\n.begin img {\n  width: 8.5rem;\n  height: 8.5rem;\n}\n.begin-area {\n  width: 100%;\n  font-size: .6rem;\n  color: #ff8033;\n  margin-top: .5rem;\n}\n.begin-area span {\n  color: #222;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 167 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeYAAAI2CAMAAACym9tPAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAN2aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzA2NyA3OS4xNTc3NDcsIDIwMTUvMDMvMzAtMjM6NDA6NDIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MmY4ZmJjNGUtMTk4NS04ZTQxLWFkYjktYWRjNjYxNGZiYzZkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzMEE5OEFFMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzMEE5OEFEMjMzMjExRTY5RTJBQkI1NkQzRTE4QzlEIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE1NGRjZDExLTU1YzQtMzQ0My05YzA3LWRiNThiMGM0MTY2YiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyZjhmYmM0ZS0xOTg1LThlNDEtYWRiOS1hZGM2NjE0ZmJjNmQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4V0md1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwBQTFRFTGlxAcbbFLjCAcbbAcbbAcbbAcbbAcbbAcbbAcbbFLjCAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeRoJeRoJeAcbbAcbbAcbbAcbbAcbbAcbbAcbbRoJeAcbbRoJeAcbbAcbbRoJeAcbbAcbbRoJeAcbbAcbbAcbbRoJeRoJeAcbbAcbbAcbbRoJeAcbbAcbbRoJeAcbbAcbbAcbbRoJeRoJeRoJeRoJeRoJeAcbbRoJeRoJeAcbbAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeAcbbAcbbRoJeAcbbRoJeAcbbAcbbAcbbAcbbAcbbRoJeRoJeRoJeRoJeAcbbRoJeAcbbAcbbRoJeRoJeAcbbRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeRoJeAcbbAcbbRoJeRoJeJ6WfRoJe/PjuAcbb////2+Te7PXt+/jussa5g6eQ3fLsWIxsz+/r9vj3wOzpnLem5OvmZ5V5dp6Fx9XM7fLvvM7DkK+b0d3Vseno+/ju5Ojb6vTtp7+woebn2vHrEcnc8/bt2ODRzNnInLqiye7ql+Tmp+jodd3khuHlQtPg5vTsft/lS9Xh4PPs9/fuuOrpieHlssi0X5JyZNrjet/kIc3eXtni6ezfF8vdtcq2rOjo+PbrONHfT9bhxO3q1/HrWNjilOPmUYlnTohkjK+VcJ1/B8fcgeDlVYxqfKWJkePmrMWv097ODcncKM7enubnjuLm8PDkZ9vjzO/qm+XnbdzjwNK/RdTgPtLgob2maJh5MtDfsOnoWo9u5urc1PDrHczdS4Vi0NzMLs/f2+PUus66uuvpbZx9SoVhCsjcpOfnlradSdXhf6eLeaOGb9zjh62SydjGp8GrdqGDtOrp8fHmadvjVdfhgqiNYpR0bNvjBMfbvezp9vTppcCp7e7i4ObYkbKZ8PbtQoZlOo5zmLifZZZ3xtXExNTCL5iHosa0JaKZiLOcDBJOpgAAAHR0Uk5TALwDpcO1/vDh0gHvd92qzRf3akX7QIkXk5zAGx+R69SWUX3kBm6MSLnO6Qz2EjKE19AqCaCvmYH6J2Yu9OvHXWc/DatxsMHgSv1OoVvaXnPKI/E15TgPYVYv32+XVAlihFk0HTuJKH8TtcU7T6e6s2N5Wxld2CPyAAAXdklEQVR42uycfVAU9xnHE42mteZF2sSoBczEltDQ0CQ4Y8a0aBASM2lJfOsEUFIdXzCaaTq37A672dnZ23t1mIuJR1601Y4wtpTYtL5ACgPpxNSYgSkaEQqGQhTLjMwURRPz0pd9v929vb19vd2D/f6lx93e7u+zz/N73vZuuild9MimjTmF5VszC4pLstfkeexS3prskuKCzK3lhTkbNz1ykysTNG3u0pzC0s0FVbll9oFVhF6WW1WwubQwZ+ncaS4ujSLhVm6tqMpds9KTPlqZlVtVsbWSBO4CVPTKW5YXlmYWbS9b4klvLSnbXpRZWrh8i+vThba7cX1pZnFulmfyKSu3OLN0/cYpbd/bSLwVVdl5nsmvvOyqChL3tqllvi8U5u/MXeWZelqVuzO/8IW5k55vZX7RlOQrpV2UXzkZaW/a4fKVpb1j06Sx4WXFa1ymCbWmeFn62/W28pKVLspkKXdJeVpHZ0sL8lyI6mLxgqXpCnl5iYtPg0qWp6Ulv+iS06gX086iH89c4mLTXibNfDytKOe4sbXOuDsnjZoQFW50rTvqrkiXhsemXJeWAeWmR8VkeZaLylhfKx1C7mVu7GU4ElvmeMr5LiUTlO9syLMyXUSmKHOWkzG7lKcC582pXAgoCIdQaw7tI+znvNm50VdK18ELgqDfpGOFwyHRHQSCQds5OzUO25HaogjJAvSZdCwMBAM+h2FeucORlLdYOB2CCr0oinIsAiYdPkTeMRgiwozY77ZXbXFisyLbwitGSA6gFyJF/QPhWEAmHT4ocQzOwOzJdmAjo8BjNWZeiNmeNSA5lEMwewocR3m9xwbMsGk+G6M3Ah/ECGNdByVbN+n1Tpvrs7aQjSKCzRlBTcYcBsGQzN3ECLITc5bDpgGLUnnxiE+I2YcgiKH8mWBY4hDiOMyeImeNEaT02uNZ+IwZM0YweTgUQmiR/4wgrHB7t2cnjRlMK7MZs8GdOcI6bD/qrBCMVJmDpgzKLb5WQupkA4I4KSDFDIMYJCtZB+zDmJeF+ZmDMHvKnZMyWz1IQGXLPCtSqJAFHI85kWQw4+TLYdhPHRcjtGImPwZZfT9kOSZ5fknX+eOyGyoCezFUDnOcjwZjmCGVmP3ymFmRuzBBaMPMZWJW6iWnTPjpMmZyLwyKlwjBgwzPYGLMXtpJc5h9spgJJJFLgGXDbOqo5A4QlrtDlONsWHUgLux5abwxshyyO+tqTKHkwoIBEghMyQ+JDFa6ED4fa3iYOBDTtNYJ8myYSsnJswmg1mGGyYvF/GwTzBfQyNkhrSpdg5yEnzXcoGhZvVQXGScSVTGCYjPkPGfQAGbu0IjHMsx+9mCBCAkY9Wptn2Y7Y5JT557jow0YRgMsX5CrRSWyf3F+TDp9r6ZqmML7cO5PBKoY43twCBaKapKJXgjL3XAR8mbAI0H6OukEQWsq7ohJz526gwvSGLyoJwRH6FImmCTuwTmu/OKFTcJM5lRe1WesLEj2Q4z54hjzHs0l2p1OyKYMPNvqE/byk2EO02UMwg/xzUOYwyc1jwgMh9RjJt0on0tJzsCHmoDZA7FHQXHyHLwhzcuU54CcqtLE2haiXHkmkxcqcmPe5eV8fCD+c5BcYSwRZpQ7kg/xxaVukiMjIUQoctP1Cv8fga0pjVbaj7k4RZhhJu2FWddN8AE5KIsZUouZcqWBIDevAGkqlsMp6mwU25806/TZ7FAmAfOmAAr6BUgkjjhJg2ATsZBop5ZJwMjlj693YvKYIVEiFxR+MmmxPFWY82xPnXX2pkIgFiQSdHhl4xSYq2GxS+vl0ihUBgas8qCC95Jww7AEnDbMqIVlT9v7VDpHs+nsIoiqxowyxozAXsa5Up8juMQKM4I5BMF4rF8NJceMxOrrgZjtG+2TKcv2oe3t+lpOYcaEcERSHOEdrIQISTeMhzG+Nh3Dgcg4TlgSGnGbQvJURgVmVFOUbY62291p1ptOMVUwHI0ZkkIIhnhjixmm+gUhkM+iIvKYIbkQLxkIVA1mT+x+FFiz11LMeTb/WvdSA0kzJC5KKGHmqoXBEGVNfgSLlUqCMkYqi1lpfA9FQrAfEnkJRcxI3Pcg1kZjNv/4zK+MnDuMqE2oqK3PC7PZDUpluvx7vWoxJ7iDgsxgArt3i8qXDsJcaC9mEx9nVsKMBGBCWJtkwmwSOxKW+5gGzBFxMQRSMX1kB2abH3guMHDqIWaxcDgkzpuVS0ko3dLyslVu2b6lJmvm4qcgPebgVMw2D+Yb+SG/MEhP2MAaQlY0xDT1vGgsLZNp+GgpW5BBFBwbZFG5N6c60vaU2IvZyINTAb58qX69cJosN4FJBd1+REN1SqZ2SSgmVIQzEiq7e84GJnep5Yowrjcg7uGGlT4VJrNtHhFCaCtCwl4kaYDgFfrzkFx2J6iIgFggViGxEHOWHXDXPffU9+6et3j+HXd8pv/MEbYzINnV4GRVDDz5jE1izOQ9ZNYz0aQroWwfF0yEWqdVKSa84Bd3z7ivmpcBzDBbpdSKWd2hoYSJmUmYcWrwl/qeQEraFzcvzLjrh6lBfOfPp3+jWiwDJ8555xRiprqXAdMoYyj9PYh5v42hIHq1n7h9xdpF1jJ+dvYzM6vjZHxrtgizXA5O10zNafwzD74zt1MwFZz5FX/s/tmrrSp9rsv4SbWs9DvtEOc/LcJMP4AT5AM7ut8MgmqHvpLcomHmfmEwU0U5yOKp/M9Eq/6DeU9ZYNTPzXusOoE+NxLBYB6LMBNYoqQHM2NnDmGsV2A3B4ozZu2Tk59LF/7W6U+aa9N3zZhZXW0+ZoxLnBBNCZVKzkG6ZwRK2pz+iAlGR0D87cLFAHSRPYCnEjNl099/1DTIa2+uVtLXRnw2Lio3OuXJ8SRpIF2GgwhxqIfSr2J+3Krc6mvZ1Z85/15TTPrZxbKHf+/cOx8ePPn2v19//X/6K51cLRpPH8y+SEA0hSKI6EPMXyCLOP83kZ3dlmF4l97w/Jy4w/7hyN5/HQB41esNYjB+hSTZD+JkzGExSuGpo9SDUpZF3P/5x9EP9r0qC/q+FRuMbcq3SY947q2/A2J16F4xLAHmiMxsl3OE04/3yefnKG5dvN1Br/bLb354Tm6TztDvujfcI4m8Pj50BojT+IDupISb5QiLucKWzs4ZN2hpvTMl3zowzq/4r0++Ew/6R0/qpPzwN8UH2v8mIKt+zxQWGc/7U/JF/aI1f+2TI3GgZ+iKun8m3pV/vwtIoDqPK+tVJ1326yf3STjPma3Zc0+7R3SEI7uBhOpwGaRAHTIrv+vTd8WgH3pQG+UH7hd+et/fAAXVoC4Ey4XWyK799b0fizh/Z7aWn9Rf8JDgo6++Aihr0KVguQYTLf5r7/9VvEPfqb4kIsyj9h9IQhmYcClYronEy//bg78TJdFrVVJ+VNBSPv8JkFzDLgaLNay4/tc/EEViT6uzZcFoyL4/q6AMXHQ5WKyLSQic+UhY535exQa9QOCx3wJUqabLBWGpumqSMnjjPQHoeUkzq3WCosheQKVcc7bXmOkyqNCgb0/SzVgk6DoeBVSrzUVhodrUQXhfwHmxMueFsXeeVE8ZqD3uwrBMx2tVUth1PkZvupLf/mXsfa8AWlTv0rBM9aopnBE0KhcmpvzgHF22TEVhQy4OizRUox7Dgf0xzisSljh/yr/nDUCjRhtcIJaoYVQTh9/ECp+JWpPz+LccBDSrttVFYoFaazVy+AsP8cfflaX8bX6K4BCgQx3H7A9WWhu6Wi5dvtx87UbdlZH6+vpTp05Foz17aNUyunqC0VX2/8wfe6JR8r1N9fUjV+puXGu+fPlSS1dDq/2B5bEOzRxinG+RC8Me4OsiHwFAGnAeaB3rH75wrW6kvenUxZ49tY2jgPkabazd03PxVFP7SN21C8P9Y60DTqcMAId4zrNlMPMd5vO7da5Jb7fFxtrQ33ZhsLO976ue3sZxwB6NN/b2fNXX3jl4oa2/wWJz7+7VdYr/5MvbD8dRXs277Ld1L0Fji+lXera7v625rr0vah/YJNCjfe11zW393WdNv/aWRn0n9TJf+Hwmzm3fwnceDVz1YZMmhga6Wy4PjvRFJ0aB9NHoRLRvZPByS7dJjv3GYb1n8ifebWdIKN/LTxEcMHStPWNGwsqutubOpi97rwLprau9XzZ1Nrd1GUk+xnoMnMBRjua3xFMGi/iUeZfBSzzcrjkSO9twiaQbnRgHJpvGJ6Ik70sNmh36sfbDhr6Y72NMF2HOMMNlszrRqfIuHiDxXunraKwBJrtqGjv6rpC4Vbrz1s4TBr9wN1fenrlaOMj5BPvquwdMuYmblGOxs2NDg/XR2smPNw53bbR+cGhM2bhbmkxwawc5u50vwPw09+KnZl3Q6fZhmWzj7BdDN+qjp6ceXwnt09H6G0NfyNA+Ptx+2pzv+COHNFbznMVNcv6fvXsJrerOAzh+Ek1iUk2iRvG1qNGIGJQoVLGoq4LioyhDq7MpLbh3VhcihJC1EJJYmnc0cRoVm8aoHWqYgA+0MtJaFIRArWAXomC7cj/X5pyb+KiaJrW5fz9fEP43uT7y+3DOuefchycOT+IP8/Xn//75v9//mD5U/+ebL7/95Yuv+D6n/dUXv3z75TfpDeKbH7//789fff71pP3hhxLmktHLnBO4lq0pWubJqrkJc3FyMvXYdIKp5tmj8+qyiTxloSnag8Q5fstNRXK72mwCqj5hXT/CXJK869Fogqo3+SCxj58oL5n4cxaa0kfnvWP32ScMJrCSTzVY+YQ5L74xaC6B1Zq8LGx1FOUmH+B301xC61RMuzOK1tlnB9u12HZHFO31ODvYbiRveh59P805Uwmv5G0Yi6PkY0Z6DCXcx9rbo+R1I2cMJbySF/OWRwWudIZb8uqC+VHyvEW3oYTXucz7I5MrYp7yxyzMmrK1JB86gznkGjIv18aMWZiFWZiFWZiFWc+WvK7gAOaQS94wl4cZszALszALszALs55rOMbNwRxydclHa2PGLMzCLMzCLMzCLMyYMWMWZmEWZmEWZmEWZsyYMQuzpnJXM/+DIOaAq41xCzFjFmZhFmZhFmZhFmbMmDELszALszALszALM2bMmIVZU7maGHcGZszCLMzCLMzCLMzCjBkzZmEWZmEWZmEWZmHGjBmzMAuzMAuzMAuzXsi8KV49NpSQmQviVbWhYBZmYRZmYRZmYRZmzMIszMIszMKsiVUf427GHHLVMW4BZszCLMzCLMzCLMzCjBkzZmEWZmEWZmEWZmHGjBmzMAuzMAuzMAuzMGPGjFmYhVmYhVmYhVmYMQuzMAuzMAuzMAuzMGMWZmEWZmEWZmEWZmHGLMzCLMzCLMzCLMyYMWMWZmEWZmEWZmEWZsyYMQuzsqTDMe5szCF3MMZNYcYszMIszMIszMIszJgxYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWZiFWZiFWZiFGbMwC7MwC7MwC7MwCzNmYRZmYRZmYRZmYRZmzAqReXO8qDeUkJlnxIsaQ8EszMIszMIszMIszJiFWZiFWZiFWZiFWZgxC7MwC7MwC7MwC7MwYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWZiFWZiFWZiFGTNmzMIszMIszMIszMKMGTNmYRZmYRZmYRZmYcaMGbOyt8cx7ibMIVcd4xZgxizMwizMwizMwizMmDFjFmZhFma9YeatmN8G5sJ4VWsomIVZmIVZmIVZmIUZszALszALszALszALM2ZhFmZhFmZhFmZhFmbMwizMwizMwqyJM5fEq2ZDCZl5eryqMxTMwqypWmeMuwpzyNXEuDMwYxZmYRZmYRZmYRZmzJgxC7MwC7MwC7MwCzNmzJiFWdnAvBVzyNXGuIVRTrwaNpSQmfPi1SFDwSzMwizMwizMwqy4gRh3N+aQq4txp2N+O5gPxKsbhhJev8W4i6KF8eo7Qwmvlhh3fbQhXnUZSnhdi3ErovfjVa+hhFd/jDs32hav7hpKcNXHtvkfR/+Ml7dNJbjOxbZro6gyP14fNJbQuh7Tzo+iaEa8rjGWwDoUy6Y+SjMn10fum0tgPUpe8FeUZv40vjFoLmFV/euYfXa0NL5xxGDC6l7yOHvjE+bS+Nb5bpMJamM+H8OujH6vKr7ZajQhdTJ5ALZ9hPnd+OYVowmo5kS5MHeEOTk4N9lrB3jOnFo6ohxVzo6/cMdwgulyory2KGbOPOV82nRC6Uzy+Cs1L1GOdqZcCAusjoS0OKMcfVLgyciw6kqUNy0ZZc68gsTmHEYNiWeqYoxytCb56lkjCulcKjU9dyxztCj5+oAhZX1HmzK77D1PKUdzk2/0m1LWdySzMe+NnimzObcbU5Y3mFHe8axytD/zPU87B3JdJFVV+RxzNC355k83jSqLa8koF6x7XjlanJw7p5qOGlbWdimjnL80elFzMnc44imM7FdObXihclR0YNTZ9pydfTeqPK3oxczR6mWZ+zQ1GlkWNjSqvGV59EftL8vc64LH29lX+6hyYWn0x+3MH73jkLFlVzV3R/G2Lo5e1szRe6Y6zhhdFlXXNEq3bE/08jaMcT5/77HpZUtdY+BmvEo5vT2P2W+nTnWBzopu9I9Rm7UkenV7y8b8jtRPbX/FR5IcrO5svDrQ09rQ0nKsvb39eFtb24PedNfSi6729qGWO609w81XG4/We/veOI/KqdTu0uh12r8q9VQdlw5P3LXzZt2NS5ePPzp7t//iqQup1++nUyd+uH73Ye+948daWnuaz3QexvoMcu9TA3uvMnq9Slc+O+u7LZ3j/+u7O2uHGy4fv3L6+sVTqUnsfBr+fw+vHD/2Xd9vtUff9qPKoZNPDSd/Q270uhV9MPu54V48O9h685UXQbuP1g7fGep69HCSaV+qfrH/yMlrXUMN9wdudr5dl2m7GzqeHsbmudF42pPz4pne6j/9aPDypb6egebm5sb0r56e+62tLceOPzp5uuOHExdSf3sXbv2+qV++dKMudPS+B03P/PB5i6NxtrQqFUAX0vv3sw/S6IcGzgSF3t137bnd5TsfRuMvd++uVGA1PUHP/oP6wZvnjvz63A+Xv7A0+lPl7luUnwq30YP6oaw5qHefaW3rf+FPs2hN9OfbuGLzXzLiglWz1m7JKZ62fv2K+fPnl8+cObPi/XQV6UX5/PkL1k8rzskpWTtr2Tv5b/Cgfrvj9Ml7g0OXbvx2taZ6qp2wP67tO9bb/0f/+Olzo4m1fO67MyY+w/zNVdMP7FhRXrFz20cbSyvH8fdXlu5ZM2/bvvc/KF+xsDhn965Vs9/YHv729dMnr7S1n2voG25u/JvO17uPDvQNtZ28futlw105L5qEitbMzCsY/5zKVhXmTFtQPmfpvHWludHktbx0zz/m7pszc8XC9xYVLtv0xjb3X9Pw/R0P0/KDx1ru9PU01zbWP/4LNvrDnWcG7jcMdT04+1pnpe+s2Dh5sy3a+NmnxVVlr6RdVrioeMGGin1p2qLojbS8dN3+7R9+sGHBtLwtVZvL3vgRvunWids/dHQ8PNv7YORCbcud1taenuHm5quNT6ofqfrgSI/j2zXpbzU31z05H73Ucq59sK33bPqU9OKtpvFtSnk7P5n8keYu/mhpxacLdryXs6WkpGRWScnunJy84uL16b3xh0vnrdlTGf3tfbxkTXpTL1+x48CWqlVlqZArW/mv1ZGeoKf375/NKV+wI2/Lrs1BnTZsfXd7Jd8Xv9htBP1NH9Qnu/yqhXs30vwzB/Us2b/n7you32ZPPYEq/z+ZSFHFAmCse5tKGbpzD7YItuE0VbMKHS2nqV7CA6Pdy0+IR0yB2ZSRn5du/XW07KscYCrB4ycqPRohdAJMuoGRKcIRflY85mpmwKgP4OTlpkUFL2jra8fKDOyVJlJ5wGEUkA/idKUDI/VEhSMSrYQgA7VmzHx8GoyM/PyGvCDADQWwwhfK5QBK8fOzMGrw8XmbKYgl8Fj5KAoHG8no0ihiAX+T4xsDIM2QAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 168 */
+/***/ function(module, exports) {
+
+	// <script>
+
+	// </script>
+	//
+	// <template>
+	// 	<div  class="dia-mask" transition="dia" >
+	// 	<div  class="dia-container begin">
+	// 		<!-- <a href="javascript:;" class="dia-close"></a> -->
+	// 		<img src="../static/img/qrcode.png">
+	// 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
+	// 	</div>
+	// </div>
+	// </template>
+	//
+	// <style lang='less'>
+	// 	.begin{
+	// 		width: 12.15rem;
+	// 		height: 14.325rem;
+	// 		background: url('../static/img/over.png') center center no-repeat;
+	// 		background-size: 100% 100%;
+	// 		padding-top: 3.4rem;
+	//
+	// 		img{
+	// 			width: 8.5rem;
+	// 			height: 8.5rem;
+	// 		}
+	// 	}
+	// 	.begin-area{
+	// 		width: 100%;
+	// 		font-size: .6rem;
+	// 		color: #ff8033;
+	// 		margin-top: .5rem;
+	//
+	// 		span{
+	// 			color: #222;
+	// 		}
+	// 	}
+	// </style>
+	"use strict";
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\n\n\n\n\t<div  class=\"dia-mask\" transition=\"dia\" >\n\t<div  class=\"dia-container begin\">\n\t\t<!-- <a href=\"javascript:;\" class=\"dia-close\"></a> -->\n\t\t<img src=\"" + __webpack_require__(138) + "\">\n\t\t<div class=\"begin-area\"><span>关注我们</span> 更多精彩等着你~</div>\n\t</div>\n</div>\n";
+
+/***/ },
 /* 170 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\" :style=\"{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" >\n\t\t\t{{festivalInfo.tips}}\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize('look')\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" @click=\"getPrizeList('look')\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" @click=\"setList('listInfo')\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('activeInfo')\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('prizeInfo')\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <component :is=\"currentList\"></component>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"container\" v-cloak>\n\t<div class=\"head\">\n\t\t<div class=\"river\">\n\t\t\t<div class=\"boat\" :style=\"{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}\">\t\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"tips\" >\n\t\t\t{{festivalInfo.tips}}\n\t\t</div>\n\t\t<!-- 未集满，不能抽奖 -->\n\t\t<div class=\"get-gift\"  @click=\"sharGetPrize('look')\">\n\t\t\t{{festivalInfo.btnName}}\n\t\t</div>\n\t\t<!-- 已集满，可抽奖 -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" @click=\"sharGetPrize(initDialog)\">\n\t\t\t 还剩余X次抽奖机会\n\t\t</div> -->\n\t\t<!-- <div class=\"get-gift\"  v-if=\"festivalInfo.hitPrize \" >\n\t\t\t 还剩余0次抽奖机会\n\t\t</div> -->\n\t\t<div class=\"my-gift\" v-if=\"festivalInfo.hitPrize\">\n\t\t\t<a href=\"javascript:;\" @click=\"getPrizeList('look')\">查看我的奖品</a>\n\t\t</div>\n\t</div>\n\t<!-- 显示何种弹窗组件 start -->\n\t<component :is=\"currentDialog\"></component>\n\t<!-- 显示何种弹窗组件 end-->\n\t<div class=\"content\">\n\t\t<div class=\"tab-group\">\n\t\t\t<div class=\"tab\" @click=\"setList('listInfo')\">\n\t\t\t\t好友助力榜\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('activeInfo')\">\n\t\t\t\t活动详情\n\t\t\t</div>\n\t\t\t<div class=\"tab\" @click=\"setList('prizeInfo')\">\n\t\t\t\t奖品介绍\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t <component :is=\"currentList\"></component>\n</div>\n";
 
 /***/ },
 /* 171 */
@@ -7715,7 +9480,7 @@
 		value: true
 	});
 
-	var _actions = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../vuex/actions\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _actions = __webpack_require__(117);
 
 	exports.default = {
 		vuex: {
@@ -7850,7 +9615,7 @@
 		value: true
 	});
 
-	var _actions = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../vuex/actions\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _actions = __webpack_require__(117);
 
 	exports.default = {
 		ready: function ready() {

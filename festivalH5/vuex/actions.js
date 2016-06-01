@@ -3,14 +3,12 @@ import vue from 'vue'
 export const sharGetPrize = ({ dispatch,state },dia) =>{
 	const vd = {"uuid":uuid,"openId":wxopenId,"shareId":wxshareId,"raDefUuid":state.raDefUuid};
 	if(state.activeStatus == 3){
-<<<<<<< HEAD
 		vue.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4",vd).then(function(res){
 			dispatch('INIT_DATA',res.data.helpInfoVo);
 			dispatch('SET_DIALOG',dia);
 			dispatch('SET_ANIMATE');
 			setTimeout(function(){dispatch('QUIT_DIALOG');}, 3000);
 		})
-=======
 		//帮好友集赞
 			vue.http.post("doReply",vd,{emulateJSON:true}).then(function(res){
 				dispatch('SET_HELP_TEXT',res.data.helpInfoVo.replyAlertMessage)
@@ -21,7 +19,6 @@ export const sharGetPrize = ({ dispatch,state },dia) =>{
 				}, 20000);
 			})
 		
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
 	}else if(state.activeStatus == 2){
 		//抽奖
 		vue.http.post("getRandomCC",vd,{emulateJSON:true}).then(function(res){
@@ -101,15 +98,12 @@ export const pushInfo = ({  dispatch,state }) =>{
 	
 }
 
-<<<<<<< HEAD
 export const setList = ({ dispatch },dia) =>{
 	dispatch('SET_LIST_CONT',dia);
 	console.log(dia);
 }
 
-=======
 //填写领奖信息
 export const writeInfo = ({ dispatch,state },dia) =>{
 	dispatch('SET_DIALOG',dia);
 }
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
