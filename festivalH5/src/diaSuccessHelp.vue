@@ -14,7 +14,7 @@
 <template>
 <div  class="dia-mask" transition="dia" @click="quiteDia">
 	<div  class="dia-container success-help">
-		<a href="javascript:;" class="dia-close"></a>
+		<!-- <a href="javascript:;" class="dia-close"></a> -->
 		<div class="success-area">{{helpdText}}</div>
 	</div>
 </div>

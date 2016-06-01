@@ -13,14 +13,14 @@
 			<div class="count">
 				<div class="count-info">已有{{listOrder.length}}位好友帮了友谊的小船</div> 
 			</div>
-			<ul class="list-order">
+			<ul class="list-order" v-bind:class="{'border-none':listOrder.length <1}">
 				<li class="clearfix" v-for="data in listOrder">
 					<div class="item-icon">
 						<img :src="data.userImageUrl">
 					</div>
 					<div class="item-info">
 						<div class="item-name">{{data.userName}}</div>
-						<div class="item-tips">帮你划了40米，快来感谢我</div>
+						<div class="item-tips">{{data.raRewardDesc}}</div>
 					</div>
 				</li>
 			</ul>
@@ -48,7 +48,10 @@
 				color: #333;
 			}
 		}
-
+		
+		.border-none{
+			border:none!important;
+		}
 		.list-order{
 			width: 14rem;
 			margin: .5rem auto;

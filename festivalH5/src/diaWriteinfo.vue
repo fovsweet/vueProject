@@ -1,9 +1,12 @@
 <script>
-	import { quiteDia,sharGetPrize } from '../vuex/actions'
+	import { quiteDia,sharGetPrize,pushInfo } from '../vuex/actions'
 	export default  {
 		vuex:{
 			actions:{
-				quiteDia,sharGetPrize
+				quiteDia,sharGetPrize,pushInfo
+			},
+			getters:{
+				getPrizeInfo:state => state.getPrizeInfo
 			}
 		}
 	}
@@ -18,13 +21,13 @@
 			<h1>填写领奖信息</h1>
 			<div class="info">
 				<label>姓名</label>
-				<input type="text" >
+				<input type="text" v-model="getPrizeInfo.username">
 				<label>联系电话</label>
-				<input type="text" >
+				<input type="text" v-model="getPrizeInfo.telphone">
 				<label>您附近的体验馆或收货地址</label>
-				<input type="text" >
+				<input type="text" v-model="getPrizeInfo.address">
 			</div>
-			<div class="btn" @click="sharGetPrize('win')">提交</div>
+			<div class="btn" @click="pushInfo()">提交</div>
 		</div>
 	</div>
 </div>
@@ -79,6 +82,7 @@
 				outline:medium;
 				border-radius: 0;
 				-webkit-appearance:none;
+				padding-left: .2rem;
 				
 			}
 		}

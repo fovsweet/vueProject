@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div  class="dia-mask" transition="dia" @click="quiteDia">
+	<div  class="dia-mask" transition="dia" >
 	<div  class="dia-container begin">
 		<!-- <a href="javascript:;" class="dia-close"></a> -->
 		<img src="../static/img/qrcode.png">
@@ -29,6 +29,7 @@
 		width: 100%;
 		font-size: .6rem;
 		color: #ff8033;
+		margin-top: .5rem;
 
 		span{
 			color: #222;

@@ -1,9 +1,9 @@
 <script>
-	import { quiteDia,sharGetPrize } from '../vuex/actions'
+	import { quiteDia,sharGetPrize,writeInfo } from '../vuex/actions'
 	export default  {
 		vuex:{
 			actions:{
-				quiteDia,sharGetPrize
+				quiteDia,sharGetPrize,writeInfo
 			},
 			getters:{
 				prizeList:state => state.prizeList
@@ -19,12 +19,16 @@
 			<h1>查看奖品</h1>
 			<h2>请在公众号"我的卡包"查看领奖信息</h2>
 			<div class="list" v-if="prizeList.length > 0">
-				<p v-for="data in prizeList">{{data.raRewardName}}</p>
+				<p v-for="data in prizeList">{{$index}}.{{data.raRewardName}}</p>
 			</div> 
 			<div class="no-prize" v-if="prizeList.length < 1">
 				<img src="../static/img/lose.png">
 			</div> 
+<<<<<<< HEAD
 			<div class="btn" @click="sharGetPrize('writeInfo')">填写领奖信息</div>
+=======
+			<div class="btn" @click="writeInfo('writeInfo')">填写领奖信息</div>
+>>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
 		</div>
 	</div>
 </div>
@@ -56,10 +60,12 @@
 
 		.list{
 			text-align: left;
+			min-height:4rem;
 
 			p{
 				margin-top: .75rem;
-				margin-bottom: 0
+				margin-bottom: 0;
+				font-size:.6rem;
 			}
 		}
 

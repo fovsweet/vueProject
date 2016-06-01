@@ -32,7 +32,16 @@
 		components:{
 			share,successHelp,forbid,follow,win,look,writeInfo,begin,over,listInfo,activeInfo,prizeInfo
 		},
+<<<<<<< HEAD
 		created(){
+=======
+		ready(){
+			var load = document.querySelector('.loading');
+			load.style.opacity = 0;
+			load.style.zIndex = -1;
+		},
+		compiled(){
+>>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
 			/*var vThis = this;
 			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
 				console.log(res.data);
@@ -52,11 +61,8 @@
 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}">					
 				</div>
 			</div>
-			<div class="tips" v-if="festivalInfo.tips == 0">
-				邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}
-			</div>
-			<div class="tips" v-if="festivalInfo.tips == 1">
-				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
+			<div class="tips" >
+				{{festivalInfo.tips}}
 			</div>
 			<!-- 未集满，不能抽奖 -->
 			<div class="get-gift"  @click="sharGetPrize('look')">
