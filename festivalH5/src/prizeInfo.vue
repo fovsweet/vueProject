@@ -1,7 +1,18 @@
 <script>
+	import { getPrizeInfo } from '../vuex/actions';
+
 	export default {
 		ready(){
-			console.log(222);
+			this.getPrizeInfo()
+			console.log(111);
+		},
+		vuex:{
+			getters:{
+				prizeInfo:state => state.prizeInfo
+			},
+			actions:{
+				getPrizeInfo
+			}
 		}
 	}
 </script>
@@ -9,7 +20,10 @@
 <template>
 	<div class="footer" keep-alive>
 		<div class="prize">
-			<img src="../static/img/prize.png">
+			<template v-for="data in prizeInfo">
+				<img :src="data.raDefPicUrl">
+			</template>
+			
 		</div>
 	</div>
 </template>

@@ -28,6 +28,11 @@
 		components:{
 			share,successHelp,forbid,follow,win,look,writeInfo,begin,over
 		},
+		ready(){
+			var load = document.querySelector('.loading');
+			load.style.opacity = 0;
+			load.style.zIndex = -1;
+		},
 		compiled(){
 			/*var vThis = this;
 			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
@@ -48,14 +53,11 @@
 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left}">					
 				</div>
 			</div>
-			<div class="tips" v-if="festivalInfo.tips == 0">
-				邀请好友帮忙助力，即有机会领取{{festivalInfo.prizeName}}
-			</div>
-			<div class="tips" v-if="festivalInfo.tips == 1">
-				{{festivalInfo.peopleName}}的小船已红划了{{festivalInfo.helpNum}}{{festivalInfo.unit}}，还差{{festivalInfo.remainNum}}{{festivalInfo.unit}}即有机会领取{{festivalInfo.prizeName}}，快来帮他吧！
+			<div class="tips" >
+				{{festivalInfo.tips}}
 			</div>
 			<!-- 未集满，不能抽奖 -->
-			<div class="get-gift"  @click="sharGetPrize(initDialog)">
+			<div class="get-gift"  @click="sharGetPrize('look')">
 				{{festivalInfo.btnName}}
 			</div>
 			<!-- 已集满，可抽奖 -->

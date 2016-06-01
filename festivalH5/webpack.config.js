@@ -25,7 +25,8 @@ module.exports = {
 		{test:/\.js$/,loader:'babel',exclude:/node_modules/},
 		{test:/\.css$/,loader:'style!css!autoprefixer'},
 		{test:/\.less/,loader:'style!css!autoprefixer!less'},
-		{test:/\.(png|gif|jpg)$/,loader:'url?limit=8192&name=../html/img/[name].[ext]'},
+		// {test:/\.(png|gif|jpg)$/,loader:'url?limit=8192&name=../html/img/[name].[ext]'},
+		{test:/\.(png|gif|jpg)$/,loader:'url-loader'},
 		{test:/\.(html|tpl)/,loader:'html-loader'}
 		]
 	},
