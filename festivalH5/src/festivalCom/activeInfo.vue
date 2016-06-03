@@ -26,6 +26,7 @@
 <style lang="less">
 	.footer{
 		margin-top: .5rem;
+		margin-bottom: .5rem;
 
 		.detail{
 			width: 14rem;

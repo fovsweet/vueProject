@@ -10,8 +10,8 @@
 		<div class="header">
 			<img src="../assents/images/mycenter/default-bulm.png">
 			<span class="name">浪漫满屋</span>
-			<span class="arrow">></span>
 		</div>
+		<span class="arrow">></span>
 	</div>
 	</a>
 	<div class="nav">
@@ -27,11 +27,11 @@
 	</div>
 	<a href="www.baidu.com">
 	<div class="link">
-		<span class="phone"></span>
-		<span>联系您的家居顾问</span>
-		<span>免费获取</span>
-		<!-- <img src="../assents/images/mycenter/default-bulm.png"> -->
-		<span class="arrow">></span> 
+		<div class="phone"></div>
+		<div class="adviser">联系您的家居顾问</div>
+		<!-- <div class="free">免费获取</div> -->
+		<div class="free"> <img src="../assents/images/mycenter/default-bulm.png"> </div>
+		<div class="arrow"></div> 
 	</div>
 	</a>
 </template>
@@ -48,6 +48,7 @@
 	.container{
 		width: 100%;
 		height: 6.9rem;
+		position: relative;
 		background-image: url(../assents/images/mycenter/default-bg.png);
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
@@ -90,6 +91,10 @@
 			height: .6rem;
 			background: url(../assents/images/mycenter/arrow-right.png) center center no-repeat;
 			background-size: 100% 100%;
+			position: absolute;
+			top: 50%;
+			margin-top: -.3rem;
+			right: .75rem;
 		}
 	}
 	.nav{
@@ -135,24 +140,29 @@
 	.link{
 		width: 16rem;
 		height: 2.2rem;
-		display: table-cell;
+		display: flex;
+		-webkit-align-items:center;
+		display:-webkit-box;
+		-webkit-box-align:center;
 		background-color: white;
 		box-sizing: border-box;
 		vertical-align: middle;
 		font-size: 0;
+		position: relative;
 
-		span{
+		div{
 			font-size: .6rem;
 			color: #333;
-			display: inline-block;
 			vertical-align: middle;
+			display: flex;
+			display:-webkit-box;
+
 		}
 
 		img{
 			width: 1.75rem;
 			height: 1.75rem;
 			border-radius: 50%;
-			display: inline-block;
 			vertical-align: middle;
 		}
 
@@ -163,6 +173,24 @@
 			background-size: 100% 100%;
 			margin-left: .75rem;
 			margin-right: .5rem;
+		}
+			
+		.adviser{
+			-webkit-box-flex: 10
+		}
+
+		.free{
+			-webkit-box-flex: 3;
+			-webkit-box-align:end;
+		}
+
+		.arrow{
+			width: .375rem;
+			height: .6rem;
+			background: url(../assents/images/mycenter/arrow-right.png) center center no-repeat;
+			background-size: 100% 100%;
+			margin-right: .75rem;
+			margin-left: .75rem;
 		}
 	}
 </style>
