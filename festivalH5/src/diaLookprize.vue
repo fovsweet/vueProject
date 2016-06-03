@@ -6,7 +6,8 @@
 				quiteDia,sharGetPrize,writeInfo
 			},
 			getters:{
-				prizeList:state => state.prizeList
+				prizeList:state => state.prizeList,
+				getPrizeInfo:state => state.getPrizeInfo
 			}
 		}
 	}
@@ -19,16 +20,13 @@
 			<h1>查看奖品</h1>
 			<h2>请在公众号"我的卡包"查看领奖信息</h2>
 			<div class="list" v-if="prizeList.length > 0">
-				<p v-for="data in prizeList">{{$index}}.{{data.raRewardName}}</p>
+				<p v-for="data in prizeList">{{$index+1}}.{{data.raRewardName}}</p>
 			</div> 
 			<div class="no-prize" v-if="prizeList.length < 1">
 				<img src="../static/img/lose.png">
+				<span class="no-pri">还没有奖品T.T</span>
 			</div> 
-<<<<<<< HEAD
-			<div class="btn" @click="sharGetPrize('writeInfo')">填写领奖信息</div>
-=======
-			<div class="btn" @click="writeInfo('writeInfo')">填写领奖信息</div>
->>>>>>> 837d23b8b4e31145cc56b76f5c56e5357c23bfff
+			<div class="btn" @click="writeInfo('writeInfo')">{{getPrizeInfo.writeOrNot}}</div>
 		</div>
 	</div>
 </div>
@@ -45,7 +43,7 @@
 		width: 100%;
 		font-size: .75rem;
 		color: #222;
-		padding: 0 1.5rem;
+		padding: 0 1rem;
 
 		h1{
 			font-size: .9rem;
@@ -77,7 +75,7 @@
 			text-align: center;
 			border-radius: 1.75rem;
 			border: 2px solid #222;
-			margin:.75rem auto;
+			margin:.55rem auto;
 			background-color: #ffeb55;
 		}
 
@@ -87,6 +85,12 @@
 				margin-top: .6rem;
 				width: 2.25rem;
 				height:3.65rem;
+			}
+
+			.no-pri{
+				color:#a2a2a2;
+				font-size:.45rem;
+				display: block;
 			}
 		}
 

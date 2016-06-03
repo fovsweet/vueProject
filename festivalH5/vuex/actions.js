@@ -1,29 +1,64 @@
-import vue from 'vue'
+//import vue from 'vue' //当需要用到http的时候需要引入
 //更改弹框为哪个组件的使用状态
 export const sharGetPrize = ({ dispatch,state },dia) =>{
 	const vd = {"uuid":uuid,"openId":wxopenId,"shareId":wxshareId,"raDefUuid":state.raDefUuid};
 	if(state.activeStatus == 3){
-		vue.http.post("http://rap.taobao.org/mockjsdata/4090/doReply?openId=4",vd).then(function(res){
-			dispatch('INIT_DATA',res.data.helpInfoVo);
-			dispatch('SET_DIALOG',dia);
-			dispatch('SET_ANIMATE');
-			setTimeout(function(){dispatch('QUIT_DIALOG');}, 3000);
-		})
 		//帮好友集赞
-			vue.http.post("doReply",vd,{emulateJSON:true}).then(function(res){
-				dispatch('SET_HELP_TEXT',res.data.helpInfoVo.replyAlertMessage)
+			$.post("h5/doReply",vd,function(res){
+				dispatch('SET_HELP_TEXT',res.helpInfoVo.replyAlertMessage)
 				dispatch('SET_DIALOG',dia);
+				dispatch('SET_ANIMATE');
 				setTimeout(function(){
 					dispatch('QUIT_DIALOG');
-					dispatch('INIT_DATA',res.data.helpInfoVo);
-				}, 20000);
+					dispatch('INIT_DATA',res.helpInfoVo);
+				}, 2000);
+			  
+			  // 配置微信分享 start
+		      var shareUrl = res.shareUrl;
+		      shareOpenId = res.shareOpenId;
+		      //wx定义开始
+		      wx.ready(function(){
+		         //alert("js权限校验成功");
+		         // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+		         //定义发送朋友
+		         wx.onMenuShareAppMessage({
+		            title: wxtitle, // 分享标题
+		            desc: wxdesc, // 分享描述
+		            link: shareUrl, // 分享链接
+		            imgUrl:wximgUrl, // 分享图标
+		            type: '', // 分享类型,music、video或link，不填默认为link
+		            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		            success: function () {
+		               // 用户确认分享后执行的回调函数
+		               callBackShare("2");
+		            },
+		            cancel: function () {
+		            }
+		         });
+		         //定义分享朋友圈
+		         wx.onMenuShareTimeline({
+		            title: wxtitle, // 分享标题
+		            link:shareUrl, // 分享链接
+		            imgUrl: wximgUrl, // 分享图标
+		            success: function () {
+		               callBackShare("1");
+		            },
+		            cancel: function () {
+		            }
+		         });
+		      });
+		      //wx定义结束
+		      // 配置微信分享 en
 			})
 		
 	}else if(state.activeStatus == 2){
 		//抽奖
-		vue.http.post("getRandomCC",vd,{emulateJSON:true}).then(function(res){
-			dispatch('SET_PRIZE',res.data.lotteryInfoVo)
+		$.post("h5/getRandomCC",vd,function(res){
+			dispatch('SET_PRIZE',res)
 			dispatch('SET_DIALOG',dia);
+			setTimeout(function(){
+					dispatch('QUIT_DIALOG');
+				}, 2000);
 		})
 	}else if(state.activeStatus == 5){
 		//更改回状态为4时候的逻辑
@@ -49,10 +84,48 @@ export const quiteDia = ({ dispatch }) =>{
 export const initData = ({ dispatch },data) =>{
 	//dispatch('INIT_DATA',data.helpInfoVo);
 	const vd = {"uuid":uuid,"openId":wxopenId,"shareId":wxshareId};
-	vue.http.post("getReplyInfo",vd,{emulateJSON:true}).then(function(res){
-		console.log(res.data);
-		if(res.data.status=='success'){
-			dispatch('INIT_DATA',res.data.helpInfoVo)
+	$.post("h5/getReplyInfo",vd,function(res){
+		if(res.status=='success'){
+
+			  dispatch('INIT_DATA',res.helpInfoVo);
+
+			   // 配置微信分享 start
+		      var shareUrl = res.shareUrl;
+		      shareOpenId = res.shareOpenId;
+		      //wx定义开始
+		      wx.ready(function(){
+		         //alert("js权限校验成功");
+		         // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+		         //定义发送朋友
+		         wx.onMenuShareAppMessage({
+		            title: wxtitle, // 分享标题
+		            desc: wxdesc, // 分享描述
+		            link: shareUrl, // 分享链接
+		            imgUrl:wximgUrl, // 分享图标
+		            type: '', // 分享类型,music、video或link，不填默认为link
+		            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		            success: function () {
+		               // 用户确认分享后执行的回调函数
+		               callBackShare("2");
+		            },
+		            cancel: function () {
+		            }
+		         });
+		         //定义分享朋友圈
+		         wx.onMenuShareTimeline({
+		            title: wxtitle, // 分享标题
+		            link:shareUrl, // 分享链接
+		            imgUrl: wximgUrl, // 分享图标
+		            success: function () {
+		               callBackShare("1");
+		            },
+		            cancel: function () {
+		            }
+		         });
+		      });
+		      //wx定义结束
+		      // 配置微信分享 en
+
 		}
 	})
 }
@@ -60,8 +133,8 @@ export const initData = ({ dispatch },data) =>{
 //查看奖品数据
 export const getPrizeList = ({ dispatch },dia) =>{
 	const vd = {"uuid":uuid,"shareId":wxshareId};
-	vue.http.post("viewRewardInfo",vd,{emulateJSON:true}).then(function(res){
-			dispatch('SET_PRIZE_LIST',res.data)
+	$.post("h5/viewRewardInfo",vd,function(res){
+			dispatch('SET_PRIZE_LIST',res)
 			dispatch('SET_DIALOG',dia);
 	})
 }
@@ -69,16 +142,16 @@ export const getPrizeList = ({ dispatch },dia) =>{
 //查看奖品详情
 export const getPrizeInfo = ({ dispatch }) =>{
 	const vd = {"uuid":uuid};
-	vue.http.post("getPicInfo",vd,{emulateJSON:true}).then(function(res){
-			dispatch('SET_PRIZE_INFO',res.data.raDefPicList)
+	$.post("h5/getPicInfo",vd,function(res){
+			dispatch('SET_PRIZE_INFO',res.raDefPicList)
 	})
 }
 
 //查看活动详情
 export const getActiveInfo = ({ dispatch }) =>{
 	const vd = {"uuid":uuid};
-	vue.http.post("getDesc",vd,{emulateJSON:true}).then(function(res){
-			dispatch('SET_ACTIVE_INFO',res.data.desc)
+	$.post("h5/getDesc",vd,function(res){
+			dispatch('SET_ACTIVE_INFO',res.desc)
 	})
 }
 
@@ -91,19 +164,19 @@ export const pushInfo = ({  dispatch,state }) =>{
 	if(vd.username.trim() == '' && vd.telphone.trim() == '' && vd.address.trim() ==''){
 		return;
 	}else{
-		vue.http.post("writeRewardInfo",vd,{emulateJSON:true}).then(function(res){
+		$.post("h5/writeRewardInfo",vd,function(res){
 			dispatch('QUIT_DIALOG');
 		})
 	}
 	
 }
 
-export const setList = ({ dispatch },dia) =>{
-	dispatch('SET_LIST_CONT',dia);
-	console.log(dia);
-}
-
 //填写领奖信息
 export const writeInfo = ({ dispatch,state },dia) =>{
 	dispatch('SET_DIALOG',dia);
+}
+
+//设置tab切换
+export const setList = ({ dispatch },dia) =>{
+	dispatch('SET_LIST_CONT',dia);
 }

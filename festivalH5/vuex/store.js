@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
 Vue.use(Vuex);
 
 const state = {
@@ -42,7 +41,11 @@ const state = {
     //单位
     unit:'',
     //是否显示查看《我的奖品》
-    hitPrize:false
+    hitPrize:false,
+    //背景图片
+    backUrl:'',
+    //二维码图片
+    qrUrl:'',
   },
 
   //点赞后助力多少的提示文案
@@ -52,8 +55,11 @@ const state = {
   getPrize:{
     isGet:true,
     name:'',
-    url:''
+    url:'',
   },
+
+  //抽奖次数是否已用完
+  remainLotteryTimes:'',
 
   //奖品列表
   prizeList:[],
@@ -64,8 +70,6 @@ const state = {
     left:'2.2rem'
   },
 
-  currentList:'listInfo',
-
   //是否关注公众号
   isSubscribe:'',
 
@@ -73,8 +77,13 @@ const state = {
   getPrizeInfo:{
     username:'',
     telphone:'',
-    address:''
-  }
+    address:'',
+    writeOrNot:''
+  },
+
+  //tab当前模块
+  currentList:'listInfo',
+
 }
 
 
@@ -92,25 +101,33 @@ const mutations = {
     state.helpdText = data; 
   },
   //设置抽奖的奖品信息
-  SET_PRIZE(state,data){
+  SET_PRIZE(state,res){
+    const data = res.lotteryInfoVo;
     if(data.lotterPrize == 1){
       state.getPrize.isGet = true;
       state.getPrize.name = data.raRewardName;
       state.getPrize.url = data.ccPicSmallUr;
-
     }else{
       state.getPrize.isGet = false;
     }
+
+    state.festivalInfo.btnName = res.btnName;
+    state.remainLotteryTimes  = res.remainLotteryTimes;
+
   },
-  //设置查看奖品列表
+  //设置查看奖品列表及领奖信息
   SET_PRIZE_LIST(state,data){
     state.prizeList = data.lotteryInfoList;
+    state.getPrizeInfo.username = data.raUserName;
+    state.getPrizeInfo.telphone = data.raUserTel;
+    state.getPrizeInfo.address = data.raUserAddress;
+    if(data.writeOrNot == 'yes'){
+      state.getPrizeInfo.writeOrNot = '已填写领奖信息'
+    }else if(data.writeOrNot == 'no'){
+      state.getPrizeInfo.writeOrNot = '填写领奖信息'
+    }
+    
   },
-  SET_ANIMATE(state){
-    state.boatMove.ani = 'all .5s ease-in';
-  },
-  SET_LIST_CONT(state,dia){
-    state.currentList = dia;
   //设置弹框将打开哪一个
   SET_INIT_DIA(sate,data){
     state.initDia = data;
@@ -127,23 +144,37 @@ const mutations = {
   SET_ACTIVE_INFO(state,data){
     state.activeInfo = data;
   },
+  //设置tabl模块切换
+  SET_LIST_CONT(state,data){
+    state.currentList = data;
+  },
+  //设置小船可以划动
+  SET_ANIMATE(state){
+    state.boatMove.ani = 'all .5s ease-in';
+  },
   //初始化数据
   INIT_DATA(state,data){
       state.raDefUuid = data.raDefUuid;
-      state.listOrder = data.raReplyVoLists;
-      state.festivalInfo.btnName = data.btnName;
-      state.festivalInfo.peopleName = data.shareName;
-      state.festivalInfo.prizeName = data.firstRewarddName;
-      state.festivalInfo.helpNum = data.finishedNum;
-      state.festivalInfo.remainNum = data.unfinishedNum;
-      state.festivalInfo.unit = data.raUnit;
+      state.listOrder = data.raReplyVoLists;   //助力名单列表
+      state.festivalInfo.backUrl = "url("+ data.raBackgroundImg +")";
+      state.festivalInfo.qrUrl = data.qrCodeUrl;
+      state.festivalInfo.btnName = data.btnName;     //按钮名字
+      state.festivalInfo.peopleName = data.shareName;  //活动主名字
+      state.festivalInfo.prizeName = data.firstRewarddName; //奖品名字
+      state.festivalInfo.helpNum = data.finishedNum;  //已完成数
+      state.festivalInfo.remainNum = data.unfinishedNum;  //未完成数
+      state.festivalInfo.unit = data.raUnit;  //单位
+      state.festivalInfo.perLimit = data.perLimit;  //限制次数
+      state.festivalInfo.replyUserName = data.replyUserName; //被限制人名称
+      state.remainLotteryTimes  = data.lotteryTimes;  //抽奖次数是否用完
       if(data.finishedNum/data.raNum >0 && data.finishedNum/data.raNum <= 1 ){
-         state.boatMove.top = (data.finishedNum/data.raNum*9+1)+'rem';
+         state.boatMove.top = (data.finishedNum/data.raNum*9+1)+'rem';  //划船
          state.boatMove.left = (data.finishedNum/data.raNum*9+2.2)+'rem';
          state.boatMove.boatOp = 1;
       }
-      const helpTips = data.shareName +'的小船已红划了'+data.finishedNum+' '+data.raUnit+'，还差'+ data.unfinishedNum +' '+data.raUnit+'即有机会领取'+ data.firstRewarddName +'，快来帮他吧！'
-      const orginTips = '邀请好友帮忙助力，即有机会领取'+data.firstRewarddName ;
+      //提示语句
+      const helpTips = data.shareName+'的小船已红划了'+data.finishedNum+''+data.raUnit+',还差'+ data.unfinishedNum +''+data.raUnit+'即有机会领取'+ data.firstRewarddName +',快来帮他吧！'
+      const orginTips = '邀请好友帮忙助力,即有机会领取'+data.firstRewarddName ;
 
     if(data.status == 'normal'){
       //当点赞时，会返回提示语句有值，则赋给提示文本

@@ -4,6 +4,9 @@
 		vuex:{
 			actions:{
 				quiteDia
+			},
+			getters:{
+				festivalInfo:state => state.festivalInfo
 			}
 		}
 	}
@@ -13,8 +16,8 @@
 	<div  class="dia-container forbid-help">
 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
 		<div class="forbid-area">
-		<p>新爱的John:</p>
-		<p>您已经帮20个好友助力了人缘太好了！</p>
+		<p>新爱的{{festivalInfo.replyUserName}}:</p>
+		<p>您已经帮{{festivalInfo.perLimit}}个好友助力了人缘太好了！</p>
 		<p>因本次活动限制，不能再帮其他好友助力了哦。</p>
 		</div>
 	</div>

@@ -2,7 +2,8 @@
 	export default {
 		vuex:{
 			getters:{
-				listOrder:state => state.listOrder
+				listOrder:state => state.listOrder,
+				festivalInfo:state => state.festivalInfo
 			}
 		}
 	}
@@ -11,7 +12,7 @@
 <template>
 	<div class="footer">
 			<div class="count">
-				<div class="count-info">已有{{listOrder.length}}位好友帮了友谊的小船</div> 
+				<div class="count-info">已有{{listOrder.length}}位好友帮了{{festivalInfo.peopleName}}</div> 
 			</div>
 			<ul class="list-order" v-bind:class="{'border-none':listOrder.length <1}">
 				<li class="clearfix" v-for="data in listOrder">

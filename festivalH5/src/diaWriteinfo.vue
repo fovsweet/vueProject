@@ -8,13 +8,15 @@
 			getters:{
 				getPrizeInfo:state => state.getPrizeInfo
 			}
+		},
+		ready(){
+			$('.dia-mask')[0].style.height=document.body.clientHeight;
 		}
 	}
 </script>
 <template>
-<div class="diaa">
-</div>
-<div  class="dia-mask" transition="dia" >
+<div class="fix-mask"></div>
+<div  class="dia-mask mask-abs" transition="dia" >
 	<div  class="dia-container wirte">
 		<a href="javascript:;" class="dia-close" @click="quiteDia"></a>
 		<div class="wirte-area">
@@ -31,16 +33,19 @@
 		</div>
 	</div>
 </div>
-
 </template>
 <style lang="less">
-	.diaa{
+	.fix-mask{
 		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
 		right: 0;
 		background: rgba(0,0,0,0.8);
+	}
+	.mask-abs{
+		position: absolute!important;
+		background: transparent!important;
 	}
 	.wirte{
 		width: 12.75rem;
@@ -50,6 +55,7 @@
 		padding-top: 4.5rem;
 	}
 	.wirte-area{
+		position: relative;
 		width: 100%;
 		font-size: .75rem;
 		color: #222;
@@ -73,6 +79,7 @@
 			input{
 				width: 9.75rem;
 				height: 1.75rem;
+				font-size: .75rem;
 				margin-bottom: .5rem;
 				padding-left: .25rem;
 				display: block;

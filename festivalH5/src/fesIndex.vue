@@ -15,6 +15,7 @@
 	import {sharGetPrize,quiteDia,initData,getPrizeList,setList} from '../vuex/actions';
 
 	export default {
+		el:'#app',
 		store,
 		vuex:{
 			actions:{
@@ -25,33 +26,26 @@
 				initDialog:state => state.initDia,
 				festivalInfo:state => state.festivalInfo,
 				boatMove:state => state.boatMove,
+				remainLotteryTimes:state => state.remainLotteryTimes,
 				currentList:state => state.currentList
-
 			}
 		},
 		components:{
-			share,successHelp,forbid,follow,win,look,writeInfo,begin,over,listInfo,activeInfo,prizeInfo
+			share,successHelp,forbid,follow,win,look,writeInfo,begin,over,activeInfo,listInfo,prizeInfo
 		},
-		created(){
+		ready(){
 			var load = document.querySelector('.loading');
 			load.style.opacity = 0;
 			load.style.zIndex = -1;
 		},
 		compiled(){
-			/*var vThis = this;
-			this.$http.post("http://rap.taobao.org/mockjsdata/4090/getReplyInfo",{"uuid":1}).then(function(res){
-				console.log(res.data);
-				if(res.data.success){
-					vThis.initData(res.data);
-				}
-			})*/
 			this.initData();
 		}
 	}
 </script>
 
 <template>
-	<div class="container" v-cloak>
+	<div class="container" v-cloak  v-bind:style="{backgroundImage:festivalInfo.backUrl}">
 		<div class="head">
 			<div class="river">
 				<div class="boat" :style="{top:boatMove.top,left:boatMove.left,opacity:boatMove.boatOp,transition:boatMove.ani}">					
@@ -60,17 +54,9 @@
 			<div class="tips" >
 				{{festivalInfo.tips}}
 			</div>
-			<!-- 未集满，不能抽奖 -->
-			<div class="get-gift"  @click="sharGetPrize('look')">
+			<div class="get-gift" v-bind:class="{'get-gift-gray':remainLotteryTimes == '0'}"  @click="sharGetPrize(initDialog)">
 				{{festivalInfo.btnName}}
 			</div>
-			<!-- 已集满，可抽奖 -->
-			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " @click="sharGetPrize(initDialog)">
-				 还剩余X次抽奖机会
-			</div> -->
-			<!-- <div class="get-gift"  v-if="festivalInfo.hitPrize " >
-				 还剩余0次抽奖机会
-			</div> -->
 			<div class="my-gift" v-if="festivalInfo.hitPrize">
 				<a href="javascript:;" @click="getPrizeList('look')">查看我的奖品</a>
 			</div>
@@ -80,18 +66,18 @@
 		<!-- 显示何种弹窗组件 end-->
 		<div class="content">
 			<div class="tab-group">
-				<div class="tab" @click="setList('listInfo')">
+				<div class="tab" @click="setList('listInfo')" :class="{'current':currentList == 'listInfo'}">
 					好友助力榜
 				</div>
-				<div class="tab" @click="setList('activeInfo')">
+				<div class="tab" @click="setList('activeInfo')" :class="{'current':currentList == 'activeInfo'}">
 					活动详情
 				</div>
-				<div class="tab" @click="setList('prizeInfo')">
+				<div class="tab" @click="setList('prizeInfo')" :class="{'current':currentList == 'prizeInfo'}">
 					奖品介绍
 				</div>
 			</div>
 		</div>
-		 <component :is="currentList"></component>
+		<component :is="currentList" keep-alive></component>
 	</div>
 </template>
 
@@ -120,13 +106,13 @@
 	  display: none;
 	}
 	.container{
-		background:url('../static/img/newbg.jpg') center top no-repeat;
+		/*background:url('../static/img/newbg.jpg') center top no-repeat;*/
 		background-size: 100% auto;
-		padding-top: 1rem;
+		background-repeat: no-repeat;
 	}
 	.river{
 		width: 100%;
-		height: 13.6rem;
+		height: 14.5rem;
 		background:url('../static/img/river.png') center top no-repeat;
 		background-size: 100% auto;
 		position: relative;
@@ -141,7 +127,7 @@
 		opacity: 0
 	}
 	.tips{
-		width: 100%;
+		width: 16rem;
 		height: 2.875rem;
 		background: url('../static/img/river-tips.png') center center no-repeat;
 		background-size: 100% 100%;
@@ -149,6 +135,9 @@
 		color: white;
 		line-height: 1.5;
 		padding: .6rem 1.5rem;
+		display: table-cell;
+		vertical-align: middle;
+		word-break: break-all;
 	}
 	.get-gift{
 		width: 10rem;
@@ -160,6 +149,9 @@
 		color: #333;
 		line-height: 2.25rem;
 		margin:0 auto;
+	}
+	.get-gift-gray{
+		background-color: #ccc!important;
 	}
 	.my-gift{
 		width: 6rem;
@@ -205,10 +197,11 @@
 
 	/*弹框样式*/
 	.dia-mask {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		bottom: 0;
 		left: 0;
+		right:0;
 		width: 100%;
 		height: 100%;
 		padding: 1rem;
@@ -234,8 +227,8 @@
 
 	.dia-enter .dia-container,
 	.dia-leave .dia-container {
-	    -webkit-transform: scale(1.1);
-	    transform: scale(1.1);
+	  /*   -webkit-transform: scale(1.1);
+	  transform: scale(1.1); */
 	}
 
 	.dia-close{

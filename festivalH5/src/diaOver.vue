@@ -1,12 +1,18 @@
 <script>
-	
+	export default {
+		vuex:{
+			getters:{
+				festivalInfo:state => state.festivalInfo
+			}
+		}
+	}
 </script>
 
 <template>
 	<div  class="dia-mask" transition="dia" >
 	<div  class="dia-container begin">
 		<!-- <a href="javascript:;" class="dia-close"></a> -->
-		<img src="../static/img/qrcode.png">
+		<img :src="festivalInfo.qrUrl">
 		<div class="begin-area"><span>关注我们</span> 更多精彩等着你~</div>
 	</div>
 </div>

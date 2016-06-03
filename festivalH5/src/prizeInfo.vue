@@ -39,7 +39,6 @@
 			border-radius: .3rem;
 			background-color: #fff2e5;
 			box-sizing: border-box;
-			padding: .75rem;
 			font-size: .6rem;
 			color: #666;
 			line-height: 1.5;
