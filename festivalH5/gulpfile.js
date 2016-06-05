@@ -12,12 +12,18 @@ gulp.task('connect',function(){
 		port:'8089',
 		ip:'192.168.31.110',
 		livereload:true,
+		middleware:function(connect,opt){
+			opt.route='proxy';
+			var proxy = new Proxy(opt);
+			return [proxy];
+		}
 	})
 })
 
 gulp.task('html',function(){
-	gulp.src('./html/*.html').
-	pipe(connect.reload())
+	gulp.src('./html/*.html')
+	.pipe(connect.reload())
 })
+
 
 gulp.task('default',['connect','watch'])

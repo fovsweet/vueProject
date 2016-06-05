@@ -1,42 +1,80 @@
 <script>
 	export default {
-		el:'#app'
+		el:'#app',
+		data(){
+			return{
+				name:'',
+				bgImg:'',
+				headImg:'/src/assents/images/mycenter/default-bulm.png',
+				linkImg:'',
+				ccCount:'',
+				collectCount:'',
+				ccUrl:'',
+				collectUrl:'',
+				linkUrl:'',
+
+			}
+		},
+		ready(){
+			var vThis = this;
+			$.post('http://rap.taobao.org/mockjsdata/4347/getDesc?',{},function(res){
+				var data = res.data;
+				if(res.msg == 'success'){
+					vThis.name = data.nickName;
+					vThis.bgImg = 'url('+data.headImgUrl+')';
+					vThis.headImg = data.headImgUrl;
+					vThis.linkImg = data.staffHeadImgUrl;
+					vThis.ccCount = data.ccCount;
+					vThis.collectCount = data.collectCount;
+					vThis.ccUrl = data.ccUrl;
+					vThis.collectUrl = data.collectUrl;
+					vThis.linkUrl = data.staffUrl;
+				}
+			})
+		}
 	}
 </script>
 
 <template>
+<div v-cloak>
+	<div class="blur-bg"  :style="{backgroundImage:bgImg}"></div>
+	<div class="blure" :style="{backgroundImage:bgImg}"></div>
 	<a href="http://www.baidu.com">
 	<div class="container">	
-		<div class="header">
-			<img src="../assents/images/mycenter/default-bulm.png">
-			<span class="name">浪漫满屋</span>
-		</div>
-		<span class="arrow">></span>
+		<!-- <div class="header"> -->
+			<img :src="headImg">
+			<span class="name">{{name}}</span>
+		<!-- </div> -->
+		<span class="arrow"></span>
 	</div>
 	</a>
 	<div class="nav">
-		<a href="javascript:;">
+		<a :href="ccUrl">
 			<span>我的卡包</span>		
-			<span class="nav-num">5</span>		
+			<span class="nav-num">{{ccCount}}</span>		
 		</a>
 		<div class="line"></div>  
-		<a href="javascript:;">
+		<a :href="collectUrl">
 			<span>我的卡包</span>		
-			<span class="nav-num">5</span>		
+			<span class="nav-num">{{collectCount}}</span>		
 		</a>
 	</div>
-	<a href="www.baidu.com">
+	<a :href="linkUrl">
 	<div class="link">
 		<div class="phone"></div>
 		<div class="adviser">联系您的家居顾问</div>
-		<!-- <div class="free">免费获取</div> -->
-		<div class="free"> <img src="../assents/images/mycenter/default-bulm.png"> </div>
+		<div class="free" v-if="linkImg == ''">免费获取</div>
+		<div class="free ln-0" v-if="linkImg != ''"> <img :src="linkImg"> </div>
 		<div class="arrow"></div> 
 	</div>
 	</a>
+</div>
 </template>
 
 <style lang="less">
+	[v-cloak] {
+		  display: none;
+		}
 	html,body{
 		margin:0;
 		padding: 0;
@@ -44,36 +82,55 @@
 	}
 	a{
 		text-decoration: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-tap-highlight-color: transparent; 
+	}
+	.blur-bg{
+		/* background-image: url(../assents/images/mycenter/2.jpg); */
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		background-position: center center;
+		width: 100%;
+		height: 6.9rem;
+		position: absolute;
+	}
+	.blure{
+		filter: blur(3px);
+		/* background-image: url(../assents/images/mycenter/2.jpg); */
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		background-position: center center;
+		width: 100%;
+		height: 6.9rem;
+		position: absolute;
 	}
 	.container{
 		width: 100%;
 		height: 6.9rem;
 		position: relative;
-		background-image: url(../assents/images/mycenter/default-bg.png);
+		/* background-image: url(../assents/images/mycenter/default-bg.png);
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
-		background-position: center center;
+		background-position: center center; */
 		display: flex;
 		-webkit-align-items:center;
-		display:-webkit-box;
+		-webkit-flex-direction:row;
+		-webkit-justify-content:space-between;
+
+		display:-webkit-box-flex;
 		-webkit-box-align:center;
-	}
-	.header{
-		padding-left: 1.5rem;
-		font-size: 0;
 
 		img{
+			display:flex;
 			width: 3.05rem;
 			height: 3.05rem;
 			border-radius: 50%;
 			border: .125rem solid white;
-			display:inline-block;
-			vertical-align:middle
+			margin-left: .75rem;
 		}
 
 		span{
-			display:inline-block;
-			vertical-align:middle
+			display:flex;
 		}
 
 		.name{
@@ -91,12 +148,15 @@
 			height: .6rem;
 			background: url(../assents/images/mycenter/arrow-right.png) center center no-repeat;
 			background-size: 100% 100%;
-			position: absolute;
+			margin-right: .75rem;
+
+			/* position: absolute;
 			top: 50%;
 			margin-top: -.3rem;
-			right: .75rem;
+			right: .75rem; */
 		}
 	}
+
 	.nav{
 		width: 100%;
 		height: 1.875rem;
@@ -104,35 +164,44 @@
 		border-bottom: 1px solid #e8e8e8;
 		font-size: 0;
 		margin-bottom: .5rem;
+		display: flex;
+		-webkit-align-items:center;
+		display:-webkit-box;
+		-webkit-box-align:center;
+
+		position: relative;
+		z-index: 2;
 
 		.line{
 			border-right: 1px solid #e8e8e8;
-			display: inline-block;
+			display: flex;
 			height: 1.25rem;
-			vertical-align: middle;
 			margin-left: -1px;
 			}
 
 		a{
 			box-sizing: border-box;
-			display: inline-block;
-			vertical-align: middle;
-			width: 50%;
 			line-height: 1.875rem;
 			padding-left: .75rem; 
 			padding-right: .75rem;
-			font-size: .6rem;
 			color: #333;
+			display: flex;
+			-webkit-justify-content:space-between;
+			display: -webkit-box-flex;	
+			-webkit-box-pack:justify;
+			flex: 1;
 			
 			span{
-				display: inline-block;
+				font-size: .6rem;
+				display: flex;
+				display: -webkit-box-flex;
 			}
 			
 			.nav-num{
 				font-size: .65rem; 
-				float: right;
 				width: 3rem;
-				text-align: right;
+				-webkit-justify-content:flex-end;
+				-webkit-box-pack:end;
 			}
 		}
 		
@@ -140,20 +209,19 @@
 	.link{
 		width: 16rem;
 		height: 2.2rem;
+		background-color: white;
+		box-sizing: border-box;
+		font-size: 0;
+		border-top:1px solid #e8e8e8;
+
 		display: flex;
 		-webkit-align-items:center;
 		display:-webkit-box;
 		-webkit-box-align:center;
-		background-color: white;
-		box-sizing: border-box;
-		vertical-align: middle;
-		font-size: 0;
-		position: relative;
 
 		div{
 			font-size: .6rem;
 			color: #333;
-			vertical-align: middle;
 			display: flex;
 			display:-webkit-box;
 
@@ -163,7 +231,6 @@
 			width: 1.75rem;
 			height: 1.75rem;
 			border-radius: 50%;
-			vertical-align: middle;
 		}
 
 		.phone{
@@ -181,7 +248,12 @@
 
 		.free{
 			-webkit-box-flex: 3;
-			-webkit-box-align:end;
+			-webkit-box-pack:end;
+
+		}
+
+		.ln-0{
+			line-height: 0;
 		}
 
 		.arrow{
