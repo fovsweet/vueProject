@@ -3,10 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 	<title>个人中心</title>
+	<link rel="stylesheet" href="../src/assents/css/loading.css">
 </head>
 <body>
+	<div class="loading">
+		<div class="spinner">
+		  <div class="rect1"></div>
+		  <div class="rect2"></div>
+		  <div class="rect3"></div>
+		  <div class="rect4"></div>
+		  <div class="rect5"></div>
+		</div>
+	</div>
 	<div id="app"></div>
+	<script>
+		window.onload = function(){
+			var load = document.querySelector('.loading');
+			load.style.opacity = 0;
+			load.style.zIndex = -1;
+		}
+	</script>
 	<script src="../src/assents/js/zepto.min.js"></script>
 	<script src="../build/vuer.common.js"></script>
 	<script src="../build/mycenter.all.js"></script>

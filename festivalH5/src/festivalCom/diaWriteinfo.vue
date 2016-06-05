@@ -83,12 +83,12 @@
 				margin-bottom: .5rem;
 				padding-left: .25rem;
 				display: block;
-				padding: 0;
 				border:1px solid #eee;
 				background-color: #fff;
 				outline:medium;
 				border-radius: 0;
 				-webkit-appearance:none;
+				padding: 0;
 				padding-left: .2rem;
 				
 			}

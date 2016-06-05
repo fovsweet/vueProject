@@ -15,7 +15,7 @@
 
 			}
 		},
-		ready(){
+		created(){
 			var vThis = this;
 			$.post('http://rap.taobao.org/mockjsdata/4347/getDesc?',{},function(res){
 				var data = res.data;
@@ -105,7 +105,7 @@
 		position: absolute;
 	}
 	.container{
-		width: 100%;
+		width: 320px;
 		height: 6.9rem;
 		position: relative;
 		/* background-image: url(../assents/images/mycenter/default-bg.png);
@@ -119,6 +119,7 @@
 
 		display:-webkit-box-flex;
 		-webkit-box-align:center;
+		-webkit-box-pack:justify;
 
 		img{
 			display:flex;
@@ -161,7 +162,7 @@
 		width: 100%;
 		height: 1.875rem;
 		background-color: white;
-		border-bottom: 1px solid #e8e8e8;
+		/* border-bottom: 1px solid #e8e8e8; */
 		font-size: 0;
 		margin-bottom: .5rem;
 		display: flex;
@@ -177,6 +178,8 @@
 			display: flex;
 			height: 1.25rem;
 			margin-left: -1px;
+			-webkit-transform:scaleX(.5);
+	 		-webkit-transform-origin:0 0;
 			}
 
 		a{
@@ -206,13 +209,34 @@
 		}
 		
 	}
+	.nav:after{
+	  content:"";
+	  position: absolute;
+	  bottom:-1px;
+	  left:0px;
+	  right:0px;
+	  border-bottom:1px solid #e8e8e8;
+	  -webkit-transform:scaleY(.5);
+	  -webkit-transform-origin:0 0;
+	}
+	.link:before{
+		content: "";
+		position: absolute;;
+		top: 0;
+		left: 0;
+		right:0;
+		border-bottom: 1px solid #e8e8e8;
+		-webkit-transform:scaleY(.5);
+	  	-webkit-transform-origin:0 0;
+	}
 	.link{
-		width: 16rem;
+		width:100%;
 		height: 2.2rem;
 		background-color: white;
 		box-sizing: border-box;
 		font-size: 0;
-		border-top:1px solid #e8e8e8;
+		position: relative;
+		/* border-top:1px solid #e8e8e8; */
 
 		display: flex;
 		-webkit-align-items:center;
