@@ -56,7 +56,7 @@
 				{{festivalInfo.tips}}
 			</div>
 			<div class="get-gift" v-bind:class="{'get-gift-gray':remainLotteryTimes == '0'}"  @click="sharGetPrize(initDialog)">
-				{{festivalInfo.btnName}}
+				{{festivalInfo.btnName}} 
 			</div>
 			<div class="my-gift" v-if="festivalInfo.hitPrize">
 				<a href="javascript:;" @click="getPrizeList('look')">查看我的奖品</a>
@@ -150,8 +150,15 @@
 		font-size: .9rem;
 		text-align: center;
 		color: #333;
-		line-height: 2.25rem;
 		margin:0 auto;
+
+		display: flex;
+		-webkit-align-items:center;
+		-webkit-flex-direction:row;
+
+		display: -webkit-box;
+		-webkit-box-pack:center;
+		-webkit-box-align:center;
 	}
 	.get-gift-gray{
 		background-color: #ccc!important;
@@ -182,10 +189,10 @@
 			display: inline-block;
 			width: 5.15rem;
 			height: 2.8rem;
+			line-height: 2.6rem;
 			background: url('../assents/images/festival/tab-btn.png') center center no-repeat;
 			background-size: 100% 100%;
 			font-size: .65rem;
-			line-height: 2.6rem;
 			color: #dfdfdf;
 			text-align: center;
 			}

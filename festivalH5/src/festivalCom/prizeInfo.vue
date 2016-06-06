@@ -34,6 +34,7 @@
 		.prize{
 			width: 14rem;
 			margin: .5rem auto;
+			margin-bottom: 0;
 			border:.125rem solid #32200e;
 			border-radius: .3rem;
 			background-color: #fff2e5;
@@ -41,6 +42,7 @@
 			font-size: 0;
 			color: #666;
 			line-height: 1.5;
+			overflow: hidden;
 
 			img{
 				width: 100%;

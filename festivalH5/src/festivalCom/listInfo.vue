@@ -35,13 +35,13 @@
 		.count{
 			text-align: center;
 			font-size: 0;
+			line-height: 1;
 
 			.count-info{
 				text-align: center;
 				display: inline-block;
-				height: 1.125rem;
-				line-height: 1.125rem;
-				padding: 0 1.125rem;
+				height: 1.2rem;
+				padding: .3rem 1.125rem;
 				border-radius: 1.125rem;
 				background-color: rgba(132,113,93,1); 
 				font-size: .6rem;
@@ -56,6 +56,7 @@
 		.list-order{
 			width: 14rem;
 			margin: .5rem auto;
+			margin-bottom: 0;
 			border:.125rem solid #32200e;
 			border-radius: .3rem;
 			background-color: #fff2e5;
@@ -73,6 +74,7 @@
 			.item-icon{
 				float: left;
 				padding: .375rem .5rem;
+				line-height: 0;
 					
 					img{
 						width:1.7rem;
@@ -83,6 +85,8 @@
 
 			.item-info{
 				padding: .375rem 0;
+				padding-right: .5rem;
+
 				.item-name{
 					font-size: .6rem;
 					color: #333;	

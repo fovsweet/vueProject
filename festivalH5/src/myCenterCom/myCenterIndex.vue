@@ -4,30 +4,40 @@
 		data(){
 			return{
 				name:'',
-				bgImg:'',
-				headImg:'/src/assents/images/mycenter/default-bulm.png',
+				bgImg:'url("../images/default-bg.png")',
+				headImg:'../images/default-bulm.png',
 				linkImg:'',
 				ccCount:'',
 				collectCount:'',
 				ccUrl:'',
 				collectUrl:'',
 				linkUrl:'',
+				centerUrl:''
 
 			}
 		},
 		created(){
 			var vThis = this;
-			$.post('http://rap.taobao.org/mockjsdata/4347/getDesc?',{},function(res){
+			var setData = {};
+			setData.openId=openId;
+			setData.mchId=mchId;
+			setData.appId=appId;
+			$.get('getUserInfo',setData,function(res){
 				var data = res.data;
 				if(res.msg == 'success'){
 					vThis.name = data.nickName;
-					vThis.bgImg = 'url('+data.headImgUrl+')';
-					vThis.headImg = data.headImgUrl;
-					vThis.linkImg = data.staffHeadImgUrl;
+					if(data.headImgUrl != '' && data.headImgUrl != null){
+						vThis.bgImg = 'url('+data.headImgUrl+')';
+						vThis.headImg = data.headImgUrl;
+					}
+					vThis.centerUrl = data.personalDataUrl;
 					vThis.ccCount = data.ccCount;
 					vThis.collectCount = data.collectCount;
 					vThis.ccUrl = data.ccUrl;
 					vThis.collectUrl = data.collectUrl;
+					if(data.staffHeadImgUrl != '' && data.staffHeadImgUrl != null){
+						vThis.linkImg = data.staffHeadImgUrl;
+					}
 					vThis.linkUrl = data.staffUrl;
 				}
 			})
@@ -39,7 +49,8 @@
 <div v-cloak>
 	<div class="blur-bg"  :style="{backgroundImage:bgImg}"></div>
 	<div class="blure" :style="{backgroundImage:bgImg}"></div>
-	<a href="http://www.baidu.com">
+	<div class="center-mask"></div>
+	<a :href="centerUrl">
 	<div class="container">	
 		<!-- <div class="header"> -->
 			<img :src="headImg">
@@ -55,7 +66,7 @@
 		</a>
 		<div class="line"></div>  
 		<a :href="collectUrl">
-			<span>我的卡包</span>		
+			<span>我的收藏</span>		
 			<span class="nav-num">{{collectCount}}</span>		
 		</a>
 	</div>
@@ -86,7 +97,7 @@
 		-webkit-tap-highlight-color: transparent; 
 	}
 	.blur-bg{
-		/* background-image: url(../assents/images/mycenter/2.jpg); */
+		/* background-image: url(../assents/images/2.jpg); */
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center center;
@@ -96,7 +107,7 @@
 	}
 	.blure{
 		filter: blur(3px);
-		/* background-image: url(../assents/images/mycenter/2.jpg); */
+		/* background-image: url(../assents/images/2.jpg); */
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-position: center center;
@@ -104,11 +115,17 @@
 		height: 6.9rem;
 		position: absolute;
 	}
+	.center-mask{
+		width: 100%;
+		height: 6.9rem;
+		position: absolute;
+		background-color: rgba(0,0,0,0.3);
+	}
 	.container{
 		width: 320px;
 		height: 6.9rem;
 		position: relative;
-		/* background-image: url(../assents/images/mycenter/default-bg.png);
+		/* background-image: url(../assents/images/default-bg.png);
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		background-position: center center; */
@@ -135,9 +152,9 @@
 		}
 
 		.name{
-			width: 8.5rem;
+			width: 9.5rem;
 			font-size: .75rem;
-			color: #333;
+			color: #fff;
 			margin-left: .75rem;
 			margin-right: .75rem;
 			overflow: hidden;
@@ -147,7 +164,7 @@
 		.arrow{
 			width: .375rem;
 			height: .6rem;
-			background: url(../assents/images/mycenter/arrow-right.png) center center no-repeat;
+			background: url(../assents/images/arrow-right.png) center center no-repeat;
 			background-size: 100% 100%;
 			margin-right: .75rem;
 
@@ -157,7 +174,6 @@
 			right: .75rem; */
 		}
 	}
-
 	.nav{
 		width: 100%;
 		height: 1.875rem;
@@ -260,7 +276,7 @@
 		.phone{
 			width: .75rem;
 			height: .75rem;
-			background: url(../assents/images/mycenter/01.png) center center no-repeat;
+			background: url(../assents/images/01.png) center center no-repeat;
 			background-size: 100% 100%;
 			margin-left: .75rem;
 			margin-right: .5rem;
@@ -283,7 +299,7 @@
 		.arrow{
 			width: .375rem;
 			height: .6rem;
-			background: url(../assents/images/mycenter/arrow-right.png) center center no-repeat;
+			background: url(../assents/images/arrow-right.png) center center no-repeat;
 			background-size: 100% 100%;
 			margin-right: .75rem;
 			margin-left: .75rem;

@@ -34,7 +34,8 @@ module.exports = {
 		{test:/\.js$/,loader:'babel',exclude:/node_modules/},
 		{test:/\.css$/,loader:'style!css!autoprefixer'},
 		{test:/\.less/,loader:'style!css!autoprefixer!less'},
-		{test:/\.(png|gif|jpg)$/,loader:'url?limit=99999998&name=images/festival/[name].[ext]'},
+		{test:/\.(png|gif|jpg)$/,loader:'url?limit=8&name=../images/[name].[ext]'},
+		/*{test:/\.(png|gif|jpg)$/,loader:'url?limit=&name=images/festival/[name].[ext]'},*/
 		{test:/\.(html|tpl)/,loader:'html-loader'}
 		]
 	},

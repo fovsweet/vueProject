@@ -26,11 +26,11 @@
 <style lang="less">
 	.footer{
 		margin-top: .5rem;
-		margin-bottom: .5rem;
+		padding-bottom: .5rem;
 
 		.detail{
 			width: 14rem;
-			margin: .5rem auto;
+			margin: .5rem auto 0;
 			border:.125rem solid #32200e;
 			border-radius: .3rem;
 			background-color: #fff2e5;

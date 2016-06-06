@@ -18,7 +18,8 @@
 		<div class="follow-area">
 			<img :src="festivalInfo.qrUrl">
 			<div class="follow-word">
-			关注我们&nbsp;<span>即有机会把{{festivalInfo.prizeName}}领回家</span>
+			<div>关注我们</div>
+			<div class="col">即有机会把{{festivalInfo.prizeName}}领回家</div>
 			</div>
 		</div>
 	</div>
@@ -34,6 +35,7 @@
 	}
 	.follow-area{
 		text-align: center;
+		line-height: 1;
 
 		img{
 			width: 8.5rem;
@@ -44,8 +46,9 @@
 		.follow-word{
 			color: #222;
 			font-size: .6rem;
+			line-height: 1.2;
 
-			span{
+			.col{
 				color: #ff8033;
 			}
 		}

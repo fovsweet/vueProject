@@ -58,13 +58,14 @@ export const sharGetPrize = ({ dispatch,state },dia) =>{
 		
 	}else if(state.activeStatus == 2){
 		//抽奖
-		$.post("h5/getRandomCC",vd,function(res){
+			$.post("h5/getRandomCC",vd,function(res){
 			dispatch('SET_PRIZE',res)
 			dispatch('SET_DIALOG',dia);
 			setTimeout(function(){
 					dispatch('QUIT_DIALOG');
 				}, 3000);
-		})
+			})
+		
 	}else if(state.activeStatus == 5){
 		//更改回状态为4时候的逻辑
 		dispatch('SET_DIALOG',dia);

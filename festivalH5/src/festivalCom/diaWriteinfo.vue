@@ -29,7 +29,7 @@
 				<label>您附近的体验馆或收货地址</label>
 				<input type="text" v-model="getPrizeInfo.address">
 			</div>
-			<div class="btn" @click="pushInfo()">提交</div>
+			<div class="rbtn" @click="pushInfo()">提交</div>
 		</div>
 	</div>
 </div>
@@ -52,7 +52,7 @@
 		height: 18.675rem;
 		background: url('../assents/images/festival/info.png') center center no-repeat;
 		background-size: 100% 100%;
-		padding-top: 4.5rem;
+		padding-top: 4.75rem;
 	}
 	.wirte-area{
 		position: relative;
@@ -94,15 +94,15 @@
 			}
 		}
 
-		.btn{
+		.rbtn{
 			width: 4.5rem;
 			height: 1.75rem;
-			line-height: 1.75rem;
+			line-height: 1.65rem;
 			color: #222;
 			text-align: center;
 			border-radius: 1.75rem;
 			border: 2px solid #222;
-			margin:.25rem auto;
+			margin:.75rem auto;
 			background-color: #ffeb55;
 		}
 	}

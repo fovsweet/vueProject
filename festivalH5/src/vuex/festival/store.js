@@ -3,6 +3,9 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
+  //防止重复提交
+  doublePut:false,
+
   //活动id
   raDefUuid:'',
   
@@ -88,6 +91,10 @@ const state = {
 
 
 const mutations = {
+  //设置重复提交
+  SET_DOUBLE(state,dou){
+    state.doublePut = dou;
+  },
   //设置弹窗
   SET_DIALOG(state,dia){
   	state.dialog = dia;
@@ -109,6 +116,7 @@ const mutations = {
       state.getPrize.url = data.ccPicSmallUrl;
     }else{
       state.getPrize.isGet = false;
+      state.getPrize.name = data.raRewardName;
     }
 
     state.festivalInfo.btnName = res.btnName;
