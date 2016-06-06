@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import app from './myStoreIndex.vue';
+import mystore from './myStoreIndex';
 import cacl from 'cacl';
-import MintUI from 'mint-ui';
+import infinit from 'vue-infinite-scroll';
 
-new Vue(app);
-Vue.use(MintUI);
+Vue.use(infinit)
+new Vue(mystore);
+

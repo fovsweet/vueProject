@@ -9,7 +9,6 @@
 	<title>收藏</title>
 	<link rel="stylesheet" href="../src/assents/css/loading.css">
 	<link rel="stylesheet" href="../src/assents/css/mintUi.css">
-	<
 </head>
 <body>
 	<div class="loading">
@@ -24,6 +23,13 @@
 	<div id="app">
 		
 	</div>
+	<script>
+		window.onload = function(){
+			var load = document.querySelector('.loading');
+			load.style.opacity = 0;
+			load.style.zIndex = -1;
+		}
+	</script>
 	<script src="../build/vuer.common.js"></script>
 	<script src="../build/mystore.all.js"></script>
 </body>
