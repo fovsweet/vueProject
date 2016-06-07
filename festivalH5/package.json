@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --inline --host 192.168.1.19 ",
+    "dev": "webpack-dev-server --inline --host 192.168.31.110 ",
     "build": "webpack -w  --progress --colors ",
     "dist": "webpack -w -p --progress --colors "
   },
@@ -46,9 +46,11 @@
     "vue": "^1.0.24",
     "vue-drapload": "^0.1.8",
     "vue-infinite-scroll": "^0.2.3",
+    "vue-lazyload": "^0.4.3",
     "vue-resource": "^0.7.2",
     "vue-router": "^0.7.13",
     "vue-tap": "^1.0.3",
+    "vue-touch": "^1.1.0",
     "vuex": "^0.6.3"
   }
 }

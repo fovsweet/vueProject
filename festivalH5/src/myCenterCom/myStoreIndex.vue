@@ -9,15 +9,6 @@
 	    page:0
 	  },
 	  ready(){
-        var vThis = this;
-        var vd = {};
-        vd.mchId = mchId;
-        vd.openId = openId;
-        $.get('getCollectList',vd,function(res){
-        	if(res.falg == 'success'){
-        		vThis.content = res.data.content;
-        	}
-        })
 	  },
 	  methods: {
 	   loadMore: function() {
@@ -27,9 +18,11 @@
 	      vd.mchId = mchId;
 	      vd.openId = openId;
 	      vd.page = this.page;
-	      $.get('getCollectList',vd,function(res){
-        		_ .content = res.data.content;
+	      $.get('http://rap.taobao.org/mockjsdata/4347/getCollectList',vd,function(res){
+        		_ .content = _.content.concat(res.data.content);
+        		_.page += 1;
           })
+          this.busy = false;
 	    },
 	    setting:function(){
 	    	this.popShow = true;
@@ -43,10 +36,13 @@
 
 <template>
 
-<div v-infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="5">
+<div v-infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="50">
 	<div>
 	 	<div class="list-item" v-for="data in content">
-	 		<img class="list-img" :src="data.picSmallUrl">
+	 		<div class="no-use">
+	 			<span>已失效</span>
+	 		</div>
+	 		<img class="list-img" v-lazy="data.picSmallUrl">
 	 		<div class="list-info">
 	 			<h1>{{data.title}}</h1>
 	 			<div class="action-wraper">
@@ -55,16 +51,20 @@
 	 			</div>
 	 		</div>
 	 	</div>
+	 	<div v-show="notMore" class="not-more">
+	 		没有更多数据
+	 	</div>
  	</div>
+ 	<div v-show="popShow" class="pop-mask" transition="pop" @click="quitPop">
+		<div  class="pop-container">
+			<div class="quitCollect">取消收藏</div>
+			<div class="quit">关闭</div>
+		</div>
+	</div> 
+	<a class="kefu" href="http://www.baidu.com">
+		<img src="../assents/images/22.jpg">
+	</a>
 </div>
-
-<!-- <div v-show="popShow" class="pop-mask" transition="pop" @click="quitPop">
-	<div  class="pop-container">
-		<div class="quitCollect">取消收藏</div>
-		<div class="quit">关闭</div>
-	</div>
-</div> -->
-
 </template>
 
 <style lang="less">
@@ -91,7 +91,6 @@
 			height: 3.25rem;
 			border-radius: 4px;
 			margin:.5rem .5rem .5rem .75rem;
-			/* background: url('../assents/images/22.jpg') no-repeat; */
 			background-size: 100% 100%;
 		}
 
@@ -152,6 +151,35 @@
 			}
 		}
 	}
+	
+	.not-more{
+		width: 16rem;
+		display: table-cell;
+		vertical-align: center;
+	}
+
+	.no-use{
+		font-size: .6rem;
+		width: 3.25rem;
+		height: 3.25rem;
+		border-radius: 4px;
+		position: absolute;
+		top: .5rem;
+		left: .75rem;
+		display: flex;
+		-webkit-align-items:center;
+		-webkit-justify-content:center;
+		display: -webkit-box;
+		-webkit-box-pack:center;
+		-webkit-box-align:center;
+
+		span{
+			background-color: #ccc;
+			display: inline-block;
+			padding: .1rem .2rem;
+			border-radius: 2px;
+		}
+	}
 
 	.list-item:after{
 	  content:"";
@@ -163,6 +191,19 @@
 	  -webkit-transform:scaleY(.5);
 	  -webkit-transform-origin:0 0;
 
+	}
+
+	.kefu{
+		display: inline-block;
+		position: fixed;
+		bottom: .75rem;
+		right: .75rem;
+
+		img{
+			width: 2rem;
+			height: 2rem;
+			border-radius: 50%;
+		}
 	}
 
 	/* 弹框 start */
