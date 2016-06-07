@@ -16,9 +16,7 @@ module.exports = {
 		}
 	},
 	entry:{
-		festival:'./src/festivalCom/festival',
-		mycenter:'./src/myCenterCom/myCenter.js',
-		mystore:'./src/myCenterCom/myStore.js',
+		main:'./src/entry.js',
 		/*vuer: ["vue","vuex"],*/
 		vuer: ["vue"],
 	},

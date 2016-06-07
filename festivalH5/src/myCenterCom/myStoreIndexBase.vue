@@ -1,49 +1,58 @@
 <script>
 	var count = 0;
 	export default {
-	  el:'#app',
-	  data: {
-	    content: [],
-	    busy: false,
-	    popShow:false,
-	    page:0
-	  },
-	  ready(){
-        var vThis = this;
-        var vd = {};
-        vd.mchId = mchId;
-        vd.openId = openId;
-        $.get('getCollectList',vd,function(res){
-        	if(res.falg == 'success'){
-        		vThis.content = res.data.content;
-        	}
-        })
-	  },
-	  methods: {
-	   loadMore: function() {
-	      this.busy = true;
-	      var _ = this;
+	  	el:'#app',
+	  	data: function () {
+      		return { content: [], b: [] }
+	    },
+	    ready: function () {
+	      var me = this;
+	      me.$options.vue = me;
+	    },
+	    /**
+	     * 加载数据
+	     * @param fn
+	     */
+	    loadListData: function (fn) {
+	      var me = this.vue;
 	      var vd = {};
 	      vd.mchId = mchId;
 	      vd.openId = openId;
-	      vd.page = this.page;
-	      $.get('getCollectList',vd,function(res){
-        		_ .content = res.data.content;
-          })
+	      $.ajax({
+	        url: 'getCollectList',
+	        data: vd,
+	        type: 'GET',
+	        success: function (data) {
+	          fn(res.data.content)
+	        }
+	      });
 	    },
-	    setting:function(){
-	    	this.popShow = true;
-	    },
-	    quitPop:function(){
-	    	this.popShow =false;
+	    methods: {
+	      down_a: function () {
+	      	alert(1)
+	        var me = this
+	        me.$options.loadListData(function (data) {
+	            me.content = me.content.concat(data)
+	            // 通过设置的key 方法下拉对象方法
+	            // 如果没有更多数据。你可以 调用 me.ascroll.noData()
+	            me.ascroll.resetload()
+	        });
+
+	      },
+	      up_a: function () {
+	      	alert(2)
+	        var me = this
+	        me.$options.loadListData(function (data) {
+	              me.content = data
+	              me.ascroll.resetload()
+	        });
+	      }
 	    }
-	}
 }
 </script>
 
 <template>
-
-<div v-infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="5">
+<div class="app" v-drapload drapload-key="ascroll" drapload-initialize="true" drapload-up="up_a()" drapload-down="up_a()">
 	<div>
 	 	<div class="list-item" v-for="data in content">
 	 		<img class="list-img" :src="data.picSmallUrl">
@@ -51,23 +60,44 @@
 	 			<h1>{{data.title}}</h1>
 	 			<div class="action-wraper">
 		 			<div class="timer">{{data.createTime}}</div>
-		 			<div class="action" @click="setting"></div>
+		 			<div class="action" @click=""></div>
 	 			</div>
 	 		</div>
 	 	</div>
- 	</div>
+	 </div>
 </div>
-
-<!-- <div v-show="popShow" class="pop-mask" transition="pop" @click="quitPop">
-	<div  class="pop-container">
-		<div class="quitCollect">取消收藏</div>
-		<div class="quit">关闭</div>
-	</div>
-</div> -->
-
 </template>
 
 <style lang="less">
+.dropload-up {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+      font-size: 12px;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    .dropload-refresh, .dropload-update, .dropload-load, .dropload-noData {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+    .dropload-load .loading {
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      border-radius: 100%;
+      margin: 6px;
+      border: 2px solid #666;
+      border-bottom-color: transparent;
+      vertical-align: middle;
+      -webkit-animation: rotate 0.75s linear infinite;
+      animation: rotate 0.75s linear infinite;
+    }
+    @-webkit-keyframes rotate {
+      from {-webkit-transform:rotate(0deg);}
+      to {-webkit-transform:rotate(360deg);}
+    }
 	html,body{
 		margin: 0;
 		padding: 0;
