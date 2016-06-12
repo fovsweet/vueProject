@@ -107,7 +107,7 @@
 		position: absolute;
 	}
 	.blure{
-		filter: blur(3px);
+		filter: blur(5px);
 		/* background-image: url(../assents/images/2.jpg); */
 		background-size: 100% auto;
 		background-repeat: no-repeat;
@@ -123,7 +123,7 @@
 		background-color: rgba(0,0,0,0.3);
 	}
 	.container{
-		width: 16rem;
+		width: 100%;
 		height: 6.9rem;
 		position: relative;
 		/* background-image: url(../assents/images/default-bg.png);
