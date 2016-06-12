@@ -286,7 +286,7 @@ export const addSpecial = ({ dispatch,state }) =>{
         dispatch('SET_SHOW_DIALOG','confirm');
     }else{
         //新增加专题跳转地址
-        window.location.href ='http://www.nativejs.org.cn';
+        window.location.href = "smCon/init?type=1&cateId="+state.activeList.smCgSysuuid;
     }
     
 }

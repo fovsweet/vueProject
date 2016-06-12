@@ -43,7 +43,7 @@
 			</thead>
 			<tbody>
 				<tr v-for="data in specialList.list">
-					<td>{{data.smBodyTitle}}</td>
+					<td style="width:30%;">{{data.smBodyTitle}}</td>
 					<td>{{data.createTimeStr}}</script></td>
 					<td>{{data.browserCount}}</td>
 					<td>{{data.shareCount}}</td>

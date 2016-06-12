@@ -14,7 +14,7 @@
               navData: state => state.nave
             },
             actions:{
-                initCateList
+              initCateList
             }
         },
         components: {

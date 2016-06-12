@@ -1,5 +1,6 @@
 <script>
 import { closeDialog,uploadImg } from '../vuex/actions.js';
+import pagenav from './pagination.vue';
 	export default {
 		vuex:{
 			actions:{
@@ -9,19 +10,61 @@ import { closeDialog,uploadImg } from '../vuex/actions.js';
 		data(){
 			return {
 				sideBar:{},
-				imgContent:{}
+				imgContent:{},
+                activeCate:'',
+                activePic:'',
+                searchKey:'',
+                pageAll:'',
+                pageCur:0,
+                listAll:'',
 			}
 		},
+        components:{
+            pagenav
+        },
 		ready(){
 			var vThis = this;
 		    $.post('photo/getphotosysinfo',{},function(res){
 		    	vThis.sideBar = res;
+                vThis.activeCate = res[0];
+
+                //查询默认选中分类的图片列表
+                vThis.changePicList();
 		    })
 		},
 		methods:{
-			changeCom (com){
+			changeCom(com){
 				this.$dispatch('change-components',com);
-			}
+			},
+            setActiveCate(data){
+                this.activeCate = data;
+                this.changePicList();
+            },
+            setActivePic(data){
+                this.activePic = data;
+            },
+            changePicList(){
+                var vThis = this;
+                 $.post('photo/getphoto',{sysCode:vThis.activeCate.sysCode},function(res){
+                    vThis.imgContent = res.content;
+                    vThis.pageAll = res.totalPages;
+                    vThis.listAll = res.total;
+                })
+            },
+            searchPic(){
+                var vThis = this;
+                var vd = {};
+                vd.sysCode = this.activeCate.sysCode;
+                vd.fileName =  this.searchKey;
+                $.post('photo/getphoto',vd,function(res){
+                     vThis.imgContent = res.content;
+                     vThis.pageAll = res.totalPages;
+                     vThis.listAll = res.total;
+                })
+            },
+            listen:function(data){
+                console.log('点击了第'+data+'页');
+            }
 		}
 	}
 </script>
@@ -36,20 +79,33 @@ import { closeDialog,uploadImg } from '../vuex/actions.js';
 			<div class="picChoose" @click="changeCom('imgjcrop')">本地上传</div>
 	    	<div class="picChoose on" @click="changeCom('gallery')">图库选择</div>
 			<div class="search_pics">
-				<input type="text" class="search_input" placeholder="请输入图片名称">
+				<input type="text" class="search_input" v-model="searchKey" placeholder="请输入图片名称">
 				<div class="search_pic">
-					<img src="../static/img/pic_saerch.png" alt="" class="search_img">
+					<img src="../static/img/pic_saerch.png" alt="" class="search_img" @click="searchPic()">
 				</div>
 			</div>
 		</div>
 		<div class="creative_center">
 			<div class="creative_center_left">
 				<template v-for="data in sideBar">
-				<a href="javascript:;" class="creative_center_left_items">{{data.sysName}}({{data.picTotal}})</a>
+				<a href="javascript:;" class="creative_center_left_items" :class="{haschecked:activeCate === data}" @click="setActiveCate(data)">{{data.sysName}}({{data.picTotal}})</a>
 				</template>
 			</div>
 			<div class="creative_center_right">
-				
+				<div class="imgListContent">
+                   <div class="creative_center_right_items" v-for="data in imgContent">   
+                       <div data-pre="0" class="right_items_imgbox" :class="{haschecked:activePic === data}" @click="setActivePic(data)">      
+                            <img :src="data.url">   
+                       </div>   
+                       <div class="right_items_info">       
+                           <h2>{{data.width}}x{{data.height}}</h2>       
+                           <p>{{data.fileName}}</p>   
+                       </div>
+                   </div>      
+                </div>
+                <!-- pageNav start -->
+                <pagenav :cur.sync="pageCur" :all.sync="pageAll" :listall.sync="listAll" v-on:btn-click="listen"></pagenav>
+                <!--pageNav end-->
 			</div>
 		</div>
 		<div class="modal-foot" style="margin-top:30px">
